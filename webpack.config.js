@@ -5,9 +5,9 @@ const webpack = require('webpack');
 
 module.exports = {
     context: __dirname + "/www/js",
-	entry: "./controller",
+	entry: "./namespace",
     output: {
-        path: __dirname + "/www/js",        
+        path: __dirname + "/www/build",        
         filename: "build.js"
     },
 
