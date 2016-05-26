@@ -1,0 +1,7 @@
+{
+  "name": "Shooter",
+  "version": "0.0.1",
+  "dependencies": {
+    "three.js": "^0.77.1"
+  }
+}
