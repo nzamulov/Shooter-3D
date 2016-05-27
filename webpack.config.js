@@ -5,17 +5,11 @@ const webpack = require('webpack');
 
 module.exports = {
     context: __dirname + "/www/js",
-	entry: "./namespace",
+	entry: "./Shooter.Game/Shooter.Game",
     output: {
         path: __dirname + "/www/build",        
         filename: "build.js"
     },
-
-    /*watch: NODE_ENV == 'development',
-
-    watchOptions: {
-    	aggregateTimeout: 100
-    },*/
 
     devtool: NODE_ENV == 'development' ? 'inline-source-map' : null,
 
