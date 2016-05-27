@@ -3,7 +3,7 @@
 import namespace from '../namespace.js';
 import requestAnimationFrame from '../Shooter.Utils/Shooter.Utils.requestAnimationFrame.js';
 
-import Renderer from '../Shooter.Graphics/Shooter.Graphics.Render/Shooter.Graphics.Renderer.js';
+import Renderer from '../Shooter.Graphics/Shooter.Graphics.Renderer/Shooter.Graphics.Renderer.js';
 import World from '../Shooter.Entities/Shooter.Entities.World/Shooter.Entities.World.js';
 
 Shooter.Game = class {
