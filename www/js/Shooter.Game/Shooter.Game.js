@@ -1,3 +1,5 @@
+'use strict';
+
 import namespace from '../namespace.js';
 import Render from '../Shooter.Graphics/Shooter.Graphics.Render/Shooter.Graphics.Render.js';
 

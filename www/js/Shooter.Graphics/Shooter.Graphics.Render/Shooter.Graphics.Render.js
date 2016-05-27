@@ -1,3 +1,5 @@
+'use strict';
+
 Shooter.namespace("Shooter.Graphics");
 
 Shooter.Graphics.Render = class {
