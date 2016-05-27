@@ -1,6 +1,6 @@
 'use strict';
 
-import namespace from '../Shooter.Utils/namespace.js';
+import namespace from '../namespace.js';
 import requestAnimationFrame from '../Shooter.Utils/Shooter.Utils.requestAnimationFrame.js';
 
 import Renderer from '../Shooter.Graphics/Shooter.Graphics.Render/Shooter.Graphics.Renderer.js';
