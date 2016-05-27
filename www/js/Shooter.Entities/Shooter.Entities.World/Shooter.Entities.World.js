@@ -42,7 +42,7 @@ Shooter.Entities.World = class {
 	}
 
 	update() {
-
+		this.player.update();
 	}
 
 	getScene() {
