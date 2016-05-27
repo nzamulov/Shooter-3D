@@ -11,11 +11,11 @@ module.exports = {
         filename: "build.js"
     },
 
-    watch: NODE_ENV == 'development',
+    /*watch: NODE_ENV == 'development',
 
     watchOptions: {
     	aggregateTimeout: 100
-    },
+    },*/
 
     devtool: NODE_ENV == 'development' ? 'inline-source-map' : null,
 
