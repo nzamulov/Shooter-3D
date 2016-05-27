@@ -1,6 +1,6 @@
 'use strict';
 
-import namespace from '../namespace.js';
+import namespace from '../Shooter.Utils/namespace.js';
 import Renderer from '../Shooter.Graphics/Shooter.Graphics.Render/Shooter.Graphics.Renderer.js';
 import World from '../Shooter.Entities/Shooter.Entities.World/Shooter.Entities.World.js';
 
