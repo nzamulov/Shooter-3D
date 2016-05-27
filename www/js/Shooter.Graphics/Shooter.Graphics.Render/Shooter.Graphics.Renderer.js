@@ -2,7 +2,7 @@
 
 Shooter.namespace("Shooter.Graphics");
 
-Shooter.Graphics.Render = class {
+Shooter.Graphics.Renderer = class {
 
 	constructor() {
 
@@ -19,4 +19,4 @@ Shooter.Graphics.Render = class {
 
 }
 
-export default Shooter.Graphics.Render;
+export default Shooter.Graphics.Renderer;

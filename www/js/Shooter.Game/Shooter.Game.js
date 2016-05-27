@@ -1,25 +1,29 @@
 'use strict';
 
 import namespace from '../namespace.js';
-import Render from '../Shooter.Graphics/Shooter.Graphics.Render/Shooter.Graphics.Render.js';
+import Renderer from '../Shooter.Graphics/Shooter.Graphics.Render/Shooter.Graphics.Renderer.js';
+import World from '../Shooter.Entities/Shooter.Entities.World/Shooter.Entities.World.js';
 
 Shooter.Game = class {
 
 	constructor() {
 
-		this.render = new Render();
-		this.world = null;
+		this.renderer = new Renderer();
+		this.world = new World();
+
+		let self = this;
+
+		(function animate() {
+			requestAnimationFrame(animate);
+			self.render();
+		})();
 
 		console.log("> Shooter Game > constructor > ready");
 	}
 
-	animate() {
-		requestAnimationFrame(animate);
-		this.render();
-	}
-
 	render() {
-		this.world.render();
+		this.world.update();
+		this.renderer.render(this.world.getScene(), this.world.getCamera());
 	}
 
 };
