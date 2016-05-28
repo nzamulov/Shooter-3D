@@ -40,7 +40,9 @@ Shooter.Controllers.KeyboardController = class {
 				break;
 			}
 			case CONSTANTS.KEYBOARD_WHITESPACE: {
-				this.player.jumping = true;
+				if(!this.player.falling) {
+					this.player.jumping = true;
+				}
 				break;
 			}
 		}
