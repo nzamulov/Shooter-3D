@@ -12,7 +12,7 @@ Shooter.Entities.World = class {
 
 		this.player = new Player();
 
-		let size = 30, step = 3;
+		/*let size = 30, step = 3;
 
 		let geometry = new THREE.Geometry();
 		let material = new THREE.LineBasicMaterial({ color: 'green' });
@@ -26,7 +26,13 @@ Shooter.Entities.World = class {
 		}
 
 		let line = new THREE.Line(geometry, material, THREE.LinePieces);
-		this.scene.add(line);
+		this.scene.add(line);*/
+
+		let geometry = new THREE.PlaneGeometry(40, 40, 32);
+		let material = new THREE.MeshBasicMaterial( { color: 'blue' } );
+		let plane = new THREE.Mesh(geometry, material);
+		plane.rotation.x = -Math.PI / 2.0;
+		this.scene.add(plane);
 
 		geometry = new THREE.BoxGeometry(2, 2, 2);
 		material = new THREE.MeshBasicMaterial( { color: 'red' } );
