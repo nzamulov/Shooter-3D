@@ -1,3 +1,5 @@
+'use strict';
+
 Shooter.Constants = {
 
 	KEYBOARD_W: 87,
