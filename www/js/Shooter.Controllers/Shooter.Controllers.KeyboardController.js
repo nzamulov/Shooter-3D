@@ -37,6 +37,10 @@ Shooter.Controllers.KeyboardController = class {
 				this.player.moveRight = true;
 				break;
 			}
+			case 32: {
+				this.player.jumping = true;
+				break;
+			}
 		}
 	}
 
