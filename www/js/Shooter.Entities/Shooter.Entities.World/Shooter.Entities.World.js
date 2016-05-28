@@ -30,6 +30,7 @@ Shooter.Entities.World = class {
 
 		let geometry = new THREE.PlaneGeometry(40, 40, 32);
 		let material = new THREE.MeshBasicMaterial( { color: 'blue' } );
+		material.side = THREE.DoubleSide;
 		let plane = new THREE.Mesh(geometry, material);
 		plane.rotation.x = -Math.PI / 2.0;
 		this.scene.add(plane);
@@ -48,7 +49,7 @@ Shooter.Entities.World = class {
 	}
 
 	update() {
-		this.player.update();
+		this.player.update(this.scene);
 	}
 
 	getScene() {

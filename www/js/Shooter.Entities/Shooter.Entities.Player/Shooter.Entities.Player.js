@@ -16,7 +16,8 @@ Shooter.Entities.Player = class extends AbstractEntity {
 		this.moveRight = false;
 		
 		this.jumping = false;
-		this.jumpingSaturation = 0;
+		this.falling = false;
+		this.jumpingSaturation = Math.PI / 2;
 
 		this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
 		this.camera.position.set(0, 1, 10);
@@ -26,7 +27,7 @@ Shooter.Entities.Player = class extends AbstractEntity {
 		console.log("> Shooter.Entities.Player > constructor > ready");
 	}
 
-	update() {
+	update(scene) {
 
 		let worldDirection = this.camera.getWorldDirection().multiplyScalar(0.5);
 		
@@ -55,16 +56,41 @@ Shooter.Entities.Player = class extends AbstractEntity {
 
 		if(this.jumping) {
 
-			let newHeight = 10 * Math.sin(this.jumpingSaturation) + 1;
+			let addHeight = 0.5 * Math.sin(this.jumpingSaturation);
 
-			if(newHeight < 1) {
-				this.camera.position.y = 1;
-				this.jumpingSaturation = 0;
+			if(this.jumpingSaturation <= 0) {
+
 				this.jumping = false;
+				this.falling = true;
+				this.jumpingSaturation = 0;
+
+			} else {
+
+				this.camera.position.y += addHeight;
+				this.jumpingSaturation -= Math.PI / 40;
+
 			}
-			else {
-				this.camera.position.y = newHeight;
+		}
+
+		if(this.falling) {
+			
+			let originPoint = this.camera.position.clone();
+			let ray = new THREE.Raycaster(originPoint, new THREE.Vector3(0, -1, 0));
+			let collisionResults = ray.intersectObjects(scene.children);
+
+			if(collisionResults.length > 0 && collisionResults[0].distance < 1.25 && this.falling) {
+
+				this.falling = false;
+				this.jumpingSaturation = Math.PI / 2;
+
+			} else {
+
+				let addHeight = 0.5 * Math.sin(this.jumpingSaturation);
+				this.camera.position.y -= addHeight;
 				this.jumpingSaturation += Math.PI / 40;
+
+				this.jumpingSaturation = Math.min(this.jumpingSaturation, Math.PI / 2);
+
 			}
 		}
 	}
