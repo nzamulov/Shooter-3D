@@ -4,6 +4,7 @@ Shooter.namespace("Shooter.Entities");
 
 import AbstractEntity from '../Shooter.Entities.AbstractEntity/Shooter.Entities.AbstractEntity.js';
 import KeyboardController from '../../Shooter.Controllers/Shooter.Controllers.KeyboardController.js';
+import CONSTANTS from '../../Shooter.Constants/Shooter.Constants.js';
 
 Shooter.Entities.Player = class extends AbstractEntity {
 
@@ -56,7 +57,7 @@ Shooter.Entities.Player = class extends AbstractEntity {
 
 		if(this.jumping) {
 
-			let addHeight = 0.5 * Math.sin(this.jumpingSaturation);
+			let addHeight = CONSTANTS.JUMP_STRENGTH * Math.sin(this.jumpingSaturation);
 
 			if(this.jumpingSaturation <= 0) {
 
@@ -67,7 +68,7 @@ Shooter.Entities.Player = class extends AbstractEntity {
 			} else {
 
 				this.camera.position.y += addHeight;
-				this.jumpingSaturation -= Math.PI / 40;
+				this.jumpingSaturation -= Math.PI / CONSTANTS.GRAVITY;
 
 			}
 		}
@@ -85,9 +86,9 @@ Shooter.Entities.Player = class extends AbstractEntity {
 
 			} else {
 
-				let addHeight = 0.5 * Math.sin(this.jumpingSaturation);
+				let addHeight = CONSTANTS.JUMP_STRENGTH * Math.sin(this.jumpingSaturation);
 				this.camera.position.y -= addHeight;
-				this.jumpingSaturation += Math.PI / 40;
+				this.jumpingSaturation += Math.PI / CONSTANTS.GRAVITY;
 
 				this.jumpingSaturation = Math.min(this.jumpingSaturation, Math.PI / 2);
 

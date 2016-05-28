@@ -40,7 +40,7 @@ Shooter.Entities.World = class {
 		let cube = new THREE.Mesh( geometry, material );
 
 		cube.position.x = 1;
-		cube.position.y = 1;
+		cube.position.y = 1.03;
 		cube.position.z = 1;
 		
 		this.scene.add(cube);
