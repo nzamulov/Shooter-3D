@@ -5,10 +5,11 @@ Shooter.namespace("Shooter.Entities");
 import AbstractEntity from '../Shooter.Entities.AbstractEntity/Shooter.Entities.AbstractEntity.js';
 import KeyboardController from '../../Shooter.Controllers/Shooter.Controllers.KeyboardController.js';
 import CONSTANTS from '../../Shooter.Constants/Shooter.Constants.js';
+import PointerLockControls from '../../Shooter.Utils/Shooter.Utils.PointerLockControls.js';
 
 Shooter.Entities.Player = class extends AbstractEntity {
 
-	constructor() {
+	constructor(scene) {
 		super();
 
 		this.moveForward = false;
@@ -22,6 +23,10 @@ Shooter.Entities.Player = class extends AbstractEntity {
 
 		this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
 		this.camera.position.set(0, 1, 10);
+
+		this.controls = new PointerLockControls(this.camera);
+		scene.add(this.controls.getObject());
+
 
 		KeyboardController.create(this);
 

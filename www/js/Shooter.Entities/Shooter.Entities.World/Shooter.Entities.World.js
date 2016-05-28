@@ -10,7 +10,7 @@ Shooter.Entities.World = class {
 
 		this.scene = new THREE.Scene();
 
-		this.player = new Player();
+		this.player = new Player(this.scene);
 
 		let size = 40, step = 2;
 
@@ -55,7 +55,19 @@ Shooter.Entities.World = class {
 
 		this.scene.add(cube);
 
+		document.addEventListener('click', this.lock, false);
+
 		console.log("> Shooter.Entities.World > constructor > ready");
+	}
+
+	lock() {
+
+		let element = document.body;
+
+		element.requestPointerLock = element.requestPointerLock || element.mozRequestPointerLock || element.webkitRequestPointerLock;
+
+		element.requestPointerLock();
+
 	}
 
 	update() {
