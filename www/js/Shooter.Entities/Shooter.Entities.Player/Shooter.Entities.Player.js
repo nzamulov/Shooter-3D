@@ -57,7 +57,15 @@ Shooter.Entities.Player = class extends AbstractEntity {
 
 		if(this.jumping) {
 
-			if(this.jumpingSaturation <= 0) {
+			let originPoint = this.camera.position.clone();
+
+			originPoint.y += 1; // prevent intersection with the ground and grid.
+
+			let ray = new THREE.Raycaster(originPoint, new THREE.Vector3(0, 1, 0));
+			let collisionResults = ray.intersectObjects(scene.children);
+
+			if(this.jumpingSaturation <= 0 || 
+				(collisionResults.length > 0 && collisionResults[0].distance < 1.25)) {
 
 				this.jumping = false;
 				this.falling = true;
@@ -65,26 +73,10 @@ Shooter.Entities.Player = class extends AbstractEntity {
 
 			} else {
 
-				let originPoint = this.camera.position.clone();
+				let addHeight = CONSTANTS.JUMP_STRENGTH * Math.sin(this.jumpingSaturation);
+				this.camera.position.y += addHeight;
+				this.jumpingSaturation -= Math.PI / CONSTANTS.GRAVITY;
 
-				originPoint.y += 1; // prevent intersection with the ground and grid.
-
-				let ray = new THREE.Raycaster(originPoint, new THREE.Vector3(0, 1, 0));
-				let collisionResults = ray.intersectObjects(scene.children);
-
-				if(collisionResults.length > 0 && collisionResults[0].distance < 1.25 && this.jumping) {
-
-					this.jumping = false;
-					this.falling = true;
-					this.jumpingSaturation = 0;
-
-				} else {
-
-					let addHeight = CONSTANTS.JUMP_STRENGTH * Math.sin(this.jumpingSaturation);
-					this.camera.position.y += addHeight;
-					this.jumpingSaturation -= Math.PI / CONSTANTS.GRAVITY;
-
-				}
 			}
 		}
 
@@ -94,7 +86,7 @@ Shooter.Entities.Player = class extends AbstractEntity {
 			let ray = new THREE.Raycaster(originPoint, new THREE.Vector3(0, -1, 0));
 			let collisionResults = ray.intersectObjects(scene.children);
 
-			if(collisionResults.length > 0 && collisionResults[0].distance < 1.25 && this.falling) {
+			if(collisionResults.length > 0 && collisionResults[0].distance < 1.25) {
 
 				this.falling = false;
 				this.jumpingSaturation = Math.PI / 2;
