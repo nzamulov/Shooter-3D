@@ -2,6 +2,8 @@
 
 Shooter.namespace("Shooter.Controllers");
 
+import CONSTANTS from '../Shooter.Constants/Shooter.Constants.js';
+
 Shooter.Controllers.KeyboardController = class {
 
 	constructor(player) {
@@ -17,27 +19,27 @@ Shooter.Controllers.KeyboardController = class {
 	onKeyDown(event) {
 
 		switch(event.keyCode) {
-			case 38:
-			case 87: {
+			case CONSTANTS.KEYBOARD_W:
+			case CONSTANTS.KEYBOARD_ARROW_UP: {
 				this.player.moveForward = true;
 				break;
 			}
-			case 37:
-			case 65: {
+			case CONSTANTS.KEYBOARD_A:
+			case CONSTANTS.KEYBOARD_ARROW_LEFT: {
 				this.player.moveLeft = true;
 				break;
 			}
-			case 40:
-			case 83: {
+			case CONSTANTS.KEYBOARD_S:
+			case CONSTANTS.KEYBOARD_ARROW_DOWN: {
 				this.player.moveBackward = true;
 				break;
 			}
-			case 39:
-			case 68: {
+			case CONSTANTS.KEYBOARD_D:
+			case CONSTANTS.KEYBOARD_ARROW_RIGHT: {
 				this.player.moveRight = true;
 				break;
 			}
-			case 32: {
+			case CONSTANTS.KEYBOARD_WHITESPACE: {
 				this.player.jumping = true;
 				break;
 			}
@@ -47,23 +49,23 @@ Shooter.Controllers.KeyboardController = class {
 	onKeyUp(event) {
 
 		switch(event.keyCode) {
-			case 38:
-			case 87: {
+			case CONSTANTS.KEYBOARD_W:
+			case CONSTANTS.KEYBOARD_ARROW_UP: {
 				this.player.moveForward = false;
 				break;
 			}
-			case 37:
-			case 65: {
+			case CONSTANTS.KEYBOARD_A:
+			case CONSTANTS.KEYBOARD_ARROW_LEFT: {
 				this.player.moveLeft = false;
 				break;
 			}
-			case 40:
-			case 83: {
+			case CONSTANTS.KEYBOARD_S:
+			case CONSTANTS.KEYBOARD_ARROW_DOWN: {
 				this.player.moveBackward = false;
 				break;
 			}
-			case 39:
-			case 68: {
+			case CONSTANTS.KEYBOARD_D:
+			case CONSTANTS.KEYBOARD_ARROW_RIGHT: {
 				this.player.moveRight = false;
 				break;
 			}
