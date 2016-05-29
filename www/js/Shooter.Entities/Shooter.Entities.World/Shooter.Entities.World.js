@@ -11,6 +11,7 @@ Shooter.Entities.World = class {
 		this.scene = new THREE.Scene();
 
 		this.player = new Player(this.scene);
+		this.scene.add(this.player.getControls().getObject());
 
 		let size = 40, step = 2;
 

@@ -25,8 +25,6 @@ Shooter.Entities.Player = class extends AbstractEntity {
 		this.camera.position.set(0, 1, 10);
 
 		this.controls = new PointerLockControls(this.camera);
-		scene.add(this.controls.getObject());
-
 
 		KeyboardController.create(this);
 
@@ -110,6 +108,10 @@ Shooter.Entities.Player = class extends AbstractEntity {
 
 	getCamera() {
 		return this.camera;
+	}
+
+	getControls() {
+		return this.controls;
 	}
 };
 
