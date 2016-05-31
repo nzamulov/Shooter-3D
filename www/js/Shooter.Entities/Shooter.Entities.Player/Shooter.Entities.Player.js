@@ -34,10 +34,10 @@ Shooter.Entities.Player = class extends AbstractEntity {
 
 	update(scene) {
 
-		let worldDirection = this.camera.getWorldDirection().multiplyScalar(0.5);
+		let worldDirection = this.camera.getWorldDirection().normalize().multiplyScalar(CONSTANTS.MOVEMENT_SPEED);
 		
 		let strafe = new THREE.Vector3();
-		strafe.crossVectors(worldDirection, new THREE.Vector3(0, 1, 0)).multiplyScalar(0.5);
+		strafe.crossVectors(worldDirection, new THREE.Vector3(0, 1, 0)).normalize().multiplyScalar(CONSTANTS.MOVEMENT_SPEED);
 
 		if(this.moveForward) {
 			this.camera.position.x += worldDirection.x;
