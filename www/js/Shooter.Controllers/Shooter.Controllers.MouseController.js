@@ -1,14 +1,14 @@
 'use strict';
 
-Shooter.namespace("Shooter.Utils");
+Shooter.namespace("Shooter.Controllers");
 
-Shooter.Utils.PointerLockControls = class {
+Shooter.Controllers.MouseController = class {
 
-	constructor(camera) {
+	constructor(player) {
 
-		camera.rotation.set(0, 0, 0);
+		this.player = player;
 
-		this.camera = camera;
+		this.player.camera.rotation.set(0, 0, 0);
 
 		this.pitchObject = new THREE.Object3D();
 		this.pitchObject.add();
@@ -21,6 +21,7 @@ Shooter.Utils.PointerLockControls = class {
 		let self = this;
 
 		document.addEventListener('mousemove', function(event) { self.onMouseMove(event); }, false);
+
 	}
 
 	onMouseMove(event) {
@@ -35,24 +36,32 @@ Shooter.Utils.PointerLockControls = class {
 
 		let direction = new THREE.Vector3(0, 0, -1);
 		let rotation = new THREE.Euler(0, 0, 0, "YXZ");
-		let v = new THREE.Vector3();
+		let lookAt = new THREE.Vector3();
 
 		rotation.set(this.pitchObject.rotation.x, this.yawObject.rotation.y, 0);
 
-		v.copy(direction).applyEuler(rotation);
+		lookAt.copy(direction).applyEuler(rotation);
 
-		v.x += this.camera.position.x;
-		v.y += this.camera.position.y;
-		v.z += this.camera.position.z;
+		lookAt.x += this.player.camera.position.x;
+		lookAt.y += this.player.camera.position.y;
+		lookAt.z += this.player.camera.position.z;
 
-		this.camera.lookAt(v);
+		this.player.camera.lookAt(lookAt);
 
 	}
 
 	getObject() {
 
 		return this.yawObject;
+
+	}
+
+	static create(player) {
+
+		let controller = new Shooter.Controllers.MouseController(player);
+
+		return controller;
 	}
 };
 
-export default Shooter.Utils.PointerLockControls;
+export default Shooter.Controllers.MouseController;
