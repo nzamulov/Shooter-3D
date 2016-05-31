@@ -16,7 +16,6 @@ Shooter.Constants = {
 		ARROW_RIGHT: 39,
 
 		WHITESPACE: 32
-
 	},
 
 	/* PHYSIC */
