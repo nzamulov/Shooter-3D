@@ -81,7 +81,10 @@ Shooter.Controllers.KeyboardController = class extends AbstractController {
 	}
 
 	static create(player) {
+
 		let controller = new Shooter.Controllers.KeyboardController(player);
+
+		return controller;
 	}
 };
 

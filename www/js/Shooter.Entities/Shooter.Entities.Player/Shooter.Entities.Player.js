@@ -26,7 +26,7 @@ Shooter.Entities.Player = class extends AbstractEntity {
 		this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
 		this.camera.position.set(0, 1, 10);
 
-		KeyboardController.create(this);
+		this.keyboardController = KeyboardController.create(this);
 		this.mouseController = MouseController.create(this);
 
 		console.log("> Shooter.Entities.Player > constructor > ready");
