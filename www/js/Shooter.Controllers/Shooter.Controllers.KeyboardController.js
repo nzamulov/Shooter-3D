@@ -19,27 +19,27 @@ Shooter.Controllers.KeyboardController = class extends AbstractController {
 		this.onKeyDown = (event) => {
 
 			switch(event.keyCode) {
-				case CONSTANTS.KEYBOARD_W:
-				case CONSTANTS.KEYBOARD_ARROW_UP: {
+				case CONSTANTS.KEYS.W:
+				case CONSTANTS.KEYS.ARROW_UP: {
 					this.player.moveForward = true;
 					break;
 				}
-				case CONSTANTS.KEYBOARD_A:
-				case CONSTANTS.KEYBOARD_ARROW_LEFT: {
+				case CONSTANTS.KEYS.A:
+				case CONSTANTS.KEYS.ARROW_LEFT: {
 					this.player.moveLeft = true;
 					break;
 				}
-				case CONSTANTS.KEYBOARD_S:
-				case CONSTANTS.KEYBOARD_ARROW_DOWN: {
+				case CONSTANTS.KEYS.S:
+				case CONSTANTS.KEYS.ARROW_DOWN: {
 					this.player.moveBackward = true;
 					break;
 				}
-				case CONSTANTS.KEYBOARD_D:
-				case CONSTANTS.KEYBOARD_ARROW_RIGHT: {
+				case CONSTANTS.KEYS.D:
+				case CONSTANTS.KEYS.ARROW_RIGHT: {
 					this.player.moveRight = true;
 					break;
 				}
-				case CONSTANTS.KEYBOARD_WHITESPACE: {
+				case CONSTANTS.KEYS.WHITESPACE: {
 					if(!this.player.falling) {
 						this.player.jumping = true;
 					}
@@ -51,23 +51,23 @@ Shooter.Controllers.KeyboardController = class extends AbstractController {
 		this.onKeyUp = (event) => {
 
 			switch(event.keyCode) {
-				case CONSTANTS.KEYBOARD_W:
-				case CONSTANTS.KEYBOARD_ARROW_UP: {
+				case CONSTANTS.KEYS.W:
+				case CONSTANTS.KEYS.ARROW_UP: {
 					this.player.moveForward = false;
 					break;
 				}
-				case CONSTANTS.KEYBOARD_A:
-				case CONSTANTS.KEYBOARD_ARROW_LEFT: {
+				case CONSTANTS.KEYS.A:
+				case CONSTANTS.KEYS.ARROW_LEFT: {
 					this.player.moveLeft = false;
 					break;
 				}
-				case CONSTANTS.KEYBOARD_S:
-				case CONSTANTS.KEYBOARD_ARROW_DOWN: {
+				case CONSTANTS.KEYS.S:
+				case CONSTANTS.KEYS.ARROW_DOWN: {
 					this.player.moveBackward = false;
 					break;
 				}
-				case CONSTANTS.KEYBOARD_D:
-				case CONSTANTS.KEYBOARD_ARROW_RIGHT: {
+				case CONSTANTS.KEYS.D:
+				case CONSTANTS.KEYS.ARROW_RIGHT: {
 					this.player.moveRight = false;
 					break;
 				}
