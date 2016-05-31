@@ -18,9 +18,11 @@ Shooter.Constants = {
 		WHITESPACE: 32
 	},
 
+	CURSOR_SPEED: 0.002,
+
 	/* PHYSIC */
 	JUMP_STRENGTH: 0.5,
-	GRAVITY: 40
+	GRAVITY: 40,
 
 };
 

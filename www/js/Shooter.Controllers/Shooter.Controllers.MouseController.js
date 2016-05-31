@@ -2,6 +2,8 @@
 
 Shooter.namespace("Shooter.Controllers");
 
+import CONSTANTS from '../Shooter.Constants/Shooter.Constants.js';
+
 import AbstractController from './Shooter.Controllers.AbstractController.js';
 
 Shooter.Controllers.MouseController = class extends AbstractController {
@@ -29,8 +31,8 @@ Shooter.Controllers.MouseController = class extends AbstractController {
 			let movementX = event.movementX || event.mozMovementX || event.webkitMovementX || 0;
 			let movementY = event.movementY || event.mozMovementY || event.webkitMovementY || 0;
 
-			this.yawObject.rotation.y -= movementX * 0.002;
-			this.pitchObject.rotation.x -= movementY * 0.002;
+			this.yawObject.rotation.y -= movementX * CONSTANTS.CURSOR_SPEED;
+			this.pitchObject.rotation.x -= movementY * CONSTANTS.CURSOR_SPEED;
 
 			this.pitchObject.rotation.x = Math.max( -this.PI_2, Math.min( this.PI_2, this.pitchObject.rotation.x ) );
 
