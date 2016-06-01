@@ -29,12 +29,12 @@ Shooter.Entities.World = class {
 		let line = new THREE.Line(geometry, material, THREE.LinePieces);
 		this.scene.add(line);
 
-		geometry = new THREE.PlaneGeometry(40, 40, 32);
+		/*geometry = new THREE.PlaneGeometry(40, 40, 32);
 		material = new THREE.MeshBasicMaterial( { color: 'blue' } );
 		material.side = THREE.DoubleSide;
 		let plane = new THREE.Mesh(geometry, material);
 		plane.rotation.x = -Math.PI / 2.0;
-		this.scene.add(plane);
+		this.scene.add(plane);*/
 
 		geometry = new THREE.BoxGeometry(2, 2, 2);
 		material = new THREE.MeshBasicMaterial( { color: 'red' } );
@@ -65,6 +65,39 @@ Shooter.Entities.World = class {
 		cube.position.z = 3;
 
 		this.scene.add(cube);
+
+		/* GATE */
+
+		geometry = new THREE.BoxGeometry(3, 20, 3);
+		material = new THREE.MeshBasicMaterial({ color: 'blue' });
+		cube = new THREE.Mesh(geometry, material);
+
+		cube.position.x = -10;
+		cube.position.y = 10;
+		cube.position.z = -10;
+
+		this.scene.add(cube);
+
+		cube = new THREE.Mesh(geometry, material);
+
+		cube.position.x = 10;
+		cube.position.y = 10;
+		cube.position.z = -10;
+
+		this.scene.add(cube);
+
+		geometry = new THREE.CylinderGeometry(0.2, 0.2, 26, 64);
+		material = new THREE.MeshBasicMaterial({ color: 'red' });
+		let blank = new THREE.Mesh(geometry, material);
+
+		blank.position.x = 0;
+		blank.position.y = 18;
+		blank.position.z = -10;
+
+		blank.rotation.x = - Math.PI / 2;
+		blank.rotation.z = - Math.PI / 2;
+
+		this.scene.add(blank);
 
 		console.log("> Shooter.Entities.World > constructor > ready");
 	}
