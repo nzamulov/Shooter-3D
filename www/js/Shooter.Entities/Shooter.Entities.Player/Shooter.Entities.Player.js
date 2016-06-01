@@ -39,6 +39,8 @@ Shooter.Entities.Player = class extends AbstractEntity {
 		let strafe = new THREE.Vector3();
 		strafe.crossVectors(worldDirection, new THREE.Vector3(0, 1, 0)).normalize().multiplyScalar(CONSTANTS.MOVEMENT_SPEED);
 
+		this.gravitation(scene);
+
 		if(this.moveForward) {
 			this.camera.position.x += worldDirection.x;
 			this.camera.position.z += worldDirection.z;
@@ -105,6 +107,19 @@ Shooter.Entities.Player = class extends AbstractEntity {
 
 				this.jumpingSaturation = Math.min(this.jumpingSaturation, Math.PI / 2);
 
+			}
+		}
+	}
+
+	gravitation(scene) {
+
+		if(!this.jumping) {
+
+			let ray = new THREE.Raycaster(this.camera.position.clone(), new THREE.Vector3(0, -1, 0));
+			let collisionResults = ray.intersectObjects(scene.children);
+
+			if(collisionResults.length > 0 && collisionResults[0].distance > 2) {
+				this.falling = true;
 			}
 		}
 	}
