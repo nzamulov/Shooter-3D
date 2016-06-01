@@ -68,16 +68,18 @@ Shooter.Entities.World = class {
 
 		/* GATE */
 
-		geometry = new THREE.BoxGeometry(3, 20, 3);
+		/*geometry = new THREE.BoxGeometry(3, 20, 3);
 		material = new THREE.MeshBasicMaterial({ color: 'blue' });
 		cube = new THREE.Mesh(geometry, material);
 
-		cube.position.x = -10;
+		cube.position.x = -20;
 		cube.position.y = 10;
 		cube.position.z = -10;
 
-		this.scene.add(cube);
+		this.scene.add(cube);*/
 
+		geometry = new THREE.BoxGeometry(3, 20, 3);
+		material = new THREE.MeshBasicMaterial({ color: 'blue' });
 		cube = new THREE.Mesh(geometry, material);
 
 		cube.position.x = 10;
@@ -86,11 +88,11 @@ Shooter.Entities.World = class {
 
 		this.scene.add(cube);
 
-		geometry = new THREE.CylinderGeometry(0.2, 0.2, 26, 64);
+		geometry = new THREE.CylinderGeometry(0.2, 0.2, 36, 64);
 		material = new THREE.MeshBasicMaterial({ color: 'red' });
 		let blank = new THREE.Mesh(geometry, material);
 
-		blank.position.x = 0;
+		blank.position.x = -5;
 		blank.position.y = 18;
 		blank.position.z = -10;
 
@@ -101,24 +103,88 @@ Shooter.Entities.World = class {
 
 		/*----------*/
 
-		/* WALL */
+		let startX = 10;
+		let startZ = -10;
 
-		geometry = new THREE.BoxGeometry(30, 16, 3);
+		let lastX = 25;
+		let lastZ = -10;
+
+		for(let i = 1; i < 18; ++i) {
+
+			let phi = -Math.PI / 9;
+
+			let [newX, newZ] = this.rotate(lastX - startX, lastZ - startZ, phi);
+
+			/* WALL */
+
+			geometry = new THREE.BoxGeometry(30, 16, 1);
+			material = new THREE.MeshBasicMaterial({ color: 'blue' });
+			let wall = new THREE.Mesh(geometry, material);
+
+			wall.position.x = startX + newX;
+			wall.position.y = 8;
+			wall.position.z = startZ + newZ;
+
+			wall.rotation.y = (Math.PI / 9) * i;
+
+			this.scene.add(wall);
+
+			lastX = startX + 3 * newX;
+			lastZ = startZ + 3 * newZ;
+
+			startX = startX + 2 * newX;
+			startZ = startZ + 2 * newZ;
+
+			geometry = new THREE.BoxGeometry(3, 20, 3);
+			material = new THREE.MeshBasicMaterial({ color: 'blue' });
+			cube = new THREE.Mesh(geometry, material);
+
+			cube.position.x = startX;
+			cube.position.y = 10;
+			cube.position.z = startZ;
+
+			cube.rotation.y = (Math.PI / 9) * (i + 1);
+
+			this.scene.add(cube);
+
+			/*----------*/
+		}
+
+		/* TOWER */
+
+		/*geometry = new THREE.BoxGeometry(3, 20, 3);
 		material = new THREE.MeshBasicMaterial({ color: 'blue' });
-		let wall = new THREE.Mesh(geometry, material);
+		cube = new THREE.Mesh(geometry, material);
 
-		wall.position.x = 26.5;
-		wall.position.y = 8;
-		wall.position.z = -10;
+		cube.position.x = 43;
+		cube.position.y = 10;
+		cube.position.z = -10;
 
-		this.scene.add(wall);
+		this.scene.add(cube);*/
 
 		/*----------*/
 
-		
+		/*geometry = new THREE.BoxGeometry(30, 16, 1);
+		material = new THREE.MeshBasicMaterial({ color: 'blue' });
+		wall = new THREE.Mesh(geometry, material);
 
+		wall.position.x = 55;
+		wall.position.y = 8;
+		wall.position.z = -12;
+
+		wall.rotation.y = Math.PI / 18;
+
+		this.scene.add(wall);*/
 
 		console.log("> Shooter.Entities.World > constructor > ready");
+	}
+
+	rotate(x, z, phi) {
+
+		let xPrime = x * Math.cos(phi) - z * Math.sin(phi);
+		let zPrime = x * Math.sin(phi) + z * Math.cos(phi);
+
+		return [ xPrime, zPrime ];
 	}
 
 	update() {
