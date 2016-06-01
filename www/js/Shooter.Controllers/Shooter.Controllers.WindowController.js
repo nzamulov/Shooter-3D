@@ -20,12 +20,17 @@ Shooter.Controllers.WindowController = class extends AbstractController {
 			this.camera.aspect = window.innerWidth / window.innerHeight;
 			this.camera.updateProjectionMatrix();
 			
-			this.renderer.setSize(window.innerWidth, window.innerHeight, false);
+			this.renderer.setSize(window.innerWidth, window.innerHeight);
 		};
 
 		let self = this;
 
 		window.addEventListener('resize', (event) => { this.onWindowResize(event); }, false );
+
+		document.addEventListener('fullscreenchange', (event) => { this.onWindowResize(event); }, false);
+		document.addEventListener('mozfullscreenchange', (event) => { this.onWindowResize(event); }, false);
+		document.addEventListener('webkitfullscreenchange', (event) => { this.onWindowResize(event); }, false);
+		document.addEventListener('MSFullscreenChange', (event) => { this.onWindowResize(event); }, false);
 	}
 
 	static create(camera, renderer) {
