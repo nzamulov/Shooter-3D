@@ -5,6 +5,8 @@ import namespace from '../namespace.js';
 import requestAnimationFrame from '../Shooter.Utils/Shooter.Utils.requestAnimationFrame.js';
 import requestPointerLock from '../Shooter.Utils/Shooter.Utils.requestPointerLock.js';
 
+import WindowController from '../Shooter.Controllers/Shooter.Controllers.WindowController.js';
+
 import Renderer from '../Shooter.Graphics/Shooter.Graphics.Renderer/Shooter.Graphics.Renderer.js';
 import World from '../Shooter.Entities/Shooter.Entities.World/Shooter.Entities.World.js';
 
@@ -14,6 +16,8 @@ Shooter.Game = class {
 
 		this.renderer = new Renderer();
 		this.world = new World();
+
+		this.windowController = WindowController.create(this.world.getCamera(), this.renderer);
 
 		let self = this;
 
