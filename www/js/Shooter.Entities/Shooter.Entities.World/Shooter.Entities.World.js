@@ -13,7 +13,7 @@ Shooter.Entities.World = class {
 		this.player = new Player(this.scene);
 		this.scene.add(this.player.getControls());
 
-		let size = 40, step = 2;
+		let size = 2000, step = 2;
 
 		let geometry = new THREE.Geometry();
 		let material = new THREE.LineBasicMaterial({ color: 'green' });
@@ -98,6 +98,25 @@ Shooter.Entities.World = class {
 		blank.rotation.z = - Math.PI / 2;
 
 		this.scene.add(blank);
+
+		/*----------*/
+
+		/* WALL */
+
+		geometry = new THREE.BoxGeometry(30, 16, 3);
+		material = new THREE.MeshBasicMaterial({ color: 'blue' });
+		let wall = new THREE.Mesh(geometry, material);
+
+		wall.position.x = 26.5;
+		wall.position.y = 8;
+		wall.position.z = -10;
+
+		this.scene.add(wall);
+
+		/*----------*/
+
+		
+
 
 		console.log("> Shooter.Entities.World > constructor > ready");
 	}
