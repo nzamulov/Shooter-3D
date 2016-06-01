@@ -22,7 +22,7 @@ Shooter.Constants = {
 
 	/* PHYSIC */
 	JUMP_STRENGTH: 0.5,
-	GRAVITY: 40,
+	GRAVITY: 50,
 	MOVEMENT_SPEED: 0.25
 
 };
