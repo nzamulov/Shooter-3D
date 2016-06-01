@@ -1,7 +1,9 @@
 'use strict';
 
 import namespace from '../namespace.js';
+
 import requestAnimationFrame from '../Shooter.Utils/Shooter.Utils.requestAnimationFrame.js';
+import requestPointerLock from '../Shooter.Utils/Shooter.Utils.requestPointerLock.js';
 
 import Renderer from '../Shooter.Graphics/Shooter.Graphics.Renderer/Shooter.Graphics.Renderer.js';
 import World from '../Shooter.Entities/Shooter.Entities.World/Shooter.Entities.World.js';
@@ -31,5 +33,10 @@ Shooter.Game = class {
 };
 
 window.onload = () => {
+
+	/* LOCK THE POINTER */
+	requestPointerLock();
+
+	/* START GAME */
 	const __instance = new Shooter.Game();
 }

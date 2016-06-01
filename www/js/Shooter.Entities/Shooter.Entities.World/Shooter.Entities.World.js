@@ -56,19 +56,7 @@ Shooter.Entities.World = class {
 
 		this.scene.add(cube);
 
-		document.addEventListener('click', this.lock, false);
-
 		console.log("> Shooter.Entities.World > constructor > ready");
-	}
-
-	lock() {
-
-		let element = document.body;
-
-		element.requestPointerLock = element.requestPointerLock || element.mozRequestPointerLock || element.webkitRequestPointerLock;
-
-		element.requestPointerLock();
-
 	}
 
 	update() {

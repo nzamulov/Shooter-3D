@@ -1,6 +1,8 @@
+'use strict';
+
 Shooter.namespace("Shooter.Utils");
 
-Shooter.Utils.requestAnimationFrame = (function(){
+Shooter.Utils.requestAnimationFrame = (() => {
 	return  window.requestAnimationFrame       ||
 			window.webkitRequestAnimationFrame ||
 			window.mozRequestAnimationFrame    ||
