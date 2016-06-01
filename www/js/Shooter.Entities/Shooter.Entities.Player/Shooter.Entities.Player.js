@@ -24,7 +24,7 @@ Shooter.Entities.Player = class extends AbstractEntity {
 		this.jumpingSaturation = Math.PI / 2;
 
 		this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
-		this.camera.position.set(0, 1, 10);
+		this.camera.position.set(0, 2, 10);
 
 		this.keyboardController = KeyboardController.create(this);
 		this.mouseController = MouseController.create(this);
@@ -90,10 +90,12 @@ Shooter.Entities.Player = class extends AbstractEntity {
 			let ray = new THREE.Raycaster(originPoint, new THREE.Vector3(0, -1, 0));
 			let collisionResults = ray.intersectObjects(scene.children);
 
-			if(collisionResults.length > 0 && collisionResults[0].distance < 1.25) {
+			if(collisionResults.length > 0 && collisionResults[0].distance < 2) {
 
 				this.falling = false;
 				this.jumpingSaturation = Math.PI / 2;
+
+				this.camera.position.y = Math.max(this.camera.position.y, 2);
 
 			} else {
 

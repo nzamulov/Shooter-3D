@@ -47,6 +47,16 @@ Shooter.Entities.World = class {
 		this.scene.add(cube);
 
 		geometry = new THREE.BoxGeometry(2, 2, 2);
+		material = new THREE.MeshBasicMaterial( { color: 'skyblue' } );
+		cube = new THREE.Mesh( geometry, material );
+
+		cube.position.x = 1;
+		cube.position.y = 1.03;
+		cube.position.z = -1;
+
+		this.scene.add(cube);
+
+		geometry = new THREE.BoxGeometry(2, 2, 2);
 		material = new THREE.MeshBasicMaterial( { color: 'orange' } );
 		cube = new THREE.Mesh( geometry, material );
 
