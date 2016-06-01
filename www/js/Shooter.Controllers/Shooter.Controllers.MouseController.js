@@ -21,7 +21,7 @@ Shooter.Controllers.MouseController = class extends AbstractController {
 		this.yawObject = new THREE.Object3D();
 		this.yawObject.add(this.pitchObject);
 
-		this.PI_2 = Math.PI / 2;
+		this.PI_2 = -0.1 + Math.PI / 2; // -0.1 is the Epsilon for gimbal lock prevent.
 	}
 
 	attachEvents() {
