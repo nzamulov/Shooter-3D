@@ -176,6 +176,97 @@ Shooter.Entities.World = class {
 
 		this.scene.add(wall);*/
 
+		var points = [];
+
+		for ( var i = 0; i < 10; i ++ ) {
+			points.push( new THREE.Vector2( Math.sin( i * 0.2 ) * 5 + 5, i - 9));
+		}
+		geometry = new THREE.LatheGeometry(points, 30);
+		material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
+		material.side = THREE.DoubleSide;
+		var lathe = new THREE.Mesh( geometry, material );
+
+		lathe.position.z = -150;
+
+		lathe.rotation.z = -Math.PI;
+
+		this.scene.add( lathe );
+
+
+
+		points = [];
+
+		for ( var i = 0; i < 10; i ++ ) {
+			points.push( new THREE.Vector2( Math.sin( i * 0.2 ) * 5 + 2, 2 * i - 18));
+		}
+		geometry = new THREE.LatheGeometry(points, 30);
+		material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
+		material.side = THREE.DoubleSide;
+		lathe = new THREE.Mesh( geometry, material );
+
+		lathe.position.z = -168;
+		lathe.position.x = 15;
+
+		lathe.rotation.z = -Math.PI;
+
+		this.scene.add( lathe );
+
+
+
+		points = [];
+
+		for ( var i = 0; i < 10; i ++ ) {
+			points.push( new THREE.Vector2( Math.sin( i * 0.2 ) * 5 + 2, 1.5 * i - 13.5));
+		}
+		geometry = new THREE.LatheGeometry(points, 30);
+		material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
+		material.side = THREE.DoubleSide;
+		lathe = new THREE.Mesh( geometry, material );
+
+		lathe.position.z = -160;
+		lathe.position.x = 7;
+
+		lathe.rotation.z = -Math.PI;
+
+		this.scene.add( lathe );
+
+
+		points = [];
+
+		for ( var i = 0; i < 10; i ++ ) {
+			points.push( new THREE.Vector2( Math.sin( i * 0.2 ) * 5 + 2, i - 9));
+		}
+		geometry = new THREE.LatheGeometry(points, 30);
+		material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
+		material.side = THREE.DoubleSide;
+		lathe = new THREE.Mesh( geometry, material );
+
+		lathe.position.z = -148;
+		lathe.position.x = 16;
+
+		lathe.rotation.z = -Math.PI;
+
+		this.scene.add( lathe );
+
+
+
+		points = [];
+
+		for ( var i = 0; i < 10; i ++ ) {
+			points.push( new THREE.Vector2( Math.sin( i * 0.2 ) * 5 + 2, i - 9));
+		}
+		geometry = new THREE.LatheGeometry(points, 30);
+		material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
+		material.side = THREE.DoubleSide;
+		lathe = new THREE.Mesh( geometry, material );
+
+		lathe.position.z = -159;
+		lathe.position.x = 24;
+
+		lathe.rotation.z = -Math.PI;
+
+		this.scene.add( lathe );
+
 		console.log("> Shooter.Entities.World > constructor > ready");
 	}
 
