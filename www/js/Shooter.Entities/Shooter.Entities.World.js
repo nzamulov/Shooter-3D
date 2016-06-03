@@ -2,9 +2,9 @@
 
 Shooter.namespace("Shooter.Entities");
 
-import Player from '../Shooter.Entities.Player/Shooter.Entities.Player.js';
-import Wall from '../Shooter.Entities.Wall.js';
-import Tower from '../Shooter.Entities.Tower.js';
+import Player from './Shooter.Entities.Player.js';
+import Wall from './Shooter.Entities.Wall.js';
+import Tower from './Shooter.Entities.Tower.js';
 
 Shooter.Entities.World = class {
 
