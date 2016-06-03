@@ -267,6 +267,52 @@ Shooter.Entities.World = class {
 
 		this.scene.add( lathe );
 
+
+		/* DESERT */
+
+		/*let desert_texture, loader;
+
+		desert_texture = new THREE.Texture();
+		loader = new THREE.ImageLoader();
+
+		loader.load('img/desert.jpg', (image) => {
+			desert_texture.image = image;
+			desert_texture.needsUpdate = true;
+		});
+
+		geometry = new THREE.ParametricGeometry((u, v) => {
+
+			u = 1000 * u;
+			v = 1000 * v;
+			let y = 60 * Math.abs(Math.sin(Math.pow(u * v, 1 / 5)));
+
+			return new THREE.Vector3(u, y, v);
+		}, 20, 20);
+
+		material = new THREE.MeshBasicMaterial({ map: desert_texture, overdraw: true });
+		material.side = THREE.DoubleSide;
+		let curve = new THREE.Mesh(geometry, material);
+
+		curve.position.x = -10;
+		curve.position.z = -300;
+		curve.position.y = -10;
+
+		curve.rotation.y = Math.PI / 2;
+
+		this.scene.add(curve);
+
+		curve = new THREE.Mesh(geometry, material);
+
+		curve.position.x = 10;
+		curve.position.z = -300;
+		curve.position.y = -10;
+
+		curve.rotation.y = Math.PI;
+
+		this.scene.add(curve);*/
+
+		/* ------ */
+
 		console.log("> Shooter.Entities.World > constructor > ready");
 	}
 
