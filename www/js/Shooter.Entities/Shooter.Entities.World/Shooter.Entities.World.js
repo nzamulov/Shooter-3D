@@ -313,6 +313,44 @@ Shooter.Entities.World = class {
 
 		/* ------ */
 
+		/* SKY */
+
+		/*geometry = new THREE.SphereGeometry(3000);
+
+		let canvas = document.createElement('canvas');
+		let context = canvas.getContext('2d');
+
+		context.canvas.width = 3000;
+		context.canvas.height = 3000;
+
+		let gradient = context.createRadialGradient(1500, 1500, 0, 1500, 1500, 500);
+
+		gradient.addColorStop(0, 'white');
+		gradient.addColorStop(1, 'blue');
+		//gradient.addColorStop(1, '#232BFC');
+
+		context.arc(1500, 1500, 3000, 0, 2 * Math.PI);
+
+		context.fillStyle = gradient;
+		context.fill();
+
+		let shadowTexture = new THREE.Texture(canvas);
+		shadowTexture.needsUpdate = true;
+
+		material = new THREE.MeshBasicMaterial({
+			map: shadowTexture,
+			side: THREE.BackSide
+		});
+
+		let sky = new THREE.Mesh(geometry, material);
+
+		sky.rotation.y = -Math.PI / 2;
+		sky.rotation.z = Math.PI / 9;
+
+		this.scene.add(sky);*/
+
+		/* ------ */
+
 		console.log("> Shooter.Entities.World > constructor > ready");
 	}
 
