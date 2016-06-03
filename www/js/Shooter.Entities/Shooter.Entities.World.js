@@ -14,6 +14,8 @@ Shooter.Entities.World = class {
 
 		this.scene = new THREE.Scene();
 
+		this.scene.fog = new THREE.Fog(0xFFAC40, 0, 1500);
+
 		this.player = new Player(this.scene);
 		this.scene.add(this.player.getControls());
 
