@@ -3,6 +3,8 @@
 Shooter.namespace("Shooter.Entities");
 
 import Player from '../Shooter.Entities.Player/Shooter.Entities.Player.js';
+import Wall from '../Shooter.Entities.Wall.js';
+import Tower from '../Shooter.Entities.Tower.js';
 
 Shooter.Entities.World = class {
 
@@ -66,27 +68,12 @@ Shooter.Entities.World = class {
 
 		this.scene.add(cube);
 
-		/* GATE */
 
-		/*geometry = new THREE.BoxGeometry(3, 20, 3);
-		material = new THREE.MeshBasicMaterial({ color: 'blue' });
-		cube = new THREE.Mesh(geometry, material);
+		let tower = new Tower();
 
-		cube.position.x = -20;
-		cube.position.y = 10;
-		cube.position.z = -10;
+		tower.setPosition(10, 10, -10);
 
-		this.scene.add(cube);*/
-
-		geometry = new THREE.BoxGeometry(3, 20, 3);
-		material = new THREE.MeshBasicMaterial({ color: 'blue' });
-		cube = new THREE.Mesh(geometry, material);
-
-		cube.position.x = 10;
-		cube.position.y = 10;
-		cube.position.z = -10;
-
-		this.scene.add(cube);
+		this.scene.add(tower.getInstance());
 
 		geometry = new THREE.CylinderGeometry(0.2, 0.2, 36, 64);
 		material = new THREE.MeshBasicMaterial({ color: 'red' });
@@ -101,8 +88,6 @@ Shooter.Entities.World = class {
 
 		this.scene.add(blank);
 
-		/*----------*/
-
 		let startX = 10;
 		let startZ = -10;
 
@@ -115,19 +100,12 @@ Shooter.Entities.World = class {
 
 			let [newX, newZ] = this.rotate(lastX - startX, lastZ - startZ, phi);
 
-			/* WALL */
+			let wall = new Wall();
 
-			geometry = new THREE.BoxGeometry(30, 16, 1);
-			material = new THREE.MeshBasicMaterial({ color: 'blue' });
-			let wall = new THREE.Mesh(geometry, material);
+			wall.setPosition(startX + newX, 8, startZ + newZ);
+			wall.setRotation(0, (Math.PI / 9) * i, 0);
 
-			wall.position.x = startX + newX;
-			wall.position.y = 8;
-			wall.position.z = startZ + newZ;
-
-			wall.rotation.y = (Math.PI / 9) * i;
-
-			this.scene.add(wall);
+			this.scene.add(wall.getInstance());
 
 			lastX = startX + 3 * newX;
 			lastZ = startZ + 3 * newZ;
@@ -135,46 +113,13 @@ Shooter.Entities.World = class {
 			startX = startX + 2 * newX;
 			startZ = startZ + 2 * newZ;
 
-			geometry = new THREE.BoxGeometry(3, 20, 3);
-			material = new THREE.MeshBasicMaterial({ color: 'blue' });
-			cube = new THREE.Mesh(geometry, material);
+			let tower = new Tower();
 
-			cube.position.x = startX;
-			cube.position.y = 10;
-			cube.position.z = startZ;
+			tower.setPosition(startX, 10, startZ);
+			tower.setRotation(0, (Math.PI / 9) * (i + 1), 0);
 
-			cube.rotation.y = (Math.PI / 9) * (i + 1);
-
-			this.scene.add(cube);
-
-			/*----------*/
+			this.scene.add(tower.getInstance());
 		}
-
-		/* TOWER */
-
-		/*geometry = new THREE.BoxGeometry(3, 20, 3);
-		material = new THREE.MeshBasicMaterial({ color: 'blue' });
-		cube = new THREE.Mesh(geometry, material);
-
-		cube.position.x = 43;
-		cube.position.y = 10;
-		cube.position.z = -10;
-
-		this.scene.add(cube);*/
-
-		/*----------*/
-
-		/*geometry = new THREE.BoxGeometry(30, 16, 1);
-		material = new THREE.MeshBasicMaterial({ color: 'blue' });
-		wall = new THREE.Mesh(geometry, material);
-
-		wall.position.x = 55;
-		wall.position.y = 8;
-		wall.position.z = -12;
-
-		wall.rotation.y = Math.PI / 18;
-
-		this.scene.add(wall);*/
 
 		var points = [];
 
