@@ -69,6 +69,8 @@ Shooter.Entities.World = class {
 		this.scene.add(cube);
 
 
+		/* GATE AND FENCE */
+
 		let tower = new Tower();
 
 		tower.setPosition(10, 10, -10);
@@ -98,7 +100,7 @@ Shooter.Entities.World = class {
 
 			let phi = -Math.PI / 9;
 
-			let [newX, newZ] = this.rotate(lastX - startX, lastZ - startZ, phi);
+			let [newX, newZ] = Math.rotatePoint(lastX - startX, lastZ - startZ, phi);
 
 			let wall = new Wall();
 
@@ -120,6 +122,8 @@ Shooter.Entities.World = class {
 
 			this.scene.add(tower.getInstance());
 		}
+
+		/* -------- */
 
 		var points = [];
 
@@ -297,14 +301,6 @@ Shooter.Entities.World = class {
 		/* ------ */
 
 		console.log("> Shooter.Entities.World > constructor > ready");
-	}
-
-	rotate(x, z, phi) {
-
-		let xPrime = x * Math.cos(phi) - z * Math.sin(phi);
-		let zPrime = x * Math.sin(phi) + z * Math.cos(phi);
-
-		return [ xPrime, zPrime ];
 	}
 
 	update() {
