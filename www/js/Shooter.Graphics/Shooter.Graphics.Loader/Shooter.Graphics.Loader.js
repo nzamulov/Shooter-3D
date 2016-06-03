@@ -10,8 +10,8 @@ Shooter.Graphics.Loader = class {
 		this.loader = new THREE.ImageLoader();
 	}
 
-	getImage(type, callback) {
-		this.loader.load('img/tower.jpg', (image) => { callback(image); });
+	getImage(path, callback) {
+		this.loader.load(path, (image) => { callback(image); });
 	}
 
 	static get instance() {

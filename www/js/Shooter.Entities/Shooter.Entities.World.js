@@ -5,6 +5,8 @@ Shooter.namespace("Shooter.Entities");
 import Player from './Shooter.Entities.Player.js';
 import Wall from './Shooter.Entities.Wall.js';
 import Tower from './Shooter.Entities.Tower.js';
+import Blank from './Shooter.Entities.Blank.js';
+import Floor from './Shooter.Entities.Floor.js';
 
 Shooter.Entities.World = class {
 
@@ -15,7 +17,7 @@ Shooter.Entities.World = class {
 		this.player = new Player(this.scene);
 		this.scene.add(this.player.getControls());
 
-		let size = 2000, step = 2;
+		/*let size = 2000, step = 2;
 
 		let geometry = new THREE.Geometry();
 		let material = new THREE.LineBasicMaterial({ color: 'green' });
@@ -29,7 +31,7 @@ Shooter.Entities.World = class {
 		}
 
 		let line = new THREE.Line(geometry, material, THREE.LinePieces);
-		this.scene.add(line);
+		this.scene.add(line);*/
 
 		/*geometry = new THREE.PlaneGeometry(40, 40, 32);
 		material = new THREE.MeshBasicMaterial( { color: 'blue' } );
@@ -38,7 +40,12 @@ Shooter.Entities.World = class {
 		plane.rotation.x = -Math.PI / 2.0;
 		this.scene.add(plane);*/
 
-		geometry = new THREE.BoxGeometry(2, 2, 2);
+		let floor = new Floor();
+		floor.setPosition(-1000, 0.02, -1000);
+		floor.setRotation(-Math.PI / 2, 0, 0);
+		this.scene.add(floor.getInstance());
+
+		/*geometry = new THREE.BoxGeometry(2, 2, 2);
 		material = new THREE.MeshBasicMaterial( { color: 'red' } );
 		let cube = new THREE.Mesh( geometry, material );
 
@@ -66,29 +73,19 @@ Shooter.Entities.World = class {
 		cube.position.y = 6;
 		cube.position.z = 3;
 
-		this.scene.add(cube);
+		this.scene.add(cube);*/
 
 
 		/* GATE AND FENCE */
 
 		let tower = new Tower();
-
 		tower.setPosition(10, 10, -10);
-
 		this.scene.add(tower.getInstance());
 
-		geometry = new THREE.CylinderGeometry(0.2, 0.2, 36, 64);
-		material = new THREE.MeshBasicMaterial({ color: 'red' });
-		let blank = new THREE.Mesh(geometry, material);
-
-		blank.position.x = -5;
-		blank.position.y = 18;
-		blank.position.z = -10;
-
-		blank.rotation.x = - Math.PI / 2;
-		blank.rotation.z = - Math.PI / 2;
-
-		this.scene.add(blank);
+		let blank = new Blank();
+		blank.setPosition(-5, 18, -10);
+		blank.setRotation(-Math.PI / 2, 0, -Math.PI / 2);
+		this.scene.add(blank.getInstance());
 
 		let startX = 10;
 		let startZ = -10;
@@ -103,10 +100,8 @@ Shooter.Entities.World = class {
 			let [newX, newZ] = Math.rotatePoint(lastX - startX, lastZ - startZ, phi);
 
 			let wall = new Wall();
-
 			wall.setPosition(startX + newX, 8, startZ + newZ);
 			wall.setRotation(0, (Math.PI / 9) * i, 0);
-
 			this.scene.add(wall.getInstance());
 
 			lastX = startX + 3 * newX;
@@ -116,10 +111,8 @@ Shooter.Entities.World = class {
 			startZ = startZ + 2 * newZ;
 
 			let tower = new Tower();
-
 			tower.setPosition(startX, 10, startZ);
 			tower.setRotation(0, (Math.PI / 9) * (i + 1), 0);
-
 			this.scene.add(tower.getInstance());
 		}
 
@@ -130,8 +123,8 @@ Shooter.Entities.World = class {
 		for ( var i = 0; i < 10; i ++ ) {
 			points.push( new THREE.Vector2( Math.sin( i * 0.2 ) * 5 + 5, i - 9));
 		}
-		geometry = new THREE.LatheGeometry(points, 30);
-		material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
+		let geometry = new THREE.LatheGeometry(points, 30);
+		let material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
 		material.side = THREE.DoubleSide;
 		var lathe = new THREE.Mesh( geometry, material );
 
