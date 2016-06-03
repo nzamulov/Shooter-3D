@@ -19,7 +19,7 @@ Shooter.Entities.World = class {
 		this.player = new Player(this.scene);
 		this.scene.add(this.player.getControls());
 
-		/*let size = 2000, step = 2;
+		let size = 2000, step = 2;
 
 		let geometry = new THREE.Geometry();
 		let material = new THREE.LineBasicMaterial({ color: 'green' });
@@ -33,7 +33,7 @@ Shooter.Entities.World = class {
 		}
 
 		let line = new THREE.Line(geometry, material, THREE.LinePieces);
-		this.scene.add(line);*/
+		this.scene.add(line);
 
 		/*geometry = new THREE.PlaneGeometry(40, 40, 32);
 		material = new THREE.MeshBasicMaterial( { color: 'blue' } );
@@ -42,10 +42,10 @@ Shooter.Entities.World = class {
 		plane.rotation.x = -Math.PI / 2.0;
 		this.scene.add(plane);*/
 
-		let floor = new Floor();
+		/*let floor = new Floor();
 		floor.setPosition(-1000, 0.02, -1000);
 		floor.setRotation(-Math.PI / 2, 0, 0);
-		this.scene.add(floor.getInstance());
+		this.scene.add(floor.getInstance());*/
 
 		/*geometry = new THREE.BoxGeometry(2, 2, 2);
 		material = new THREE.MeshBasicMaterial( { color: 'red' } );
@@ -125,8 +125,8 @@ Shooter.Entities.World = class {
 		for ( var i = 0; i < 10; i ++ ) {
 			points.push( new THREE.Vector2( Math.sin( i * 0.2 ) * 5 + 5, i - 9));
 		}
-		let geometry = new THREE.LatheGeometry(points, 30);
-		let material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
+		geometry = new THREE.LatheGeometry(points, 30);
+		material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
 		material.side = THREE.DoubleSide;
 		var lathe = new THREE.Mesh( geometry, material );
 
