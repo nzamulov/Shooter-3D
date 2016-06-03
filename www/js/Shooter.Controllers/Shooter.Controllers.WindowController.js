@@ -2,7 +2,7 @@
 
 Shooter.namespace("Shooter.Controllers");
 
-import AbstractController from './Shooter.Controllers.AbstractController.js';
+import AbstractController from './Shooter.Controllers.AbstractController/Shooter.Controllers.AbstractController.js';
 
 Shooter.Controllers.WindowController = class extends AbstractController {
 

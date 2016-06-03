@@ -4,7 +4,7 @@ Shooter.namespace("Shooter.Controllers");
 
 import CONSTANTS from '../Shooter.Constants/Shooter.Constants.js';
 
-import AbstractController from './Shooter.Controllers.AbstractController.js';
+import AbstractController from './Shooter.Controllers.AbstractController/Shooter.Controllers.AbstractController.js';
 
 Shooter.Controllers.KeyboardController = class extends AbstractController {
 
