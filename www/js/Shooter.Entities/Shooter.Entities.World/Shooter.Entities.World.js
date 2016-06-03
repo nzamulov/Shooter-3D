@@ -323,11 +323,11 @@ Shooter.Entities.World = class {
 		context.canvas.width = 3000;
 		context.canvas.height = 3000;
 
-		let gradient = context.createRadialGradient(1500, 1500, 0, 1500, 1500, 500);
+		let gradient = context.createRadialGradient(1500, 1500, 30, 1500, 1500, 700);
 
 		gradient.addColorStop(0, 'white');
-		gradient.addColorStop(1, 'blue');
-		//gradient.addColorStop(1, '#232BFC');
+		gradient.addColorStop(0.1, '#AAA8FF');
+		gradient.addColorStop(1, '#504DFF');
 
 		context.arc(1500, 1500, 3000, 0, 2 * Math.PI);
 
