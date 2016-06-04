@@ -7,6 +7,7 @@ import Wall from './Shooter.Entities.Wall.js';
 import Tower from './Shooter.Entities.Tower.js';
 import Blank from './Shooter.Entities.Blank.js';
 import Floor from './Shooter.Entities.Floor.js';
+import Building from './Shooter.Entities.Building.js';
 
 Shooter.Entities.World = class {
 
@@ -120,7 +121,32 @@ Shooter.Entities.World = class {
 
 		/* -------- */
 
-		var points = [];
+		let building = new Building(1);
+		building.setPosition(0, 0, -150);
+		building.setRotation(0, 0, -Math.PI);
+		this.scene.add(building.getInstance());
+
+		building = new Building(2);
+		building.setPosition(15, 0, -168);
+		building.setRotation(0, 0, -Math.PI);
+		this.scene.add(building.getInstance());
+
+		building = new Building(1.5);
+		building.setPosition(7, 0, -160);
+		building.setRotation(0, 0, -Math.PI);
+		this.scene.add(building.getInstance());
+
+		building = new Building(1);
+		building.setPosition(16, 0, -148);
+		building.setRotation(0, 0, -Math.PI);
+		this.scene.add(building.getInstance());
+
+		building = new Building(1);
+		building.setPosition(24, 0, -159);
+		building.setRotation(0, 0, -Math.PI);
+		this.scene.add(building.getInstance());
+
+		/*var points = [];
 
 		for ( var i = 0; i < 10; i ++ ) {
 			points.push( new THREE.Vector2( Math.sin( i * 0.2 ) * 5 + 5, i - 9));
@@ -138,7 +164,7 @@ Shooter.Entities.World = class {
 
 
 
-		points = [];
+		var points = [];
 
 		for ( var i = 0; i < 10; i ++ ) {
 			points.push( new THREE.Vector2( Math.sin( i * 0.2 ) * 5 + 2, 2 * i - 18));
@@ -146,7 +172,7 @@ Shooter.Entities.World = class {
 		geometry = new THREE.LatheGeometry(points, 30);
 		material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
 		material.side = THREE.DoubleSide;
-		lathe = new THREE.Mesh( geometry, material );
+		var lathe = new THREE.Mesh( geometry, material );
 
 		lathe.position.z = -168;
 		lathe.position.x = 15;
@@ -209,7 +235,7 @@ Shooter.Entities.World = class {
 
 		lathe.rotation.z = -Math.PI;
 
-		this.scene.add( lathe );
+		this.scene.add( lathe );*/
 
 
 		/* DESERT */
