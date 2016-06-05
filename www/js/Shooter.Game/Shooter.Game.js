@@ -4,7 +4,6 @@ import namespace from '../namespace.js';
 
 import requestAnimationFrame from '../Shooter.Utils/Shooter.Utils.requestAnimationFrame.js';
 import requestPointerLock from '../Shooter.Utils/Shooter.Utils.requestPointerLock.js';
-import mathExtends from '../Shooter.Utils/Shooter.Utils.mathExtends.js';
 
 import WindowController from '../Shooter.Controllers/Shooter.Controllers.WindowController.js';
 
