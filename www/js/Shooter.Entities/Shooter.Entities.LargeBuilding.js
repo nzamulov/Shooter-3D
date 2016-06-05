@@ -35,15 +35,16 @@ Shooter.Entities.LargeBuilding = class extends AbstractEntity {
 			this.instance.add(blank.getInstance());
 		}
 
-		blank = new Blank(0.5, 18, 0.25, false);
-		blank.setPosition(9, 20, 0);
-		blank.setRotation(0, 0, -Math.PI / 2);
-		this.instance.add(blank.getInstance());
+		for(let i = 0; i < 2; ++i) {
+			for(let j = 0; j < 2; ++j) {
 
-		blank = new Blank(0.5, 18, 0.25, false);
-		blank.setPosition(45, 20, 0);
-		blank.setRotation(0, 0, -Math.PI / 2);
-		this.instance.add(blank.getInstance());
+				blank = new Blank(0.5, 18, 0.25, false);
+				blank.setPosition(9 + 36 * j, 20, -40 * i);
+				blank.setRotation(0, 0, -Math.PI / 2);
+				this.instance.add(blank.getInstance());
+
+			}
+		}
 
 		blank = new Blank(0.5, 6, 0.25, false);
 		blank.setPosition(27, 7, 0);
@@ -119,7 +120,14 @@ Shooter.Entities.LargeBuilding = class extends AbstractEntity {
 			}
 		}
 
+		for(let i = 0; i < 4; ++i) {
 
+			blank = new Blank(0.5, 40, 0.25, false);
+			blank.setPosition(18 * i, 20, -20);
+			blank.setRotation(-Math.PI / 2, 0, 0);
+			this.instance.add(blank.getInstance());
+
+		}
 	}
 
 	setPosition(x, y, z) {
