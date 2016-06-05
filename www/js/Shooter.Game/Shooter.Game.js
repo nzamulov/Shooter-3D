@@ -7,7 +7,7 @@ import requestPointerLock from '../Shooter.Utils/Shooter.Utils.requestPointerLoc
 
 import WindowController from '../Shooter.Controllers/Shooter.Controllers.WindowController.js';
 
-import Renderer from '../Shooter.Graphics/Shooter.Graphics.Renderer/Shooter.Graphics.Renderer.js';
+import Renderer from '../Shooter.Graphics/Shooter.Graphics.Renderer.js';
 import World from '../Shooter.Entities/Shooter.Entities.World.js';
 
 Shooter.Game = class {

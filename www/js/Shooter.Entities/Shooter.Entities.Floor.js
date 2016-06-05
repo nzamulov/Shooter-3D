@@ -3,7 +3,7 @@
 Shooter.namespace("Shooter.Entities");
 
 import AbstractEntity from './Shooter.Entities.AbstractEntity/Shooter.Entities.AbstractEntity.js';
-import Loader from '../Shooter.Graphics/Shooter.Graphics.Loader/Shooter.Graphics.Loader.js';
+import Loader from '../Shooter.Graphics/Shooter.Graphics.Loader.js';
 
 Shooter.Entities.Floor = class extends AbstractEntity {
 
