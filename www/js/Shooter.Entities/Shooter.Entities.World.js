@@ -7,7 +7,7 @@ import Wall from './Shooter.Entities.Wall.js';
 import Tower from './Shooter.Entities.Tower.js';
 import Blank from './Shooter.Entities.Blank.js';
 import Floor from './Shooter.Entities.Floor.js';
-import Building from './Shooter.Entities.Building.js';
+import LargeBuilding from './Shooter.Entities.LargeBuilding.js';
 
 Shooter.Entities.World = class {
 
@@ -36,206 +36,23 @@ Shooter.Entities.World = class {
 		let line = new THREE.Line(geometry, material, THREE.LinePieces);
 		this.scene.add(line);
 
-		/*geometry = new THREE.PlaneGeometry(40, 40, 32);
-		material = new THREE.MeshBasicMaterial( { color: 'blue' } );
+		let building = new LargeBuilding();
+		building.setPosition(30, 10, -40);
+		this.scene.add(building.getInstance());
+
+		/*geometry = new THREE.BoxGeometry(4, 4, 6);
+		material = new THREE.MeshBasicMaterial({ color: 'green' });
 		material.side = THREE.DoubleSide;
-		let plane = new THREE.Mesh(geometry, material);
-		plane.rotation.x = -Math.PI / 2.0;
-		this.scene.add(plane);*/
+		building = new THREE.Mesh(geometry, material);
+
+		building.position.set(-2, 2, -22);
+
+		this.scene.add(building);*/
 
 		/*let floor = new Floor();
 		floor.setPosition(-1000, 0.02, -1000);
 		floor.setRotation(-Math.PI / 2, 0, 0);
 		this.scene.add(floor.getInstance());*/
-
-		/*geometry = new THREE.BoxGeometry(2, 2, 2);
-		material = new THREE.MeshBasicMaterial( { color: 'red' } );
-		let cube = new THREE.Mesh( geometry, material );
-
-		cube.position.x = 1;
-		cube.position.y = 1.03;
-		cube.position.z = 1;
-		
-		this.scene.add(cube);
-
-		geometry = new THREE.BoxGeometry(2, 2, 2);
-		material = new THREE.MeshBasicMaterial( { color: 'skyblue' } );
-		cube = new THREE.Mesh( geometry, material );
-
-		cube.position.x = 1;
-		cube.position.y = 1.03;
-		cube.position.z = -1;
-
-		this.scene.add(cube);
-
-		geometry = new THREE.BoxGeometry(2, 2, 2);
-		material = new THREE.MeshBasicMaterial( { color: 'orange' } );
-		cube = new THREE.Mesh( geometry, material );
-
-		cube.position.x = 3;
-		cube.position.y = 6;
-		cube.position.z = 3;
-
-		this.scene.add(cube);*/
-
-
-		/* GATE AND FENCE */
-
-		let tower = new Tower();
-		tower.setPosition(10, 10, -10);
-		this.scene.add(tower.getInstance());
-
-		let blank = new Blank();
-		blank.setPosition(-5, 18, -10);
-		blank.setRotation(-Math.PI / 2, 0, -Math.PI / 2);
-		this.scene.add(blank.getInstance());
-
-		let startX = 10;
-		let startZ = -10;
-
-		let lastX = 25;
-		let lastZ = -10;
-
-		for(let i = 1; i < 18; ++i) {
-
-			let phi = -Math.PI / 9;
-
-			let [newX, newZ] = Math.rotatePoint(lastX - startX, lastZ - startZ, phi);
-
-			let wall = new Wall();
-			wall.setPosition(startX + newX, 8, startZ + newZ);
-			wall.setRotation(0, (Math.PI / 9) * i, 0);
-			this.scene.add(wall.getInstance());
-
-			lastX = startX + 3 * newX;
-			lastZ = startZ + 3 * newZ;
-
-			startX = startX + 2 * newX;
-			startZ = startZ + 2 * newZ;
-
-			let tower = new Tower();
-			tower.setPosition(startX, 10, startZ);
-			tower.setRotation(0, (Math.PI / 9) * (i + 1), 0);
-			this.scene.add(tower.getInstance());
-		}
-
-		/* -------- */
-
-		let building = new Building(1);
-		building.setPosition(0, 0, -150);
-		building.setRotation(0, 0, -Math.PI);
-		this.scene.add(building.getInstance());
-
-		building = new Building(2);
-		building.setPosition(15, 0, -168);
-		building.setRotation(0, 0, -Math.PI);
-		this.scene.add(building.getInstance());
-
-		building = new Building(1.5);
-		building.setPosition(7, 0, -160);
-		building.setRotation(0, 0, -Math.PI);
-		this.scene.add(building.getInstance());
-
-		building = new Building(1);
-		building.setPosition(16, 0, -148);
-		building.setRotation(0, 0, -Math.PI);
-		this.scene.add(building.getInstance());
-
-		building = new Building(1);
-		building.setPosition(24, 0, -159);
-		building.setRotation(0, 0, -Math.PI);
-		this.scene.add(building.getInstance());
-
-		/*var points = [];
-
-		for ( var i = 0; i < 10; i ++ ) {
-			points.push( new THREE.Vector2( Math.sin( i * 0.2 ) * 5 + 5, i - 9));
-		}
-		geometry = new THREE.LatheGeometry(points, 30);
-		material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
-		material.side = THREE.DoubleSide;
-		var lathe = new THREE.Mesh( geometry, material );
-
-		lathe.position.z = -150;
-
-		lathe.rotation.z = -Math.PI;
-
-		this.scene.add( lathe );
-
-
-
-		var points = [];
-
-		for ( var i = 0; i < 10; i ++ ) {
-			points.push( new THREE.Vector2( Math.sin( i * 0.2 ) * 5 + 2, 2 * i - 18));
-		}
-		geometry = new THREE.LatheGeometry(points, 30);
-		material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
-		material.side = THREE.DoubleSide;
-		var lathe = new THREE.Mesh( geometry, material );
-
-		lathe.position.z = -168;
-		lathe.position.x = 15;
-
-		lathe.rotation.z = -Math.PI;
-
-		this.scene.add( lathe );
-
-
-
-		points = [];
-
-		for ( var i = 0; i < 10; i ++ ) {
-			points.push( new THREE.Vector2( Math.sin( i * 0.2 ) * 5 + 2, 1.5 * i - 13.5));
-		}
-		geometry = new THREE.LatheGeometry(points, 30);
-		material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
-		material.side = THREE.DoubleSide;
-		lathe = new THREE.Mesh( geometry, material );
-
-		lathe.position.z = -160;
-		lathe.position.x = 7;
-
-		lathe.rotation.z = -Math.PI;
-
-		this.scene.add( lathe );
-
-
-		points = [];
-
-		for ( var i = 0; i < 10; i ++ ) {
-			points.push( new THREE.Vector2( Math.sin( i * 0.2 ) * 5 + 2, i - 9));
-		}
-		geometry = new THREE.LatheGeometry(points, 30);
-		material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
-		material.side = THREE.DoubleSide;
-		lathe = new THREE.Mesh( geometry, material );
-
-		lathe.position.z = -148;
-		lathe.position.x = 16;
-
-		lathe.rotation.z = -Math.PI;
-
-		this.scene.add( lathe );
-
-
-
-		points = [];
-
-		for ( var i = 0; i < 10; i ++ ) {
-			points.push( new THREE.Vector2( Math.sin( i * 0.2 ) * 5 + 2, i - 9));
-		}
-		geometry = new THREE.LatheGeometry(points, 30);
-		material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
-		material.side = THREE.DoubleSide;
-		lathe = new THREE.Mesh( geometry, material );
-
-		lathe.position.z = -159;
-		lathe.position.x = 24;
-
-		lathe.rotation.z = -Math.PI;
-
-		this.scene.add( lathe );*/
 
 
 		/* DESERT */

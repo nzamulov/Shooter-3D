@@ -7,22 +7,37 @@ import Loader from '../Shooter.Graphics/Shooter.Graphics.Loader/Shooter.Graphics
 
 Shooter.Entities.Blank = class extends AbstractEntity {
 
-	constructor() {
+	constructor(width, height, depth, cone) {
 		super();
 
-		let blank_texture = new THREE.Texture();
+		this.width = width;
+		this.height = height;
+		this.depth = depth;
 
-		Loader.instance.getImage('img/blank.jpg', (image) => {
-			blank_texture.image = image;
-			blank_texture.needsUpdate = true;
-			blank_texture.wrapS = THREE.RepeatWrapping;
-			blank_texture.wrapT = THREE.RepeatWrapping;
-		});
+		let geometry, material, mesh;
 
-		this.geometry = new THREE.CylinderGeometry(0.2, 0.2, 36, 64);
-		this.material = new THREE.MeshBasicMaterial({ map: blank_texture, overdraw: true });
-		this.instance = new THREE.Mesh(this.geometry, this.material);
+		this.instance = new THREE.Object3D();
+
+		geometry = new THREE.BoxGeometry(width, height, depth);
+		material = new THREE.MeshBasicMaterial({ color: 'white' });
+		material.side = THREE.DoubleSide;
+		mesh = new THREE.Mesh(geometry, material);
+
+		this.instance.add(mesh);
+
+		if(true === cone) {
+
+			geometry = new THREE.ConeGeometry(depth, 2);
+			material = new THREE.MeshBasicMaterial({ color: 'white' });
+			material.side = THREE.DoubleSide;
+			mesh = new THREE.Mesh(geometry, material);
+
+			mesh.position.set((width / 2) - depth, (height / 2) + 1, 0);
+
+			this.instance.add(mesh);
+		}
 	}
+
 };
 
 export default Shooter.Entities.Blank;
