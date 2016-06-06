@@ -10,8 +10,6 @@ Shooter.Entities.Window = class extends AbstractEntity {
 		super();
 
 		this.geometry = new THREE.PlaneGeometry(2, 3);
-		this.material = new THREE.MeshBasicMaterial({ color: 'yellow' });
-		this.material.side = THREE.DoubleSide;
 		this.instance = new THREE.Mesh(this.geometry, this.material);
 	}
 };

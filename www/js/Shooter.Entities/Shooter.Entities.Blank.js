@@ -13,28 +13,28 @@ Shooter.Entities.Blank = class extends AbstractEntity {
 		this.height = height;
 		this.depth = depth;
 
-		let geometry, material, mesh;
+		let geometry, mesh, container;
 
-		this.instance = new THREE.Object3D();
+		container = new THREE.Geometry();
 
 		geometry = new THREE.BoxGeometry(width, height, depth);
-		material = new THREE.MeshBasicMaterial({ color: 'white' });
-		material.side = THREE.DoubleSide;
-		mesh = new THREE.Mesh(geometry, material);
+		mesh = new THREE.Mesh(geometry);
 
-		this.instance.add(mesh);
+		mesh.updateMatrix();
+		container.merge(mesh.geometry, mesh.matrix);
 
 		if(true === cone) {
 
 			geometry = new THREE.ConeGeometry(depth, 2);
-			material = new THREE.MeshBasicMaterial({ color: 'white' });
-			material.side = THREE.DoubleSide;
-			mesh = new THREE.Mesh(geometry, material);
+			mesh = new THREE.Mesh(geometry);
 
 			mesh.position.set((width / 2) - depth, (height / 2) + 1, 0);
 
-			this.instance.add(mesh);
+			mesh.updateMatrix();
+			container.merge(mesh.geometry, mesh.matrix);
 		}
+
+		this.instance = new THREE.Mesh(container);
 	}
 
 };

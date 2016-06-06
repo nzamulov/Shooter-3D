@@ -10,8 +10,6 @@ Shooter.Entities.Block = class extends AbstractEntity {
 		super();
 
 		this.geometry = new THREE.BoxGeometry(height, width, depth);
-		this.material = new THREE.MeshBasicMaterial({ color: 'red' });
-		this.material.side = THREE.DoubleSide;
 		this.instance = new THREE.Mesh(this.geometry, this.material);
 	}
 };
