@@ -208,6 +208,73 @@ Shooter.Entities.LargeBuilding = class extends AbstractEntity {
 
 		/* ----------------- */
 
+		let stuff = new THREE.Object3D();
+
+		geometry = new THREE.ParametricGeometry((u, v) => {
+
+			u = 4 * u - 2;
+			v = 8 * v - 4;
+			let y = 2 * Math.sqrt(0.03 * u * u + 0.03 * v * v);
+
+			return new THREE.Vector3(u, y, v);
+
+		}, 20, 20);
+
+		material = new THREE.MeshBasicMaterial({ color: 'skyblue' });
+		material.side = THREE.DoubleSide;
+		mesh = new THREE.Mesh(geometry, material);
+
+		mesh.position.set(1, 1, -1);
+		mesh.rotation.set(0, 0, -Math.PI / 6);
+
+		stuff.add(mesh);
+
+		mesh = new THREE.Mesh(geometry, material);
+		mesh.position.set(-1, 1, -1);
+		mesh.rotation.set(0, 0, Math.PI / 6);
+
+		stuff.add(mesh);
+
+
+
+		let trees = new THREE.Geometry();
+
+		geometry = new THREE.CylinderGeometry(0.05, 0.05, 5);
+		material = new THREE.MeshBasicMaterial({ color: 'pink' });
+		material.side = THREE.DoubleSide;
+		mesh = new THREE.Mesh(geometry, material);
+
+		mesh.position.set(0, 0.75, 2.75);
+		mesh.rotation.set(Math.PI / 36, 0, 0);
+
+		mesh.updateMatrix();
+		trees.merge(mesh.geometry, mesh.matrix);
+
+		mesh = new THREE.Mesh(geometry, material);
+
+		mesh.position.set(1.5, -0.5, 2.75);
+		mesh.rotation.set(Math.PI / 36, 0, -Math.PI / 5);
+
+		mesh.updateMatrix();
+		trees.merge(mesh.geometry, mesh.matrix);
+
+		mesh = new THREE.Mesh(geometry, material);
+
+		mesh.position.set(-1.5, -0.5, 2.75);
+		mesh.rotation.set(Math.PI / 36, 0, Math.PI / 5);
+
+		mesh.updateMatrix();
+		trees.merge(mesh.geometry, mesh.matrix);
+
+		mesh = new THREE.Mesh(trees, material);
+
+		stuff.add(mesh);
+
+		stuff.position.set(9, 2, 3);
+		stuff.rotation.set(Math.PI / 9, 0, 0);
+
+		this.instance.add(stuff);
+
 	}
 
 	setPosition(x, y, z) {
