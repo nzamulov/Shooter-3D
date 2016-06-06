@@ -38,14 +38,7 @@ Shooter.Entities.World = class {
 		building.setPosition(30, 10, -40);
 		this.scene.add(building.getInstance());
 
-		geometry = new THREE.BoxGeometry(4, 4, 6);
-		material = new THREE.MeshBasicMaterial({ color: 'green' });
-		material.side = THREE.DoubleSide;
-		building = new THREE.Mesh(geometry, material);
-
-		building.position.set(1, 2, -32);
-
-		this.scene.add(building);
+		
 
 		let something = new THREE.Object3D();
 

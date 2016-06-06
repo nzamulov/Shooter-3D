@@ -194,6 +194,20 @@ Shooter.Entities.LargeBuilding = class extends AbstractEntity {
 		mesh = new THREE.Mesh(buildingBlanks, material);
 
 		this.instance.add(mesh);
+
+		/* GREEN BOX AT SIDE */
+
+		geometry = new THREE.BoxGeometry(4, 4, 6);
+		material = new THREE.MeshBasicMaterial({ color: 'green' });
+		material.side = THREE.DoubleSide;
+		mesh = new THREE.Mesh(geometry, material);
+
+		mesh.position.set(-2, 2, -12);
+
+		this.instance.add(mesh);
+
+		/* ----------------- */
+
 	}
 
 	setPosition(x, y, z) {
