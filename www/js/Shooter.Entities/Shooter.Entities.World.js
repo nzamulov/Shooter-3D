@@ -73,6 +73,10 @@ Shooter.Entities.World = class {
 
 		something.add(building);
 
+
+
+		let container = new THREE.Geometry();
+
 		geometry = new THREE.CylinderGeometry(0.05, 0.05, 5);
 		material = new THREE.MeshBasicMaterial({ color: 'pink' });
 		material.side = THREE.DoubleSide;
@@ -81,21 +85,28 @@ Shooter.Entities.World = class {
 		building.position.set(0, 0.75, 2.75);
 		building.rotation.set(Math.PI / 36, 0, 0);
 
-		something.add(building);
+		building.updateMatrix();
+		container.merge(building.geometry, building.matrix);
 
 		building = new THREE.Mesh(geometry, material);
 
 		building.position.set(1.5, -0.5, 2.75);
 		building.rotation.set(Math.PI / 36, 0, -Math.PI / 5);
 
-		something.add(building);
+		building.updateMatrix();
+		container.merge(building.geometry, building.matrix);
 
 		building = new THREE.Mesh(geometry, material);
 
 		building.position.set(-1.5, -0.5, 2.75);
 		building.rotation.set(Math.PI / 36, 0, Math.PI / 5);
 
-		something.add(building);
+		building.updateMatrix();
+		container.merge(building.geometry, building.matrix);
+
+		let mesh = new THREE.Mesh(container, material);
+
+		something.add(mesh);
 
 		something.position.set(12, 2, -17);
 		something.rotation.set(Math.PI / 9, 0, 0);
