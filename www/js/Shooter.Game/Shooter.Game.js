@@ -19,11 +19,25 @@ Shooter.Game = class {
 
 		this.windowController = WindowController.create(this.world.getCamera(), this.renderer);
 
+		this.FPS = new Stats();
+		this.FPS.setMode(0);
+
+		this.FPS.domElement.style.position = 'absolute';
+		this.FPS.domElement.style.left = '0px';
+		this.FPS.domElement.style.top = '0px';
+
+		document.body.appendChild(this.FPS.domElement);
+
 		let self = this;
 
 		(function animate() {
 			requestAnimationFrame(animate);
+
+			self.FPS.begin();
+
 			self.render();
+
+			self.FPS.end();
 		})();
 
 		console.log("> Shooter Game > constructor > ready");
