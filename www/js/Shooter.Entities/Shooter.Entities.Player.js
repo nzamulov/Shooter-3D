@@ -40,27 +40,32 @@ Shooter.Entities.Player = class extends AbstractEntity {
 		let strafe = new THREE.Vector3();
 		strafe.crossVectors(worldDirection, new THREE.Vector3(0, 1, 0)).normalize().multiplyScalar(CONSTANTS.MOVEMENT_SPEED);
 
+		if(!this.jumping && !this.falling) {
+
+			this.movingVector = new THREE.Vector3(0, 0, 0);
+
+			if(this.moveForward) {
+				this.movingVector.add(worldDirection);
+			}
+
+			if(this.moveLeft) {
+				this.movingVector.sub(strafe);
+			}
+
+			if(this.moveBackward) {
+				this.movingVector.sub(worldDirection);
+			}
+
+			if(this.moveRight) {
+				this.movingVector.add(strafe);
+			}
+
+		}
+
+		this.camera.position.x += this.movingVector.x;
+		this.camera.position.z += this.movingVector.z;
+
 		this.gravitation(scene);
-
-		if(this.moveForward) {
-			this.camera.position.x += worldDirection.x;
-			this.camera.position.z += worldDirection.z;
-		}
-
-		if(this.moveLeft) {
-			this.camera.position.x -= strafe.x;
-			this.camera.position.z -= strafe.z;
-		}
-
-		if(this.moveBackward) {
-			this.camera.position.x -= worldDirection.x;
-			this.camera.position.z -= worldDirection.z;
-		}
-
-		if(this.moveRight) {
-			this.camera.position.x += strafe.x;
-			this.camera.position.z += strafe.z;
-		}
 
 		if(this.jumping) {
 
