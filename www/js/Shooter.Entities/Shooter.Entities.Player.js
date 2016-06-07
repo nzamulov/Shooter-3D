@@ -40,12 +40,15 @@ Shooter.Entities.Player = class extends AbstractEntity {
 		let strafe = new THREE.Vector3();
 		strafe.crossVectors(worldDirection, new THREE.Vector3(0, 1, 0)).normalize().multiplyScalar(CONSTANTS.MOVEMENT_SPEED);
 
+		let forward = new THREE.Vector3();
+		forward.crossVectors(strafe, new THREE.Vector3(0, 1, 0)).normalize().multiplyScalar(CONSTANTS.MOVEMENT_SPEED);
+
 		if(!this.jumping && !this.falling) {
 
 			this.movingVector = new THREE.Vector3(0, 0, 0);
 
 			if(this.moveForward) {
-				this.movingVector.add(worldDirection);
+				this.movingVector.sub(forward);
 			}
 
 			if(this.moveLeft) {
@@ -53,7 +56,7 @@ Shooter.Entities.Player = class extends AbstractEntity {
 			}
 
 			if(this.moveBackward) {
-				this.movingVector.sub(worldDirection);
+				this.movingVector.add(forward);
 			}
 
 			if(this.moveRight) {
