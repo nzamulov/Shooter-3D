@@ -139,7 +139,7 @@ Shooter.Entities.LargeBuilding = class extends AbstractEntity {
 		for(let i = 0; i < 4; ++i) {
 			for(let j = 0; j < 6; ++j) {
 
-				blank = new Blank(0.5, 20, 0.25, true);
+				blank = new Blank(0.5, 20, 0.25, j !== 0);
 				blank.setPosition(18 * i, 10, -8 * j);
 
 				blank.getInstance().updateMatrix();
