@@ -8,7 +8,7 @@ import Block from './Shooter.Entities.Block.js';
 import Blank from './Shooter.Entities.Blank.js';
 import Window from './Shooter.Entities.Window.js';
 
-Shooter.Entities.LargeBuilding = class extends AbstractEntity {
+Shooter.Entities.LargeHouse = class extends AbstractEntity {
 
 	constructor() {
 		super();
@@ -296,4 +296,4 @@ Shooter.Entities.LargeBuilding = class extends AbstractEntity {
 	}
 };
 
-export default Shooter.Entities.LargeBuilding;
+export default Shooter.Entities.LargeHouse;

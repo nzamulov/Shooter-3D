@@ -5,7 +5,7 @@ Shooter.namespace("Shooter.Entities");
 import Player from './Shooter.Entities.Player.js';
 import Blank from './Shooter.Entities.Blank.js';
 import Floor from './Shooter.Entities.Floor.js';
-import LargeBuilding from './Shooter.Entities.LargeBuilding.js';
+import LargeHouse from './Shooter.Entities.LargeHouse.js';
 
 Shooter.Entities.World = class {
 
@@ -34,7 +34,7 @@ Shooter.Entities.World = class {
 		let line = new THREE.Line(geometry, material, THREE.LinePieces);
 		this.scene.add(line);
 
-		let building = new LargeBuilding();
+		let building = new LargeHouse();
 		building.setPosition(30, 10, -40);
 		this.scene.add(building.getInstance());
 
