@@ -3,7 +3,6 @@
 Shooter.namespace("Shooter.Entities");
 
 import Player from './Shooter.Entities.Player.js';
-import Blank from './Shooter.Entities.Blank.js';
 import Floor from './Shooter.Entities.Floor.js';
 import LargeHouse from './Shooter.Entities.LargeHouse.js';
 
