@@ -49,6 +49,15 @@ Shooter.Entities.World = class {
 		building = this.mediumHouseBuilder.build(new THREE.Vector3(135, 10, -35), new THREE.Vector3(0, Math.PI / 2, 0));
 		this.scene.add(building);
 
+		building = this.mediumHouseBuilder.build(new THREE.Vector3(30, 10, 55), new THREE.Vector3(0, -Math.PI / 2, 0));
+		this.scene.add(building);
+
+		building = this.mediumHouseBuilder.build(new THREE.Vector3(70, 10, 55));
+		this.scene.add(building);
+
+		building = this.mediumHouseBuilder.build(new THREE.Vector3(110, 10, 55), new THREE.Vector3(0, Math.PI, 0));
+		this.scene.add(building);
+
 		let floor = Floor.create();
 		floor.position.set(-1000, 0, -1000);
 		floor.rotation.set(Math.PI / 2, 0, 0);
