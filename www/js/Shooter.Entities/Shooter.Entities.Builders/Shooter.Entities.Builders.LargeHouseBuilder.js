@@ -1,27 +1,27 @@
 'use strict';
 
-Shooter.namespace("Shooter.Entities");
+Shooter.namespace("Shooter.Entities.Builders");
 
-import AbstractEntity from './Shooter.Entities.AbstractEntity/Shooter.Entities.AbstractEntity.js';
+import AbstractBuilder from './Shooter.Entities.Builders.AbstractBuilder/Shooter.Entities.Builders.AbstractBuilder.js';
 
-import Block from './Shooter.Entities.Block.js';
-import Blank from './Shooter.Entities.Blank.js';
-import Window from './Shooter.Entities.Window.js';
+import Block from '../Shooter.Entities.Block.js';
+import Blank from '../Shooter.Entities.Blank.js';
+import Window from '../Shooter.Entities.Window.js';
 
-Shooter.Entities.LargeHouse = class extends AbstractEntity {
+Shooter.Entities.Builders.LargeHouseBuilder = class extends AbstractBuilder {
 
 	constructor() {
 		super();
 
-		let geometry, material, mesh, block, blank, gameWindow, buildingBlocks, buildingBlanks, buildingWindows;
+		console.log("> Shooter.Entities.Builders.LargeHouseBuilder > constructor > ready");
+	}
 
+	buildFacade() {
+
+		let mesh, material, block, buildingBlocks;
+		
 		buildingBlocks = new THREE.Geometry();
-		buildingBlanks = new THREE.Geometry();
-		buildingWindows = new THREE.Geometry();
 
-		this.instance = new THREE.Object3D();
-
-		/* BLOCKS */
 		block = new Block(54, 10, 40);
 		block.setPosition(27, 5, -20);
 
@@ -39,15 +39,19 @@ Shooter.Entities.LargeHouse = class extends AbstractEntity {
 
 		block.getInstance().updateMatrix();
 		buildingBlocks.merge(block.getInstance().geometry, block.getInstance().matrix);
-		/* ------ */
 
 		material = new THREE.MeshBasicMaterial({ color: 'gray' });
 		mesh = new THREE.Mesh(buildingBlocks, material);
 
 		this.instance.add(mesh);
+	}
 
+	buildWindows() {
 
-		/* WINDOWS */
+		let mesh, material, gameWindow, buildingWindows;
+
+		buildingWindows = new THREE.Geometry();
+
 		gameWindow = new Window();
 		gameWindow.setPosition(9, 12.5, 0.1);
 
@@ -65,15 +69,19 @@ Shooter.Entities.LargeHouse = class extends AbstractEntity {
 
 		gameWindow.getInstance().updateMatrix();
 		buildingWindows.merge(gameWindow.getInstance().geometry, gameWindow.getInstance().matrix);
-		/* -------- */
 
 		material = new THREE.MeshBasicMaterial({ color: 'yellow' });
 		mesh = new THREE.Mesh(buildingWindows, material);
 
 		this.instance.add(mesh);
+	}
 
+	buildBlanks() {
 
-		/* BLANKS */
+		let mesh, material, blank, buildingBlanks;
+
+		buildingBlanks = new THREE.Geometry();
+
 		for(let i = 0; i < 10; ++i) {
 			blank = new Blank((i % 3 ? 0.5 : 1), (i < 4 || i > 5 ? 20 : 10), (i % 3 ? 0.25 : 0.5), true);
 			blank.setPosition((i % 3 ? 0.25 : 0.5) + 6 * i, (i < 4 || i > 5 ? 10 : 5), (i % 3 ? 0.175 : 0.25));
@@ -102,16 +110,12 @@ Shooter.Entities.LargeHouse = class extends AbstractEntity {
 		blank.getInstance().updateMatrix();
 		buildingBlanks.merge(blank.getInstance().geometry, blank.getInstance().matrix);
 
-		
-
 		blank = new Blank(0.5, 6, 0.25, false);
 		blank.setPosition(9, 15, 0);
 		blank.setRotation(0, 0, -Math.PI / 2);
 		
 		blank.getInstance().updateMatrix();
 		buildingBlanks.merge(blank.getInstance().geometry, blank.getInstance().matrix);
-
-		
 
 		blank = new Blank(0.5, 6, 0.25, false);
 		blank.setPosition(39, 7, 0);
@@ -126,8 +130,6 @@ Shooter.Entities.LargeHouse = class extends AbstractEntity {
 
 		blank.getInstance().updateMatrix();
 		buildingBlanks.merge(blank.getInstance().geometry, blank.getInstance().matrix);
-
-		
 
 		blank = new Blank(0.5, 6, 0.25, false);
 		blank.setPosition(45, 15, 0);
@@ -188,27 +190,20 @@ Shooter.Entities.LargeHouse = class extends AbstractEntity {
 			buildingBlanks.merge(blank.getInstance().geometry, blank.getInstance().matrix);
 
 		}
-		/* ------- */
 
 		material = new THREE.MeshBasicMaterial({ color: 'white' });
 		mesh = new THREE.Mesh(buildingBlanks, material);
 
 		this.instance.add(mesh);
+	}
 
-		/* GREEN BOX AT SIDE */
+	buildDoors() { }
 
-		geometry = new THREE.BoxGeometry(4, 4, 6);
-		material = new THREE.MeshBasicMaterial({ color: 'green' });
-		material.side = THREE.DoubleSide;
-		mesh = new THREE.Mesh(geometry, material);
+	buildStuff() {
 
-		mesh.position.set(-2, 2, -12);
+		let stuff, geometry, material, mesh, trees;
 
-		this.instance.add(mesh);
-
-		/* ----------------- */
-
-		let stuff = new THREE.Object3D();
+		stuff = new THREE.Object3D();
 
 		geometry = new THREE.ParametricGeometry((u, v) => {
 
@@ -237,7 +232,7 @@ Shooter.Entities.LargeHouse = class extends AbstractEntity {
 
 
 
-		let trees = new THREE.Geometry();
+		trees = new THREE.Geometry();
 
 		geometry = new THREE.CylinderGeometry(0.05, 0.05, 5);
 		material = new THREE.MeshBasicMaterial({ color: 'pink' });
@@ -274,26 +269,23 @@ Shooter.Entities.LargeHouse = class extends AbstractEntity {
 		stuff.rotation.set(Math.PI / 9, 0, 0);
 
 		this.instance.add(stuff);
-
 	}
 
-	setPosition(x, y, z) {
-		this.instance.position.set(x - 27, y - 10, z + 20);
+	setPosition(position) {
+		this.instance.position.set(position.x - 27, position.y - 10, position.z + 20);
 	}
 
-	setRotation(angleX, angleY, angleZ) {
-
+	setRotation(rotation) {
 		this.instance.translateX(27);
 		this.instance.translateY(10);
 		this.instance.translateZ(-20);
 
-		this.instance.rotation.set(angleX, angleY, angleZ);
+		this.instance.rotation.set(rotation.x, rotation.y, rotation.z);
 
 		this.instance.translateX(-27);
 		this.instance.translateY(-10);
 		this.instance.translateZ(20);
-
 	}
 };
 
-export default Shooter.Entities.LargeHouse;
+export default Shooter.Entities.Builders.LargeHouseBuilder;
