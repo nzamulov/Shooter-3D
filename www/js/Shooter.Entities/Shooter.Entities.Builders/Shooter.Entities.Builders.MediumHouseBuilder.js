@@ -174,19 +174,19 @@ Shooter.Entities.Builders.MediumHouseBuilder = class extends AbstractBuilder {
 	}
 
 	setPosition(position) {
-		this.instance.position.set(position.x - 27, position.y - 10, position.z + 20);
+		this.instance.position.set(position.x - 15, position.y - 10, position.z + 15);
 	}
 
 	setRotation(rotation) {
-		this.instance.translateX(27);
+		this.instance.translateX(15);
 		this.instance.translateY(10);
-		this.instance.translateZ(-20);
+		this.instance.translateZ(-15);
 
 		this.instance.rotation.set(rotation.x, rotation.y, rotation.z);
 
-		this.instance.translateX(-27);
+		this.instance.translateX(-15);
 		this.instance.translateY(-10);
-		this.instance.translateZ(20);
+		this.instance.translateZ(15);
 	}
 };
 
