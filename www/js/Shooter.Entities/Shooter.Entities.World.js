@@ -43,7 +43,10 @@ Shooter.Entities.World = class {
 		let building = this.largeHouseBuilder.build(new THREE.Vector3(30, 10, -40));
 		this.scene.add(building);
 
-		building = this.mediumHouseBuilder.build(new THREE.Vector3(100, 10, -40));
+		building = this.mediumHouseBuilder.build(new THREE.Vector3(85, 10, -35));
+		this.scene.add(building);
+
+		building = this.mediumHouseBuilder.build(new THREE.Vector3(135, 10, -35), new THREE.Vector3(0, Math.PI / 2, 0));
 		this.scene.add(building);
 
 		let floor = Floor.create();
