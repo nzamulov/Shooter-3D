@@ -183,7 +183,19 @@ Shooter.Entities.Builders.LargeHouseBuilder = class extends AbstractBuilder {
 		this.instance.add(mesh);
 	}
 
-	buildDoors() { }
+	buildDoors() {
+
+		let geometry, material, mesh;
+
+		geometry = new THREE.PlaneGeometry(5.7, 8);
+		material = new THREE.MeshBasicMaterial({ color: 'red' });
+		material.side = THREE.DoubleSide;
+		mesh = new THREE.Mesh(geometry, material);
+
+		mesh.position.set(27.2, 3, 0.01);
+
+		this.instance.add(mesh);
+	}
 
 	buildStuff() {
 
