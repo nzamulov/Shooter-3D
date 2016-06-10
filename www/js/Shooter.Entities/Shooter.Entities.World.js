@@ -4,7 +4,10 @@ Shooter.namespace("Shooter.Entities");
 
 import Player from './Shooter.Entities.Player.js';
 import Floor from './Shooter.Entities.Floor.js';
+
 import LargeHouseBuilder from './Shooter.Entities.Builders/Shooter.Entities.Builders.LargeHouseBuilder.js';
+import MediumHouseBuilder from './Shooter.Entities.Builders/Shooter.Entities.Builders.MediumHouseBuilder.js';
+
 import Loader from '../Shooter.Graphics/Shooter.Graphics.Loader.js';
 
 Shooter.Entities.World = class {
@@ -35,7 +38,12 @@ Shooter.Entities.World = class {
 		this.scene.add(line);*/
 
 		this.largeHouseBuilder = new LargeHouseBuilder();
+		this.mediumHouseBuilder = new MediumHouseBuilder();
+
 		let building = this.largeHouseBuilder.build(new THREE.Vector3(30, 10, -40));
+		this.scene.add(building);
+
+		building = this.mediumHouseBuilder.build(new THREE.Vector3(100, 10, -40));
 		this.scene.add(building);
 
 		let floor = Floor.create();
