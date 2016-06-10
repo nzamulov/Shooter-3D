@@ -2,15 +2,14 @@
 
 Shooter.namespace("Shooter.Entities");
 
-import AbstractEntity from './Shooter.Entities.AbstractEntity/Shooter.Entities.AbstractEntity.js';
+Shooter.Entities.Block = class {
 
-Shooter.Entities.Block = class extends AbstractEntity {
+	static create(height, width, depth) {
 
-	constructor(height, width, depth) {
-		super();
+		let geometry = new THREE.BoxGeometry(height, width, depth);
+		let instance = new THREE.Mesh(geometry);
 
-		this.geometry = new THREE.BoxGeometry(height, width, depth);
-		this.instance = new THREE.Mesh(this.geometry, this.material);
+		return instance;
 	}
 };
 

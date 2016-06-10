@@ -22,23 +22,20 @@ Shooter.Entities.Builders.LargeHouseBuilder = class extends AbstractBuilder {
 		
 		buildingBlocks = new THREE.Geometry();
 
-		block = new Block(54, 10, 40);
-		block.setPosition(27, 5, -20);
+		block = Block.create(54, 10, 40);
+		block.position.set(27, 5, -20);
+		block.updateMatrix();
+		buildingBlocks.merge(block.geometry, block.matrix);
 
-		block.getInstance().updateMatrix();
-		buildingBlocks.merge(block.getInstance().geometry, block.getInstance().matrix);
+		block = Block.create(18, 10, 40);
+		block.position.set(45, 15, -20);
+		block.updateMatrix();
+		buildingBlocks.merge(block.geometry, block.matrix);
 
-		block = new Block(18, 10, 40);
-		block.setPosition(45, 15, -20);
-
-		block.getInstance().updateMatrix();
-		buildingBlocks.merge(block.getInstance().geometry, block.getInstance().matrix);
-
-		block = new Block(18, 10, 40);
-		block.setPosition(9, 15, -20);
-
-		block.getInstance().updateMatrix();
-		buildingBlocks.merge(block.getInstance().geometry, block.getInstance().matrix);
+		block = Block.create(18, 10, 40);
+		block.position.set(9, 15, -20);
+		block.updateMatrix();
+		buildingBlocks.merge(block.geometry, block.matrix);
 
 		material = new THREE.MeshBasicMaterial({ color: 'gray' });
 		mesh = new THREE.Mesh(buildingBlocks, material);
@@ -52,23 +49,20 @@ Shooter.Entities.Builders.LargeHouseBuilder = class extends AbstractBuilder {
 
 		buildingWindows = new THREE.Geometry();
 
-		gameWindow = new Window();
-		gameWindow.setPosition(9, 12.5, 0.1);
+		gameWindow = Window.create();
+		gameWindow.position.set(9, 12.5, 0.1);
+		gameWindow.updateMatrix();
+		buildingWindows.merge(gameWindow.geometry, gameWindow.matrix);
 
-		gameWindow.getInstance().updateMatrix();
-		buildingWindows.merge(gameWindow.getInstance().geometry, gameWindow.getInstance().matrix);
+		gameWindow = Window.create();
+		gameWindow.position.set(45, 3.5, 0.1);
+		gameWindow.updateMatrix();
+		buildingWindows.merge(gameWindow.geometry, gameWindow.matrix);
 
-		gameWindow = new Window();
-		gameWindow.setPosition(45, 3.5, 0.1);
-
-		gameWindow.getInstance().updateMatrix();
-		buildingWindows.merge(gameWindow.getInstance().geometry, gameWindow.getInstance().matrix);
-
-		gameWindow = new Window();
-		gameWindow.setPosition(45, 12.5, 0.1);
-
-		gameWindow.getInstance().updateMatrix();
-		buildingWindows.merge(gameWindow.getInstance().geometry, gameWindow.getInstance().matrix);
+		gameWindow = Window.create();
+		gameWindow.position.set(45, 12.5, 0.1);
+		gameWindow.updateMatrix();
+		buildingWindows.merge(gameWindow.geometry, gameWindow.matrix);
 
 		material = new THREE.MeshBasicMaterial({ color: 'yellow' });
 		mesh = new THREE.Mesh(buildingWindows, material);
@@ -83,111 +77,103 @@ Shooter.Entities.Builders.LargeHouseBuilder = class extends AbstractBuilder {
 		buildingBlanks = new THREE.Geometry();
 
 		for(let i = 0; i < 10; ++i) {
-			blank = new Blank((i % 3 ? 0.5 : 1), (i < 4 || i > 5 ? 20 : 10), (i % 3 ? 0.25 : 0.5), true);
-			blank.setPosition((i % 3 ? 0.25 : 0.5) + 6 * i, (i < 4 || i > 5 ? 10 : 5), (i % 3 ? 0.175 : 0.25));
+			
+			blank = Blank.create((i % 3 ? 0.5 : 1), (i < 4 || i > 5 ? 20 : 10), (i % 3 ? 0.25 : 0.5), true);
+			blank.position.set((i % 3 ? 0.25 : 0.5) + 6 * i, (i < 4 || i > 5 ? 10 : 5), (i % 3 ? 0.175 : 0.25));
+			blank.updateMatrix();
+			buildingBlanks.merge(blank.geometry, blank.matrix);
 
-			blank.getInstance().updateMatrix();
-			buildingBlanks.merge(blank.getInstance().geometry, blank.getInstance().matrix);
 		}
 
 		for(let i = 0; i < 2; ++i) {
 			for(let j = 0; j < 2; ++j) {
 
-				blank = new Blank(0.5, 18, 0.25, false);
-				blank.setPosition(9 + 36 * j, 20, -40 * i);
-				blank.setRotation(0, 0, -Math.PI / 2);
-				
-				blank.getInstance().updateMatrix();
-				buildingBlanks.merge(blank.getInstance().geometry, blank.getInstance().matrix);
+				blank = Blank.create(0.5, 18, 0.25, false);
+				blank.position.set(9 + 36 * j, 20, -40 * i);
+				blank.rotation.set(0, 0, -Math.PI / 2);
+				blank.updateMatrix();
+				buildingBlanks.merge(blank.geometry, blank.matrix);
 
 			}
 		}
 
-		blank = new Blank(0.5, 6, 0.25, false);
-		blank.setPosition(27, 7, 0);
-		blank.setRotation(0, 0, -Math.PI / 2);
-		
-		blank.getInstance().updateMatrix();
-		buildingBlanks.merge(blank.getInstance().geometry, blank.getInstance().matrix);
+		blank = Blank.create(0.5, 6, 0.25, false);
+		blank.position.set(27, 7, 0);
+		blank.rotation.set(0, 0, -Math.PI / 2);
+		blank.updateMatrix();
+		buildingBlanks.merge(blank.geometry, blank.matrix);
 
-		blank = new Blank(0.5, 6, 0.25, false);
-		blank.setPosition(9, 15, 0);
-		blank.setRotation(0, 0, -Math.PI / 2);
-		
-		blank.getInstance().updateMatrix();
-		buildingBlanks.merge(blank.getInstance().geometry, blank.getInstance().matrix);
+		blank = Blank.create(0.5, 6, 0.25, false);
+		blank.position.set(9, 15, 0);
+		blank.rotation.set(0, 0, -Math.PI / 2);
+		blank.updateMatrix();
+		buildingBlanks.merge(blank.geometry, blank.matrix);
 
-		blank = new Blank(0.5, 6, 0.25, false);
-		blank.setPosition(39, 7, 0);
-		blank.setRotation(0, 0, -Math.PI / 2);
+		blank = Blank.create(0.5, 6, 0.25, false);
+		blank.position.set(39, 7, 0);
+		blank.rotation.set(0, 0, -Math.PI / 2);
+		blank.updateMatrix();
+		buildingBlanks.merge(blank.geometry, blank.matrix);
 
-		blank.getInstance().updateMatrix();
-		buildingBlanks.merge(blank.getInstance().geometry, blank.getInstance().matrix);
+		blank = Blank.create(0.5, 12, 0.25, false);
+		blank.position.set(42, 6, 0);
+		blank.rotation.set(0, 0, -Math.PI / 2);
+		blank.updateMatrix();
+		buildingBlanks.merge(blank.geometry, blank.matrix);
 
-		blank = new Blank(0.5, 12, 0.25, false);
-		blank.setPosition(42, 6, 0);
-		blank.setRotation(0, 0, -Math.PI / 2);
-
-		blank.getInstance().updateMatrix();
-		buildingBlanks.merge(blank.getInstance().geometry, blank.getInstance().matrix);
-
-		blank = new Blank(0.5, 6, 0.25, false);
-		blank.setPosition(45, 15, 0);
-		blank.setRotation(0, 0, -Math.PI / 2);
-
-		blank.getInstance().updateMatrix();
-		buildingBlanks.merge(blank.getInstance().geometry, blank.getInstance().matrix);
+		blank = Blank.create(0.5, 6, 0.25, false);
+		blank.position.set(45, 15, 0);
+		blank.rotation.set(0, 0, -Math.PI / 2);
+		blank.updateMatrix();
+		buildingBlanks.merge(blank.geometry, blank.matrix);
 
 		for(let i = 0; i < 4; ++i) {
 			for(let j = 0; j < 6; ++j) {
 
-				blank = new Blank(0.5, 20, 0.25, j !== 0);
-				blank.setPosition(18 * i, 10, -8 * j);
-
-				blank.getInstance().updateMatrix();
-				buildingBlanks.merge(blank.getInstance().geometry, blank.getInstance().matrix);
+				blank = Blank.create(0.5, 20, 0.25, j !== 0);
+				blank.position.set(18 * i, 10, -8 * j);
+				blank.updateMatrix();
+				buildingBlanks.merge(blank.geometry, blank.matrix);
 
 			}
 		}
 
 		for(let i = 0; i < 10; ++i) {
 
-			blank = new Blank(0.5, (i < 4 || i > 5 ? 20 : 10), (i % 3 ? 0.25 : 0.5), (i % 3) !== 0);
-			blank.setPosition(6 * i, (i < 4 || i > 5 ? 10 : 5), -40);
-
-			blank.getInstance().updateMatrix();
-			buildingBlanks.merge(blank.getInstance().geometry, blank.getInstance().matrix);
+			blank = Blank.create(0.5, (i < 4 || i > 5 ? 20 : 10), (i % 3 ? 0.25 : 0.5), (i % 3) !== 0);
+			blank.position.set(6 * i, (i < 4 || i > 5 ? 10 : 5), -40);
+			blank.updateMatrix();
+			buildingBlanks.merge(blank.geometry, blank.matrix);
 
 		}
 
 		for(let i = 0; i < 2; ++i) {
 			for(let j = 0; j < 2; ++j) {
 
-				blank = new Blank(0.5, (0 === i ? 54 : 40), 0.25, false);
+				blank = Blank.create(0.5, (0 === i ? 54 : 40), 0.25, false);
 
 				if(0 === i) {
-					blank.setPosition(27, 10, -40 * j);
-					blank.setRotation(0, 0, -Math.PI / 2);
+					blank.position.set(27, 10, -40 * j);
+					blank.rotation.set(0, 0, -Math.PI / 2);
 				}
 				else {
-					blank.setPosition(54 * j, 10, -20);
-					blank.setRotation(-Math.PI / 2, 0, 0);
+					blank.position.set(54 * j, 10, -20);
+					blank.rotation.set(-Math.PI / 2, 0, 0);
 				}
 
-				blank.getInstance().updateMatrix();
-				buildingBlanks.merge(blank.getInstance().geometry, blank.getInstance().matrix);
+				blank.updateMatrix();
+				buildingBlanks.merge(blank.geometry, blank.matrix);
 
 			}
 		}
 
 		for(let i = 0; i < 4; ++i) {
 
-			blank = new Blank(0.5, 40, 0.25, false);
-			blank.setPosition(18 * i, 20, -20);
-			blank.setRotation(-Math.PI / 2, 0, 0);
-			
-			blank.getInstance().updateMatrix();
-			buildingBlanks.merge(blank.getInstance().geometry, blank.getInstance().matrix);
+			blank = Blank.create(0.5, 40, 0.25, false);
+			blank.position.set(18 * i, 20, -20);
+			blank.rotation.set(-Math.PI / 2, 0, 0);
+			blank.updateMatrix();
+			buildingBlanks.merge(blank.geometry, blank.matrix);
 
 		}
 

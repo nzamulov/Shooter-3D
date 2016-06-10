@@ -37,10 +37,10 @@ Shooter.Entities.World = class {
 		let building = this.largeHouseBuilder.build(new THREE.Vector3(30, 10, -40));
 		this.scene.add(building);
 
-		/*let floor = new Floor();
-		floor.setPosition(-1000, 0.02, -1000);
-		floor.setRotation(-Math.PI / 2, 0, 0);
-		this.scene.add(floor.getInstance());*/
+		let floor = Floor.create();
+		floor.position.set(-1000, 0, -1000);
+		floor.rotation.set(Math.PI / 2, 0, 0);
+		this.scene.add(floor);
 
 
 		/* DESERT */

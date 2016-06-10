@@ -2,13 +2,11 @@
 
 Shooter.namespace("Shooter.Entities");
 
-import AbstractEntity from './Shooter.Entities.AbstractEntity/Shooter.Entities.AbstractEntity.js';
 import Loader from '../Shooter.Graphics/Shooter.Graphics.Loader.js';
 
-Shooter.Entities.Floor = class extends AbstractEntity {
+Shooter.Entities.Floor = class {
 
-	constructor() {
-		super();
+	static create() {
 
 		let floor_texture = new THREE.Texture();
 
@@ -20,9 +18,12 @@ Shooter.Entities.Floor = class extends AbstractEntity {
 			floor_texture.repeat.set(100, 100);
 		});
 
-		this.geometry = new THREE.PlaneGeometry(3000, 3000, 40, 40);
-		this.material = new THREE.MeshBasicMaterial({ map: floor_texture, overdraw: true });
-		this.instance = new THREE.Mesh(this.geometry, this.material);
+		let geometry = new THREE.PlaneGeometry(3000, 3000, 40, 40);
+		let material = new THREE.MeshBasicMaterial({ map: floor_texture, overdraw: true });
+		material.side = THREE.DoubleSide;
+		let instance = new THREE.Mesh(geometry, material);
+
+		return instance;
 	}
 };
 

@@ -2,18 +2,11 @@
 
 Shooter.namespace("Shooter.Entities");
 
-import AbstractEntity from './Shooter.Entities.AbstractEntity/Shooter.Entities.AbstractEntity.js';
+Shooter.Entities.Blank = class {
 
-Shooter.Entities.Blank = class extends AbstractEntity {
+	static create(width, height, depth, cone) {
 
-	constructor(width, height, depth, cone) {
-		super();
-
-		this.width = width;
-		this.height = height;
-		this.depth = depth;
-
-		let geometry, mesh, container;
+		let instance, geometry, mesh, container;
 
 		container = new THREE.Geometry();
 
@@ -34,9 +27,10 @@ Shooter.Entities.Blank = class extends AbstractEntity {
 			container.merge(mesh.geometry, mesh.matrix);
 		}
 
-		this.instance = new THREE.Mesh(container);
-	}
+		instance = new THREE.Mesh(container);
 
+		return instance;
+	}
 };
 
 export default Shooter.Entities.Blank;

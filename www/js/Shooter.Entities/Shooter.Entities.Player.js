@@ -4,15 +4,12 @@ Shooter.namespace("Shooter.Entities");
 
 import CONSTANTS from '../Shooter.Constants/Shooter.Constants.js';
 
-import AbstractEntity from './Shooter.Entities.AbstractEntity/Shooter.Entities.AbstractEntity.js';
-
 import KeyboardController from '../Shooter.Controllers/Shooter.Controllers.KeyboardController.js';
 import MouseController from '../Shooter.Controllers/Shooter.Controllers.MouseController.js';
 
-Shooter.Entities.Player = class extends AbstractEntity {
+Shooter.Entities.Player = class {
 
 	constructor(scene) {
-		super();
 
 		this.moveForward = false;
 		this.moveLeft = false;
