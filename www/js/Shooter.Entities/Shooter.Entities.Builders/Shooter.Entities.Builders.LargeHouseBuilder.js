@@ -267,6 +267,35 @@ Shooter.Entities.Builders.LargeHouseBuilder = class extends AbstractBuilder {
 		stuff.rotation.set(Math.PI / 9, 0, 0);
 
 		this.instance.add(stuff);
+
+
+
+		geometry = new THREE.BoxGeometry(2.5, 1.5, 2);
+		material = new THREE.MeshBasicMaterial({ color: 'red' });
+		material.side = THREE.DoubleSide;
+		mesh = new THREE.Mesh(geometry, material);
+
+		mesh.position.set(7.9, 0.75, 1);
+
+		this.instance.add(mesh);
+
+		geometry = new THREE.BoxGeometry(2.5, 1.5, 2);
+		material = new THREE.MeshBasicMaterial({ color: 'blue' });
+		material.side = THREE.DoubleSide;
+		mesh = new THREE.Mesh(geometry, material);
+
+		mesh.position.set(10.5, 0.75, 1);
+
+		this.instance.add(mesh);
+
+		geometry = new THREE.BoxGeometry(2.5, 1.5, 2);
+		material = new THREE.MeshBasicMaterial({ color: 'yellow' });
+		material.side = THREE.DoubleSide;
+		mesh = new THREE.Mesh(geometry, material);
+
+		mesh.position.set(7.9, 2.25, 1);
+
+		this.instance.add(mesh);
 	}
 
 	setPosition(position) {
