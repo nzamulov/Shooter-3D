@@ -5,6 +5,7 @@ Shooter.namespace("Shooter.Entities");
 import Player from './Shooter.Entities.Player.js';
 import Floor from './Shooter.Entities.Floor.js';
 import LargeHouseBuilder from './Shooter.Entities.Builders/Shooter.Entities.Builders.LargeHouseBuilder.js';
+import Loader from '../Shooter.Graphics/Shooter.Graphics.Loader.js';
 
 Shooter.Entities.World = class {
 
@@ -17,7 +18,7 @@ Shooter.Entities.World = class {
 		this.player = new Player(this.scene);
 		this.scene.add(this.player.getControls());
 
-		let size = 2000, step = 2;
+		/*let size = 2000, step = 2;
 
 		let geometry = new THREE.Geometry();
 		let material = new THREE.LineBasicMaterial({ color: 'green' });
@@ -31,7 +32,7 @@ Shooter.Entities.World = class {
 		}
 
 		let line = new THREE.Line(geometry, material, THREE.LinePieces);
-		this.scene.add(line);
+		this.scene.add(line);*/
 
 		this.largeHouseBuilder = new LargeHouseBuilder();
 		let building = this.largeHouseBuilder.build(new THREE.Vector3(30, 10, -40));
@@ -41,6 +42,23 @@ Shooter.Entities.World = class {
 		floor.position.set(-1000, 0, -1000);
 		floor.rotation.set(Math.PI / 2, 0, 0);
 		this.scene.add(floor);
+
+		/* SKY SPHERE */
+
+		let sky_texture = new THREE.Texture();
+
+		Loader.instance.getImage('img/skysphere.jpg', (image) => {
+			sky_texture.image = image;
+			sky_texture.needsUpdate = true;
+		});
+
+		let geometry = new THREE.SphereGeometry(2000, 32, 32);
+		let material = new THREE.MeshBasicMaterial({ map: sky_texture, overdraw: true });
+		material.side = THREE.DoubleSide;
+		let sky = new THREE.Mesh(geometry, material);
+
+		this.scene.add(sky);
+		/* ---------- */
 
 
 		/* DESERT */
