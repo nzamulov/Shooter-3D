@@ -49,21 +49,17 @@ Shooter.Entities.Builders.MediumHouseBuilder = class extends AbstractBuilder {
 
 	buildWindows() {
 
-		let mesh, material, gameWindow, buildingWindows;
-
-		buildingWindows = new THREE.Geometry();
+		let gameWindow;
 
 		/* FORWARD WINDOWS */
 
 		gameWindow = Window.create();
 		gameWindow.position.set(15, 15, 0.01);
-		gameWindow.updateMatrix();
-		buildingWindows.merge(gameWindow.geometry, gameWindow.matrix);
+		this.instance.add(gameWindow);
 
 		gameWindow = Window.create();
 		gameWindow.position.set(25, 5, 0.01);
-		gameWindow.updateMatrix();
-		buildingWindows.merge(gameWindow.geometry, gameWindow.matrix);
+		this.instance.add(gameWindow);
 
 		/* -------------- */
 
@@ -71,9 +67,8 @@ Shooter.Entities.Builders.MediumHouseBuilder = class extends AbstractBuilder {
 
 		gameWindow = Window.create();
 		gameWindow.position.set(30.01, 15, -15);
-		gameWindow.rotation.set(0, -Math.PI / 2, 0);
-		gameWindow.updateMatrix();
-		buildingWindows.merge(gameWindow.geometry, gameWindow.matrix);
+		gameWindow.rotation.set(0, Math.PI / 2, 0);
+		this.instance.add(gameWindow);
 
 		/* ------------ */
 
@@ -81,13 +76,13 @@ Shooter.Entities.Builders.MediumHouseBuilder = class extends AbstractBuilder {
 
 		gameWindow = Window.create();
 		gameWindow.position.set(15, 15, -30.01);
-		gameWindow.updateMatrix();
-		buildingWindows.merge(gameWindow.geometry, gameWindow.matrix);
+		gameWindow.rotation.set(0, Math.PI, 0);
+		this.instance.add(gameWindow);
 
 		gameWindow = Window.create();
 		gameWindow.position.set(5, 5, -30.01);
-		gameWindow.updateMatrix();
-		buildingWindows.merge(gameWindow.geometry, gameWindow.matrix);
+		gameWindow.rotation.set(0, Math.PI, 0);
+		this.instance.add(gameWindow);
 
 		/* ------------- */
 
@@ -96,16 +91,9 @@ Shooter.Entities.Builders.MediumHouseBuilder = class extends AbstractBuilder {
 		gameWindow = Window.create();
 		gameWindow.position.set(-0.01, 5, -15);
 		gameWindow.rotation.set(0, -Math.PI / 2, 0);
-		gameWindow.updateMatrix();
-		buildingWindows.merge(gameWindow.geometry, gameWindow.matrix);
+		this.instance.add(gameWindow);
 
-		/* ------------ */
-
-		material = new THREE.MeshBasicMaterial({ color: 'yellow' });
-		material.side = THREE.DoubleSide;
-		mesh = new THREE.Mesh(buildingWindows, material);
-
-		this.instance.add(mesh);
+		/* ------------ */		
 	}
 
 	buildBlanks() {
