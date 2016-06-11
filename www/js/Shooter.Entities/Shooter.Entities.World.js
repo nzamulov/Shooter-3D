@@ -45,13 +45,45 @@ Shooter.Entities.World = class {
 		building = this.mediumHouseBuilder.build(new THREE.Vector3(110, 10, 55), new THREE.Vector3(0, Math.PI, 0));
 		this.scene.add(building);
 
-		building = Box.create();
-		building.position.set(18, 1.5, 38.5);
-		this.scene.add(building);
+		let box = Box.create();
+		box.position.set(18, 1.5, 38.5);
+		this.scene.add(box);
 
-		building = Box.create();
-		building.position.set(21, 1.5, 38.5);
-		this.scene.add(building);
+		box = Box.create();
+		box.position.set(21, 1.5, 38.5);
+		this.scene.add(box);
+
+
+		/* GREEN POINT RESPAWN */
+
+		box = Box.create();
+		box.position.set(-30, 1.5, 70);
+		box.rotation.set(0, Math.PI / 4, 0);
+		this.scene.add(box);
+
+		box = Box.create();
+		box.position.set(-28.5, 1.5, 74);
+		this.scene.add(box);
+
+		box = Box.create();
+		box.position.set(-28.5, 1.5, 77);
+		this.scene.add(box);
+
+		box = Box.create();
+		box.position.set(-28.5, 1.5, 80);
+		this.scene.add(box);
+
+		box = Box.create();
+		box.position.set(-28.5, 4.5, 80);
+		this.scene.add(box);
+
+		box = Box.create();
+		box.position.set(-28.5, 2, 83.5);
+		box.rotation.set(Math.PI / 2, 0, 0);
+		this.scene.add(box);
+
+		/* ------------------ */
+
 
 
 		let floor = Floor.create();
