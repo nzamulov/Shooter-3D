@@ -49,6 +49,8 @@ Shooter.Entities.Builders.LargeHouseBuilder = class extends AbstractBuilder {
 
 		buildingWindows = new THREE.Geometry();
 
+		/* FORWARD WINDOWS */
+
 		gameWindow = Window.create();
 		gameWindow.position.set(9, 12.5, 0.1);
 		gameWindow.updateMatrix();
@@ -64,7 +66,62 @@ Shooter.Entities.Builders.LargeHouseBuilder = class extends AbstractBuilder {
 		gameWindow.updateMatrix();
 		buildingWindows.merge(gameWindow.geometry, gameWindow.matrix);
 
+		/* -------------- */
+
+		/* RIGHT WINDOWS */
+
+		gameWindow = Window.create();
+		gameWindow.position.set(54.01, 15, -12);
+		gameWindow.rotation.set(0, Math.PI / 2, 0);
+		gameWindow.updateMatrix();
+		buildingWindows.merge(gameWindow.geometry, gameWindow.matrix);
+
+		gameWindow = Window.create();
+		gameWindow.position.set(54.01, 5, -28);
+		gameWindow.rotation.set(0, Math.PI / 2, 0);
+		gameWindow.updateMatrix();
+		buildingWindows.merge(gameWindow.geometry, gameWindow.matrix);
+
+		gameWindow = Window.create();
+		gameWindow.position.set(54.01, 15, -36);
+		gameWindow.rotation.set(0, Math.PI / 2, 0);
+		gameWindow.updateMatrix();
+		buildingWindows.merge(gameWindow.geometry, gameWindow.matrix);
+
+		/* ------------- */
+
+		/* BACKWARD WINDOWS */
+
+		gameWindow = Window.create();
+		gameWindow.position.set(9, 15, -40.01);		
+		gameWindow.updateMatrix();
+		buildingWindows.merge(gameWindow.geometry, gameWindow.matrix);
+
+		gameWindow = Window.create();
+		gameWindow.position.set(45, 15, -40.01);		
+		gameWindow.updateMatrix();
+		buildingWindows.merge(gameWindow.geometry, gameWindow.matrix);
+
+		/* ---------------- */
+
+		/* LEFT WINDOWS */
+
+		gameWindow = Window.create();
+		gameWindow.position.set(-0.01, 15, -28);
+		gameWindow.rotation.set(0, Math.PI / 2, 0);	
+		gameWindow.updateMatrix();
+		buildingWindows.merge(gameWindow.geometry, gameWindow.matrix);
+
+		gameWindow = Window.create();
+		gameWindow.position.set(-0.01, 15, -12);
+		gameWindow.rotation.set(0, Math.PI / 2, 0);	
+		gameWindow.updateMatrix();
+		buildingWindows.merge(gameWindow.geometry, gameWindow.matrix);
+
+		/* ------------ */
+
 		material = new THREE.MeshBasicMaterial({ color: 'yellow' });
+		material.side = THREE.DoubleSide;
 		mesh = new THREE.Mesh(buildingWindows, material);
 
 		this.instance.add(mesh);
