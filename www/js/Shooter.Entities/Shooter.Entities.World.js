@@ -16,31 +16,16 @@ Shooter.Entities.World = class {
 
 		this.scene = new THREE.Scene();
 
-		//this.scene.fog = new THREE.Fog(0xFFAC40, 0, 1500);
-
 		this.player = new Player(this.scene);
 		this.scene.add(this.player.getControls());
-
-		/*let size = 2000, step = 2;
-
-		let geometry = new THREE.Geometry();
-		let material = new THREE.LineBasicMaterial({ color: 'green' });
-
-		for(let i = -size; i <= size; i += step) {
-			geometry.vertices.push(new THREE.Vector3( - size, 0.02, i ));
-			geometry.vertices.push(new THREE.Vector3( size, 0.02, i ));
-
-			geometry.vertices.push(new THREE.Vector3( i, 0.02, - size ));
-			geometry.vertices.push(new THREE.Vector3( i, 0.02, size ));
-		}
-
-		let line = new THREE.Line(geometry, material, THREE.LinePieces);
-		this.scene.add(line);*/
 
 		this.largeHouseBuilder = new LargeHouseBuilder();
 		this.mediumHouseBuilder = new MediumHouseBuilder();
 
 		let building = this.largeHouseBuilder.build(new THREE.Vector3(30, 10, -40));
+		this.scene.add(building);
+
+		building = this.largeHouseBuilder.build(new THREE.Vector3(180, 10, -100), new THREE.Vector3(0, Math.PI / 2, 0));
 		this.scene.add(building);
 
 		building = this.mediumHouseBuilder.build(new THREE.Vector3(85, 10, -35));
