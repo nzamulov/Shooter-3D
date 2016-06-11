@@ -359,9 +359,16 @@ Shooter.Entities.Builders.LargeHouseBuilder = class extends AbstractBuilder {
 
 
 
+
+		let box_texture = new THREE.Texture();
+
+		Loader.instance.getImage('img/box1.jpg', (image) => {
+			box_texture.image = image;
+			box_texture.needsUpdate = true;
+		});
+
 		geometry = new THREE.BoxGeometry(2.5, 1.5, 2);
-		material = new THREE.MeshBasicMaterial({ color: 'red' });
-		material.side = THREE.DoubleSide;
+		material = new THREE.MeshBasicMaterial({ map: box_texture, overdraw: true });
 		mesh = new THREE.Mesh(geometry, material);
 
 		mesh.position.set(7.9, 0.75, 1);
@@ -369,8 +376,6 @@ Shooter.Entities.Builders.LargeHouseBuilder = class extends AbstractBuilder {
 		this.instance.add(mesh);
 
 		geometry = new THREE.BoxGeometry(2.5, 1.5, 2);
-		material = new THREE.MeshBasicMaterial({ color: 'blue' });
-		material.side = THREE.DoubleSide;
 		mesh = new THREE.Mesh(geometry, material);
 
 		mesh.position.set(10.5, 0.75, 1);
@@ -378,8 +383,6 @@ Shooter.Entities.Builders.LargeHouseBuilder = class extends AbstractBuilder {
 		this.instance.add(mesh);
 
 		geometry = new THREE.BoxGeometry(2.5, 1.5, 2);
-		material = new THREE.MeshBasicMaterial({ color: 'yellow' });
-		material.side = THREE.DoubleSide;
 		mesh = new THREE.Mesh(geometry, material);
 
 		mesh.position.set(7.9, 2.25, 1);
