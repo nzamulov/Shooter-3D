@@ -171,9 +171,15 @@ Shooter.Entities.Builders.MediumHouseBuilder = class extends AbstractBuilder {
 
 		let geometry, material, mesh;
 
+		let door_texture = new THREE.Texture();
+
+		Loader.instance.getImage('img/door.jpg', (image) => {
+			door_texture.image = image;
+			door_texture.needsUpdate = true;
+		});
+
 		geometry = new THREE.PlaneGeometry(4, 8);
-		material = new THREE.MeshBasicMaterial({ color: 'red' });
-		material.side = THREE.DoubleSide;
+		material = new THREE.MeshBasicMaterial({ map: door_texture, overdraw: true });
 		mesh = new THREE.Mesh(geometry, material);
 
 		mesh.position.set(8, 3, 0.01);
