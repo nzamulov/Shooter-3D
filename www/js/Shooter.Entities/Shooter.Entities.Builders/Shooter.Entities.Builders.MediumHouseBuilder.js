@@ -8,6 +8,8 @@ import Block from '../Shooter.Entities.Block.js';
 import Blank from '../Shooter.Entities.Blank.js';
 import Window from '../Shooter.Entities.Window.js';
 
+import Loader from '../../Shooter.Graphics/Shooter.Graphics.Loader.js';
+
 Shooter.Entities.Builders.MediumHouseBuilder = class extends AbstractBuilder {
 
 	constructor() {
@@ -27,7 +29,19 @@ Shooter.Entities.Builders.MediumHouseBuilder = class extends AbstractBuilder {
 		block.updateMatrix();
 		buildingBlocks.merge(block.geometry, block.matrix);
 
-		material = new THREE.MeshBasicMaterial({ color: 'gray' });
+		let block_texture = new THREE.Texture();
+
+		Loader.instance.getImage('img/tower.jpg', (image) => {
+			block_texture.image = image;
+			block_texture.needsUpdate = true;
+			block_texture.wrapS = THREE.RepeatWrapping;
+			block_texture.wrapT = THREE.RepeatWrapping;
+			block_texture.repeat.set(5, 5);
+		});
+
+		this.assignUVs(buildingBlocks);
+
+		material = new THREE.MeshBasicMaterial({ map: block_texture, overdraw: true });
 		mesh = new THREE.Mesh(buildingBlocks, material);
 
 		this.instance.add(mesh);
