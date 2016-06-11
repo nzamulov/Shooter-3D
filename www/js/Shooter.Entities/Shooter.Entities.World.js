@@ -10,6 +10,8 @@ import MediumHouseBuilder from './Shooter.Entities.Builders/Shooter.Entities.Bui
 
 import Loader from '../Shooter.Graphics/Shooter.Graphics.Loader.js';
 
+import Box from './Shooter.Entities.Box.js';
+
 Shooter.Entities.World = class {
 
 	constructor() {
@@ -42,6 +44,15 @@ Shooter.Entities.World = class {
 
 		building = this.mediumHouseBuilder.build(new THREE.Vector3(110, 10, 55), new THREE.Vector3(0, Math.PI, 0));
 		this.scene.add(building);
+
+		building = Box.create();
+		building.position.set(18, 1.5, 38.5);
+		this.scene.add(building);
+
+		building = Box.create();
+		building.position.set(21, 1.5, 38.5);
+		this.scene.add(building);
+
 
 		let floor = Floor.create();
 		floor.position.set(-1000, 0, -1000);
