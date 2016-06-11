@@ -149,7 +149,19 @@ Shooter.Entities.Builders.MediumHouseBuilder = class extends AbstractBuilder {
 
 		}
 
-		material = new THREE.MeshBasicMaterial({ color: 'white' });
+		let blank_texture = new THREE.Texture();
+
+		Loader.instance.getImage('img/blank.jpg', (image) => {
+			blank_texture.image = image;
+			blank_texture.needsUpdate = true;
+			blank_texture.wrapS = THREE.RepeatWrapping;
+			blank_texture.wrapT = THREE.RepeatWrapping;
+			blank_texture.repeat.set(5, 5);
+		});
+
+		this.assignUVs(buildingBlanks);
+
+		material = new THREE.MeshBasicMaterial({ map: blank_texture, overdraw: true });
 		mesh = new THREE.Mesh(buildingBlanks, material);
 
 		this.instance.add(mesh);
