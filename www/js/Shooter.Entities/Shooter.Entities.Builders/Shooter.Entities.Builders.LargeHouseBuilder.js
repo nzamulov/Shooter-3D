@@ -8,6 +8,8 @@ import Block from '../Shooter.Entities.Block.js';
 import Blank from '../Shooter.Entities.Blank.js';
 import Window from '../Shooter.Entities.Window.js';
 
+import Loader from '../../Shooter.Graphics/Shooter.Graphics.Loader.js';
+
 Shooter.Entities.Builders.LargeHouseBuilder = class extends AbstractBuilder {
 
 	constructor() {
@@ -37,7 +39,19 @@ Shooter.Entities.Builders.LargeHouseBuilder = class extends AbstractBuilder {
 		block.updateMatrix();
 		buildingBlocks.merge(block.geometry, block.matrix);
 
-		material = new THREE.MeshBasicMaterial({ color: 'gray' });
+		let block_texture = new THREE.Texture();
+
+		Loader.instance.getImage('img/tower.jpg', (image) => {
+			block_texture.image = image;
+			block_texture.needsUpdate = true;
+			block_texture.wrapS = THREE.RepeatWrapping;
+			block_texture.wrapT = THREE.RepeatWrapping;
+			block_texture.repeat.set(10, 5);
+		});
+
+		this.assignUVs(buildingBlocks);
+
+		material = new THREE.MeshBasicMaterial({ map: block_texture, overdraw: true });
 		mesh = new THREE.Mesh(buildingBlocks, material);
 
 		this.instance.add(mesh);
@@ -234,7 +248,19 @@ Shooter.Entities.Builders.LargeHouseBuilder = class extends AbstractBuilder {
 
 		}
 
-		material = new THREE.MeshBasicMaterial({ color: 'white' });
+		let blank_texture = new THREE.Texture();
+
+		Loader.instance.getImage('img/blank.jpg', (image) => {
+			blank_texture.image = image;
+			blank_texture.needsUpdate = true;
+			blank_texture.wrapS = THREE.RepeatWrapping;
+			blank_texture.wrapT = THREE.RepeatWrapping;
+			blank_texture.repeat.set(5, 5);
+		});
+
+		this.assignUVs(buildingBlanks);
+
+		material = new THREE.MeshBasicMaterial({ map: blank_texture, overdraw: true });
 		mesh = new THREE.Mesh(buildingBlanks, material);
 
 		this.instance.add(mesh);
@@ -369,6 +395,44 @@ Shooter.Entities.Builders.LargeHouseBuilder = class extends AbstractBuilder {
 		this.instance.translateX(-27);
 		this.instance.translateY(-10);
 		this.instance.translateZ(20);
+	}
+
+	assignUVs( geometry ) {
+
+	    geometry.computeBoundingBox();
+
+	    var max     = geometry.boundingBox.max;
+	    var min     = geometry.boundingBox.min;
+
+	    var offset  = new THREE.Vector3(0 - min.x, 0 - min.y, 0 - min.z);
+	    var range   = new THREE.Vector3(max.x - min.x, max.y - min.y, max.z - min.z);
+
+	    geometry.faceVertexUvs[0] = [];
+	    var faces = geometry.faces;
+
+	    for (let i = 0; i < geometry.faces.length ; i++) {
+
+	      var v1 = geometry.vertices[faces[i].a];
+	      var v2 = geometry.vertices[faces[i].b];
+	      var v3 = geometry.vertices[faces[i].c];
+
+	      if(v1.x === v2.x && v2.x === v3.x) {
+		      geometry.faceVertexUvs[0].push([
+		        new THREE.Vector2( ( v1.z + offset.z ) / range.z , ( v1.y + offset.y ) / range.y ),
+		        new THREE.Vector2( ( v2.z + offset.z ) / range.z , ( v2.y + offset.y ) / range.y ),
+		        new THREE.Vector2( ( v3.z + offset.z ) / range.z , ( v3.y + offset.y ) / range.y )
+		      ]);
+	      } else {
+		      geometry.faceVertexUvs[0].push([
+		        new THREE.Vector2( ( v1.x + offset.x ) / range.x , ( v1.y + offset.y ) / range.y ),
+		        new THREE.Vector2( ( v2.x + offset.x ) / range.x , ( v2.y + offset.y ) / range.y ),
+		        new THREE.Vector2( ( v3.x + offset.x ) / range.x , ( v3.y + offset.y ) / range.y )
+		      ]);
+	      }
+	    }
+
+	    geometry.uvsNeedUpdate = true;
+
 	}
 };
 
