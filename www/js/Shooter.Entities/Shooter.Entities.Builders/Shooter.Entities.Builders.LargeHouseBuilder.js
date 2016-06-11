@@ -397,24 +397,25 @@ Shooter.Entities.Builders.LargeHouseBuilder = class extends AbstractBuilder {
 		this.instance.translateZ(20);
 	}
 
-	assignUVs( geometry ) {
+	assignUVs(geometry) {
 
 	    geometry.computeBoundingBox();
 
-	    var max     = geometry.boundingBox.max;
-	    var min     = geometry.boundingBox.min;
+	    let max = geometry.boundingBox.max;
+	    let min = geometry.boundingBox.min;
 
-	    var offset  = new THREE.Vector3(0 - min.x, 0 - min.y, 0 - min.z);
-	    var range   = new THREE.Vector3(max.x - min.x, max.y - min.y, max.z - min.z);
+	    let offset  = new THREE.Vector3(0 - min.x, 0 - min.y, 0 - min.z);
+	    let range   = new THREE.Vector3(max.x - min.x, max.y - min.y, max.z - min.z);
 
 	    geometry.faceVertexUvs[0] = [];
-	    var faces = geometry.faces;
+
+	    let faces = geometry.faces;
 
 	    for (let i = 0; i < geometry.faces.length ; i++) {
 
-	      var v1 = geometry.vertices[faces[i].a];
-	      var v2 = geometry.vertices[faces[i].b];
-	      var v3 = geometry.vertices[faces[i].c];
+	      let v1 = geometry.vertices[faces[i].a];
+	      let v2 = geometry.vertices[faces[i].b];
+	      let v3 = geometry.vertices[faces[i].c];
 
 	      if(v1.x === v2.x && v2.x === v3.x) {
 		      geometry.faceVertexUvs[0].push([
