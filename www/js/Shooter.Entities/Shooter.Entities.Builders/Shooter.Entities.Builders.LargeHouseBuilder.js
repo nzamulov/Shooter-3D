@@ -289,7 +289,14 @@ Shooter.Entities.Builders.LargeHouseBuilder = class extends AbstractBuilder {
 
 		}, 20, 20);
 
-		material = new THREE.MeshBasicMaterial({ color: 'skyblue' });
+		let textile_texture = new THREE.Texture();
+
+		Loader.instance.getImage('img/textile.jpg', (image) => {
+			textile_texture.image = image;
+			textile_texture.needsUpdate = true;
+		});
+
+		material = new THREE.MeshBasicMaterial({ map: textile_texture, overdraw: true });
 		material.side = THREE.DoubleSide;
 		mesh = new THREE.Mesh(geometry, material);
 
@@ -308,9 +315,15 @@ Shooter.Entities.Builders.LargeHouseBuilder = class extends AbstractBuilder {
 
 		trees = new THREE.Geometry();
 
+		let tree_texture = new THREE.Texture();
+
+		Loader.instance.getImage('img/tree.jpg', (image) => {
+			tree_texture.image = image;
+			tree_texture.needsUpdate = true;
+		});
+
 		geometry = new THREE.CylinderGeometry(0.05, 0.05, 5);
-		material = new THREE.MeshBasicMaterial({ color: 'pink' });
-		material.side = THREE.DoubleSide;
+		material = new THREE.MeshBasicMaterial({ map: tree_texture, overdraw: true });
 		mesh = new THREE.Mesh(geometry, material);
 
 		mesh.position.set(0, 0.75, 2.75);
