@@ -20,7 +20,7 @@ Shooter.Entities.Player = class {
 		this.falling = false;
 		this.jumpingSaturation = Math.PI / 2;
 
-		this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
+		this.camera = new THREE.PerspectiveCamera(CONSTANTS.CAMERA.FRUSTUM, CONSTANTS.CAMERA.ASPECT_RATIO, CONSTANTS.CAMERA.NEAR, CONSTANTS.CAMERA.FAR);
 		this.camera.position.set(CONSTANTS.RED_POINT.X, 3, CONSTANTS.RED_POINT.Z);
 		this.camera.lookAt(0, 0, -1);
 
