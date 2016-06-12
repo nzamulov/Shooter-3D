@@ -23,8 +23,18 @@ Shooter.Constants = {
 	/* PHYSIC */
 	JUMP_STRENGTH: 0.5,
 	GRAVITY: 50,
-	MOVEMENT_SPEED: 0.25
+	MOVEMENT_SPEED: 0.25,
 
+	/* RESPAWN */
+	GREEN_POINT: {
+		X: -40,
+		Z: 80
+	},
+
+	RED_POINT: {
+		X: 234,
+		Z: -120
+	}
 };
 
 export default Shooter.Constants;

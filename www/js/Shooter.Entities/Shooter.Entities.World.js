@@ -84,7 +84,34 @@ Shooter.Entities.World = class {
 
 		/* ------------------ */
 
+		/* RED POINT RESPAWN */
 
+		box = Box.create();
+		box.position.set(230, 1.5, -110);
+		this.scene.add(box);
+
+		box = Box.create();
+		box.position.set(227, 1.5, -110);
+		this.scene.add(box);
+
+		box = Box.create();
+		box.position.set(227, 4.5, -110);
+		this.scene.add(box);
+
+		box = Box.create();
+		box.position.set(227, 1.5, -113);
+		this.scene.add(box);
+
+		box = Box.create();
+		box.position.set(233, 1.5, -110);
+		this.scene.add(box);
+
+		box = Box.create();
+		box.position.set(237, 1.5, -110);
+		box.rotation.set(0, Math.PI / 4, 0);
+		this.scene.add(box);
+
+		/* ----------------- */
 
 		let floor = Floor.create();
 		floor.position.set(-1000, 0, -1000);
