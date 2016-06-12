@@ -34,30 +34,33 @@ Shooter.Entities.Player = class {
 
 		let worldDirection = this.camera.getWorldDirection().normalize().multiplyScalar(CONSTANTS.MOVEMENT_SPEED);
 		
-		let strafe = new THREE.Vector3();
-		strafe.crossVectors(worldDirection, new THREE.Vector3(0, 1, 0)).normalize().multiplyScalar(CONSTANTS.MOVEMENT_SPEED);
+		let right = new THREE.Vector3();
+		right.crossVectors(worldDirection, new THREE.Vector3(0, 1, 0)).normalize().multiplyScalar(CONSTANTS.MOVEMENT_SPEED);
 
-		let forward = new THREE.Vector3();
-		forward.crossVectors(strafe, new THREE.Vector3(0, 1, 0)).normalize().multiplyScalar(CONSTANTS.MOVEMENT_SPEED);
+		let backward = new THREE.Vector3();
+		backward.crossVectors(right, new THREE.Vector3(0, 1, 0)).normalize().multiplyScalar(CONSTANTS.MOVEMENT_SPEED);
+
+		let forward = backward.clone().multiplyScalar(-1);
+		let left = right.clone().multiplyScalar(-1);
 
 		if(!this.jumping && !this.falling) {
 
 			this.movingVector = new THREE.Vector3(0, 0, 0);
 
-			if(this.moveForward) {
-				this.movingVector.sub(forward);
-			}
-
-			if(this.moveLeft) {
-				this.movingVector.sub(strafe);
-			}
-
-			if(this.moveBackward) {
+			if(this.moveForward && this.movingCollision(scene, forward.clone())) {
 				this.movingVector.add(forward);
 			}
 
-			if(this.moveRight) {
-				this.movingVector.add(strafe);
+			if(this.moveLeft && this.movingCollision(scene, left.clone())) {
+				this.movingVector.add(left);
+			}
+
+			if(this.moveBackward && this.movingCollision(scene, backward.clone())) {
+				this.movingVector.add(backward);
+			}
+
+			if(this.moveRight && this.movingCollision(scene, right.clone())) {
+				this.movingVector.add(right);
 			}
 
 		}
@@ -115,6 +118,39 @@ Shooter.Entities.Player = class {
 
 			}
 		}
+	}
+
+	movingCollision(scene, direction) {
+
+		direction.normalize();
+
+		let ray = new THREE.Raycaster(this.camera.position.clone(), direction);
+		let collisionResults = ray.intersectObjects(scene.children);
+
+		let flag1 = !collisionResults.length || (collisionResults.length > 0 && collisionResults[0].distance > 2);
+
+		let norm = new THREE.Vector3();
+		norm.crossVectors(direction, new THREE.Vector3(0, 1, 0)).normalize();
+
+		let right = new THREE.Vector3();
+		right.add(norm).add(this.camera.position.clone());
+
+		norm.multiplyScalar(-1);
+
+		let left = new THREE.Vector3();
+		left.add(norm).add(this.camera.position.clone());
+
+		ray = new THREE.Raycaster(right, direction);
+		collisionResults = ray.intersectObjects(scene.children);
+
+		let flag2 = !collisionResults.length || (collisionResults.length > 0 && collisionResults[0].distance > 2);
+
+		ray = new THREE.Raycaster(left, direction);
+		collisionResults = ray.intersectObjects(scene.children);
+
+		let flag3 = !collisionResults.length || (collisionResults.length > 0 && collisionResults[0].distance > 2);
+
+		return flag1 && flag2 && flag3;
 	}
 
 	gravitation(scene) {
