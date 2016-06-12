@@ -7,6 +7,7 @@ import AbstractBuilder from './Shooter.Entities.Builders.AbstractBuilder/Shooter
 import Block from '../Shooter.Entities.Block.js';
 import Blank from '../Shooter.Entities.Blank.js';
 import Window from '../Shooter.Entities.Window.js';
+import Door from '../Shooter.Entities.Door.js';
 
 import Loader from '../../Shooter.Graphics/Shooter.Graphics.Loader.js';
 
@@ -251,20 +252,11 @@ Shooter.Entities.Builders.LargeHouseBuilder = class extends AbstractBuilder {
 
 	buildDoors() {
 
-		let geometry, material, mesh;
+		let door = Door.create(5.7, 8);
 
-		let door_texture = new THREE.Texture();
+		door.position.set(27.2, 3, 0.01);
 
-		door_texture.image = Loader.getImage('door');
-		door_texture.needsUpdate = true;
-
-		geometry = new THREE.PlaneGeometry(5.7, 8);
-		material = new THREE.MeshBasicMaterial({ map: door_texture, overdraw: true });
-		mesh = new THREE.Mesh(geometry, material);
-
-		mesh.position.set(27.2, 3, 0.01);
-
-		this.instance.add(mesh);
+		this.instance.add(door);
 	}
 
 	buildStuff() {
