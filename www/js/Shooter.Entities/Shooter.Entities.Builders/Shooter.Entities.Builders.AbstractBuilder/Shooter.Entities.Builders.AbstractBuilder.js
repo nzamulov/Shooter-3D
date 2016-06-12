@@ -67,6 +67,12 @@ Shooter.Entities.Builders.AbstractBuilder = class {
 		        new THREE.Vector2( ( v2.z + offset.z ) / range.z , ( v2.y + offset.y ) / range.y ),
 		        new THREE.Vector2( ( v3.z + offset.z ) / range.z , ( v3.y + offset.y ) / range.y )
 		      ]);
+	      } else if(v1.y === v2.y && v2.y === v3.y) {
+			  geometry.faceVertexUvs[0].push([
+		        new THREE.Vector2( ( v1.x + offset.x ) / range.x , ( v1.z + offset.z ) / range.z ),
+		        new THREE.Vector2( ( v2.x + offset.x ) / range.x , ( v2.z + offset.z ) / range.z ),
+		        new THREE.Vector2( ( v3.x + offset.x ) / range.x , ( v3.z + offset.z ) / range.z )
+		      ]);
 	      } else {
 		      geometry.faceVertexUvs[0].push([
 		        new THREE.Vector2( ( v1.x + offset.x ) / range.x , ( v1.y + offset.y ) / range.y ),
