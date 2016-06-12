@@ -54,6 +54,34 @@ Shooter.Game = class {
 
 window.onload = () => {
 
+	let canvas = document.getElementById('aim');
+	let context = canvas.getContext('2d');
+
+	canvas.width = 20;
+	canvas.height = 20;
+
+	context.lineWidth = "2";
+
+	context.beginPath();
+	context.moveTo(10, 0);
+	context.lineTo(10, 8);
+	context.stroke();
+	context.beginPath();
+	context.moveTo(0, 10);
+	context.lineTo(8, 10);
+	context.stroke();
+	context.beginPath();
+	context.moveTo(20, 10);
+	context.lineTo(12, 10);
+	context.stroke();
+	context.beginPath();
+	context.moveTo(10, 20);
+	context.lineTo(10, 12);
+	context.stroke();
+
+
+
+
 	/* LOCK THE POINTER */
 	requestPointerLock();
 
