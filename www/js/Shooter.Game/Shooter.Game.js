@@ -58,13 +58,22 @@ window.onload = () => {
 	requestPointerLock();
 
 	let console = document.getElementById('console');
+	let pointLocker = document.getElementById('pointLocker');
+	let circle = document.getElementById('circle');
+
+	circle.addEventListener('click', () => {
+
+		pointLocker.style.display = 'none';
+
+		/* START GAME */
+		const __instance = new Shooter.Game();
+
+	});
 
 	Loader.loadImages(console, () => {
 		
 		console.style.display = 'none';
-
-		/* START GAME */
-		const __instance = new Shooter.Game();
+		pointLocker.style.display = 'block';
 
 	});
 }
