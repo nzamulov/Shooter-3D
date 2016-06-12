@@ -57,8 +57,12 @@ window.onload = () => {
 	/* LOCK THE POINTER */
 	requestPointerLock();
 
-	Loader.loadImages(() => {
+	let console = document.getElementById('console');
+
+	Loader.loadImages(console, () => {
 		
+		console.style.display = 'none';
+
 		/* START GAME */
 		const __instance = new Shooter.Game();
 

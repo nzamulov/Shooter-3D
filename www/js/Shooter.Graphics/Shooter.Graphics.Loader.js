@@ -10,7 +10,7 @@ Shooter.Graphics.Loader = class {
 		return images[name];
 	}
 
-	static loadImages(callback) {
+	static loadImages(console, callback) {
 
 		let loader = new THREE.ImageLoader();
 
@@ -19,8 +19,14 @@ Shooter.Graphics.Loader = class {
 			return new Promise((resolve, reject) => {
 
 				loader.load(path, (image) => {
-					console.log(path + " was loaded.");
+
+					let note = document.createElement('div');
+					note.innerHTML = ">> " + path + " was loaded.";
+
+					console.appendChild(note);
+
 					images[path.substr(4, path.length - 8)] = image;
+
 					resolve();
 				});
 
