@@ -42,7 +42,7 @@ Shooter.Entities.Builders.LargeHouseBuilder = class extends AbstractBuilder {
 
 		let block_texture = new THREE.Texture();
 
-		block_texture.image = Loader.getImage('tower');
+		block_texture.image = Loader.getImage('block');
 		block_texture.needsUpdate = true;
 		block_texture.wrapS = THREE.RepeatWrapping;
 		block_texture.wrapT = THREE.RepeatWrapping;
