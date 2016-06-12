@@ -47,26 +47,28 @@ Shooter.Entities.Player = class {
 
 			this.movingVector = new THREE.Vector3(0, 0, 0);
 
-			if(this.moveForward && this.movingCollision(scene, forward.clone())) {
+			if(this.moveForward) {
 				this.movingVector.add(forward);
 			}
 
-			if(this.moveLeft && this.movingCollision(scene, left.clone())) {
+			if(this.moveLeft) {
 				this.movingVector.add(left);
 			}
 
-			if(this.moveBackward && this.movingCollision(scene, backward.clone())) {
+			if(this.moveBackward) {
 				this.movingVector.add(backward);
 			}
 
-			if(this.moveRight && this.movingCollision(scene, right.clone())) {
+			if(this.moveRight) {
 				this.movingVector.add(right);
 			}
 
 		}
 
-		this.camera.position.x += this.movingVector.x;
-		this.camera.position.z += this.movingVector.z;
+		if(this.movingCollision(scene, this.movingVector.clone())) {
+			this.camera.position.x += this.movingVector.x;
+			this.camera.position.z += this.movingVector.z;
+		}
 
 		this.gravitation(scene);
 
