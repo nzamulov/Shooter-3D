@@ -78,8 +78,8 @@ Shooter.Entities.World = class {
 		this.scene.add(box);
 
 		box = Box.create();
-		box.position.set(-28.5, 2, 83.5);
-		box.rotation.set(Math.PI / 2, 0, 0);
+		box.position.set(-28.5, 2.1, 83.6);
+		box.rotation.set(Math.PI / 4, 0, 0);
 		this.scene.add(box);
 
 		/* ------------------ */
