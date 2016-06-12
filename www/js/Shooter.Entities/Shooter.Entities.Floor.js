@@ -17,8 +17,7 @@ Shooter.Entities.Floor = class {
 		floor_texture.repeat.set(100, 100);
 
 		let geometry = new THREE.PlaneGeometry(3000, 3000, 40, 40);
-		let material = new THREE.MeshBasicMaterial({ map: floor_texture, overdraw: true });
-		material.side = THREE.DoubleSide;
+		let material = new THREE.MeshBasicMaterial({ map: floor_texture, overdraw: true, side: THREE.BackSide });
 		let instance = new THREE.Mesh(geometry, material);
 
 		return instance;
