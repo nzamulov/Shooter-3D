@@ -121,11 +121,9 @@ Shooter.Entities.World = class {
 		/* SKY SPHERE */
 
 		let sky_texture = new THREE.Texture();
-
-		Loader.instance.getImage('img/skysphere.jpg', (image) => {
-			sky_texture.image = image;
-			sky_texture.needsUpdate = true;
-		});
+		
+		sky_texture.image = Loader.getImage('skysphere');
+		sky_texture.needsUpdate = true;
 
 		let geometry = new THREE.SphereGeometry(2000, 32, 32);
 		let material = new THREE.MeshBasicMaterial({ map: sky_texture, overdraw: true });
@@ -133,6 +131,7 @@ Shooter.Entities.World = class {
 		let sky = new THREE.Mesh(geometry, material);
 
 		this.scene.add(sky);
+
 		/* ---------- */
 
 

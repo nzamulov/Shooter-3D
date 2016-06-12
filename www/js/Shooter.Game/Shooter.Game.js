@@ -10,6 +10,8 @@ import WindowController from '../Shooter.Controllers/Shooter.Controllers.WindowC
 import Renderer from '../Shooter.Graphics/Shooter.Graphics.Renderer.js';
 import World from '../Shooter.Entities/Shooter.Entities.World.js';
 
+import Loader from '../Shooter.Graphics/Shooter.Graphics.Loader.js';
+
 Shooter.Game = class {
 
 	constructor() {
@@ -55,6 +57,10 @@ window.onload = () => {
 	/* LOCK THE POINTER */
 	requestPointerLock();
 
-	/* START GAME */
-	const __instance = new Shooter.Game();
+	Loader.loadImages(() => {
+		
+		/* START GAME */
+		const __instance = new Shooter.Game();
+
+	});
 }

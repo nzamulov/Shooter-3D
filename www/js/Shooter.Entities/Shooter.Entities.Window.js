@@ -10,10 +10,8 @@ Shooter.Entities.Window = class {
 
 		let window_texture = new THREE.Texture();
 
-		Loader.instance.getImage('img/window.jpg', (image) => {
-			window_texture.image = image;
-			window_texture.needsUpdate = true;
-		});
+		window_texture.image = Loader.getImage('window');
+		window_texture.needsUpdate = true;
 
 		let geometry = new THREE.PlaneGeometry(4, 4);
 		let material = new THREE.MeshBasicMaterial({ map: window_texture, overdraw: true });

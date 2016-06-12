@@ -13,11 +13,9 @@ Shooter.Entities.Box = class {
 		geometry = new THREE.BoxGeometry(3, 3, 3);
 
 		let box_texture = new THREE.Texture();
-
-		Loader.instance.getImage('img/box2.jpg', (image) => {
-			box_texture.image = image;
-			box_texture.needsUpdate = true;
-		});
+		
+		box_texture.image = Loader.getImage('box2');
+		box_texture.needsUpdate = true;
 
 		material = new THREE.MeshBasicMaterial({ map: box_texture, overdraw: true });
 		mesh = new THREE.Mesh(geometry, material);

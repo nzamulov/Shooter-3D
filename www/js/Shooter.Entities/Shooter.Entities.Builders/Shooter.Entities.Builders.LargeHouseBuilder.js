@@ -41,13 +41,11 @@ Shooter.Entities.Builders.LargeHouseBuilder = class extends AbstractBuilder {
 
 		let block_texture = new THREE.Texture();
 
-		Loader.instance.getImage('img/tower.jpg', (image) => {
-			block_texture.image = image;
-			block_texture.needsUpdate = true;
-			block_texture.wrapS = THREE.RepeatWrapping;
-			block_texture.wrapT = THREE.RepeatWrapping;
-			block_texture.repeat.set(10, 5);
-		});
+		block_texture.image = Loader.getImage('tower');
+		block_texture.needsUpdate = true;
+		block_texture.wrapS = THREE.RepeatWrapping;
+		block_texture.wrapT = THREE.RepeatWrapping;
+		block_texture.repeat.set(10, 5);
 
 		this.assignUVs(buildingBlocks);
 
@@ -237,13 +235,11 @@ Shooter.Entities.Builders.LargeHouseBuilder = class extends AbstractBuilder {
 
 		let blank_texture = new THREE.Texture();
 
-		Loader.instance.getImage('img/blank.jpg', (image) => {
-			blank_texture.image = image;
-			blank_texture.needsUpdate = true;
-			blank_texture.wrapS = THREE.RepeatWrapping;
-			blank_texture.wrapT = THREE.RepeatWrapping;
-			blank_texture.repeat.set(5, 5);
-		});
+		blank_texture.image = Loader.getImage('blank');
+		blank_texture.needsUpdate = true;
+		blank_texture.wrapS = THREE.RepeatWrapping;
+		blank_texture.wrapT = THREE.RepeatWrapping;
+		blank_texture.repeat.set(5, 5);
 
 		this.assignUVs(buildingBlanks);
 
@@ -259,10 +255,8 @@ Shooter.Entities.Builders.LargeHouseBuilder = class extends AbstractBuilder {
 
 		let door_texture = new THREE.Texture();
 
-		Loader.instance.getImage('img/door.jpg', (image) => {
-			door_texture.image = image;
-			door_texture.needsUpdate = true;
-		});
+		door_texture.image = Loader.getImage('door');
+		door_texture.needsUpdate = true;
 
 		geometry = new THREE.PlaneGeometry(5.7, 8);
 		material = new THREE.MeshBasicMaterial({ map: door_texture, overdraw: true });
@@ -291,10 +285,8 @@ Shooter.Entities.Builders.LargeHouseBuilder = class extends AbstractBuilder {
 
 		let textile_texture = new THREE.Texture();
 
-		Loader.instance.getImage('img/textile.jpg', (image) => {
-			textile_texture.image = image;
-			textile_texture.needsUpdate = true;
-		});
+		textile_texture.image = Loader.getImage('textile');
+		textile_texture.needsUpdate = true;
 
 		material = new THREE.MeshBasicMaterial({ map: textile_texture, overdraw: true });
 		material.side = THREE.DoubleSide;
@@ -317,10 +309,8 @@ Shooter.Entities.Builders.LargeHouseBuilder = class extends AbstractBuilder {
 
 		let tree_texture = new THREE.Texture();
 
-		Loader.instance.getImage('img/tree.jpg', (image) => {
-			tree_texture.image = image;
-			tree_texture.needsUpdate = true;
-		});
+		tree_texture.image = Loader.getImage('tree');
+		tree_texture.needsUpdate = true;
 
 		geometry = new THREE.CylinderGeometry(0.05, 0.05, 5);
 		material = new THREE.MeshBasicMaterial({ map: tree_texture, overdraw: true });
@@ -362,10 +352,8 @@ Shooter.Entities.Builders.LargeHouseBuilder = class extends AbstractBuilder {
 
 		let box_texture = new THREE.Texture();
 
-		Loader.instance.getImage('img/box1.jpg', (image) => {
-			box_texture.image = image;
-			box_texture.needsUpdate = true;
-		});
+		box_texture.image = Loader.getImage('box1');
+		box_texture.needsUpdate = true;
 
 		geometry = new THREE.BoxGeometry(2.5, 1.5, 2);
 		material = new THREE.MeshBasicMaterial({ map: box_texture, overdraw: true });
