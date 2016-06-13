@@ -7,9 +7,15 @@ import CONSTANTS from '../Shooter.Constants/Shooter.Constants.js';
 import KeyboardController from '../Shooter.Controllers/Shooter.Controllers.KeyboardController.js';
 import MouseController from '../Shooter.Controllers/Shooter.Controllers.MouseController.js';
 
+import Bullet from './Shooter.Entities.Bullet.js';
+
 Shooter.Entities.Player = class {
 
 	constructor(scene) {
+
+		this.bullets = [];
+
+		this.scene = scene;
 
 		this.moveForward = false;
 		this.moveLeft = false;
@@ -31,6 +37,10 @@ Shooter.Entities.Player = class {
 	}
 
 	update(scene) {
+
+		for(let i = 0; i < this.bullets.length; ++i) {
+			this.bullets[i].update();
+		}
 
 		let worldDirection = this.camera.getWorldDirection().normalize().multiplyScalar(CONSTANTS.MOVEMENT_SPEED);
 		
@@ -166,6 +176,13 @@ Shooter.Entities.Player = class {
 				this.falling = true;
 			}
 		}
+	}
+
+	createBuller() {
+
+		let bullet = new Bullet(this.camera.position.clone(), this.camera.rotation.clone(), this.camera.getWorldDirection());
+		this.bullets.push(bullet);
+		this.scene.add(bullet.getInstance());
 	}
 
 	getCamera() {

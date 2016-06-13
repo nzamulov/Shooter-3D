@@ -52,9 +52,14 @@ Shooter.Controllers.MouseController = class extends AbstractController {
 
 		}
 
+		this.onClick = (event) => {
+			this.player.createBuller();
+		}
+
 		let self = this;
 
 		document.addEventListener('mousemove', (event) => { self.onMouseMove(event); }, false);
+		document.addEventListener('click', (event) => { self.onClick(event); }, false);
 	}
 
 	getObject() {
