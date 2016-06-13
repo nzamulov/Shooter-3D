@@ -71,6 +71,12 @@ Shooter.Constants = {
 		HEIGHT_SEGMENTS: 32
 	},
 
+	BOUNDING_BOX: {
+		WIDTH: 1000,
+		HEIGHT: 250,
+		DEPTH: 1000
+	},
+
 	GREEN_POINT: {
 		X: -40,
 		Z: 80

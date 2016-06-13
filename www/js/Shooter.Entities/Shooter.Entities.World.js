@@ -124,7 +124,7 @@ Shooter.Entities.World = class {
 
 		/* WORLD BOUNDING BOX */
 
-		box = new THREE.BoxGeometry(1000, 250, 1000);
+		box = new THREE.BoxGeometry(CONSTANTS.BOUNDING_BOX.WIDTH, CONSTANTS.BOUNDING_BOX.HEIGHT, CONSTANTS.BOUNDING_BOX.DEPTH);
 		material = new THREE.MeshNormalMaterial({ transparent: true, opacity: 0.0, side: THREE.BackSide });
 		let mesh = new THREE.Mesh(box, material);
 
