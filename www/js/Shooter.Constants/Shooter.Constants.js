@@ -65,6 +65,12 @@ Shooter.Constants = {
 		DEPTH: 30
 	},
 
+	SKYSPHERE: {
+		RADIUS: 4000,
+		WIDTH_SEGMENTS: 32,
+		HEIGHT_SEGMENTS: 32
+	},
+
 	GREEN_POINT: {
 		X: -40,
 		Z: 80

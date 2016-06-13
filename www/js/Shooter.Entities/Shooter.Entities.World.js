@@ -114,7 +114,7 @@ Shooter.Entities.World = class {
 		sky_texture.image = Loader.getImage('skysphere');
 		sky_texture.needsUpdate = true;
 
-		let geometry = new THREE.SphereGeometry(2000, 32, 32);
+		let geometry = new THREE.SphereGeometry(CONSTANTS.SKYSPHERE.RADIUS, CONSTANTS.SKYSPHERE.WIDTH_SEGMENTS, CONSTANTS.SKYSPHERE.HEIGHT_SEGMENTS);
 		let material = new THREE.MeshBasicMaterial({ map: sky_texture, overdraw: true, side: THREE.BackSide });
 		let sky = new THREE.Mesh(geometry, material);
 
