@@ -50,8 +50,8 @@ Shooter.Entities.Player = class {
 		let backward = new THREE.Vector3();
 		backward.crossVectors(right, new THREE.Vector3(0, 1, 0)).normalize().multiplyScalar(CONSTANTS.MOVEMENT_SPEED);
 
-		let forward = backward.clone().multiplyScalar(-1);
-		let left = right.clone().multiplyScalar(-1);
+		let forward = backward.clone().negate();
+		let left = right.clone().negate();
 
 		if(!this.jumping && !this.falling) {
 
