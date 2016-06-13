@@ -57,6 +57,13 @@ Shooter.Constants = {
 		HEIGHT_SEGMENTS: 40
 	},
 
+	BULLET: {
+		RADIUS: 0.05,
+		HEIGHT: 2,
+		RADIUS_SEGMENTS: 32,
+		SPEED: 4
+	},
+
 	/* RESPAWN */
 
 	GREEN_POINT: {
