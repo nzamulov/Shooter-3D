@@ -147,7 +147,7 @@ Shooter.Entities.Player = class {
 		let right = new THREE.Vector3();
 		right.add(norm).add(this.camera.position.clone());
 
-		norm.multiplyScalar(-1);
+		norm.negate();
 
 		let left = new THREE.Vector3();
 		left.add(norm).add(this.camera.position.clone());
