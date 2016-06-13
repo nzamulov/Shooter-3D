@@ -2,6 +2,8 @@
 
 Shooter.namespace("Shooter.Entities");
 
+import CONSTANTS from '../Shooter.Constants/Shooter.Constants.js';
+
 import Loader from '../Shooter.Graphics/Shooter.Graphics.Loader.js';
 
 Shooter.Entities.Floor = class {
@@ -16,7 +18,7 @@ Shooter.Entities.Floor = class {
 		floor_texture.wrapT = THREE.RepeatWrapping;
 		floor_texture.repeat.set(100, 100);
 
-		let geometry = new THREE.PlaneGeometry(3000, 3000, 40, 40);
+		let geometry = new THREE.PlaneGeometry(CONSTANTS.FLOOR.WIDTH, CONSTANTS.FLOOR.HEIGHT, CONSTANTS.FLOOR.WIDTH_SEGMENTS, CONSTANTS.FLOOR.HEIGHT_SEGMENTS);
 		let material = new THREE.MeshBasicMaterial({ map: floor_texture, overdraw: true, side: THREE.BackSide });
 		let instance = new THREE.Mesh(geometry, material);
 

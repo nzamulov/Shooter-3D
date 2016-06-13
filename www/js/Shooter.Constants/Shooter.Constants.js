@@ -50,6 +50,13 @@ Shooter.Constants = {
 
 	/* ------ */
 
+	FLOOR: {
+		WIDTH: 3000,
+		HEIGHT: 3000,
+		WIDTH_SEGMENTS: 40,
+		HEIGHT_SEGMENTS: 40
+	},
+
 	/* RESPAWN */
 
 	GREEN_POINT: {
