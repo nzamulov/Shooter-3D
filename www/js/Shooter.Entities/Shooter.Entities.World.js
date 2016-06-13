@@ -102,7 +102,6 @@ Shooter.Entities.World = class {
 		/* ----------------- */
 
 		let floor = Floor.create();
-		floor.position.set(-500, 0, -500);
 		floor.rotation.set(Math.PI / 2, 0, 0);
 		this.scene.add(floor);
 
