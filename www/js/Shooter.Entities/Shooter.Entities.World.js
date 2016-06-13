@@ -102,7 +102,7 @@ Shooter.Entities.World = class {
 		/* ----------------- */
 
 		let floor = Floor.create();
-		floor.position.set(-1000, 0, -1000);
+		floor.position.set(-500, 0, -500);
 		floor.rotation.set(Math.PI / 2, 0, 0);
 		this.scene.add(floor);
 
@@ -120,6 +120,16 @@ Shooter.Entities.World = class {
 		this.scene.add(sky);
 
 		/* ---------- */
+
+		/* WORLD BOUNDING BOX */
+
+		box = new THREE.BoxGeometry(1000, 250, 1000);
+		material = new THREE.MeshNormalMaterial({ transparent: true, opacity: 0.0, side: THREE.BackSide });
+		let mesh = new THREE.Mesh(box, material);
+
+		this.scene.add(mesh);
+
+		/* ------------------ */
 
 		console.log("> Shooter.Entities.World > constructor > ready");
 	}
