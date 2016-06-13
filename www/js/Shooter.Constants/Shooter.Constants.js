@@ -34,11 +34,19 @@ Shooter.Constants = {
 
 	/* -------- */
 
+	/* PLAYER */
+
+	PLAYER: {
+		HEIGHT: 3,
+		JUMP_STRENGTH: 0.5,
+		MOVEMENT_SPEED: 0.25
+	},
+
+	/* ------ */
+
 	/* PHYSIC */
 
-	JUMP_STRENGTH: 0.5,
 	GRAVITY: 50,
-	MOVEMENT_SPEED: 0.25,
 
 	/* ------ */
 

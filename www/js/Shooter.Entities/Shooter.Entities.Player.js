@@ -27,7 +27,7 @@ Shooter.Entities.Player = class {
 		this.jumpingSaturation = Math.PI / 2;
 
 		this.camera = new THREE.PerspectiveCamera(CONSTANTS.CAMERA.FRUSTUM, CONSTANTS.CAMERA.ASPECT_RATIO, CONSTANTS.CAMERA.NEAR, CONSTANTS.CAMERA.FAR);
-		this.camera.position.set(CONSTANTS.RED_POINT.X, 3, CONSTANTS.RED_POINT.Z);
+		this.camera.position.set(CONSTANTS.RED_POINT.X, CONSTANTS.PLAYER.HEIGHT, CONSTANTS.RED_POINT.Z);
 		this.camera.lookAt(0, 0, -1);
 
 		this.keyboardController = KeyboardController.create(this);
@@ -42,13 +42,13 @@ Shooter.Entities.Player = class {
 			this.bullets[i].update();
 		}
 
-		let worldDirection = this.camera.getWorldDirection().normalize().multiplyScalar(CONSTANTS.MOVEMENT_SPEED);
+		let worldDirection = this.camera.getWorldDirection().normalize().multiplyScalar(CONSTANTS.PLAYER.MOVEMENT_SPEED);
 		
 		let right = new THREE.Vector3();
-		right.crossVectors(worldDirection, new THREE.Vector3(0, 1, 0)).normalize().multiplyScalar(CONSTANTS.MOVEMENT_SPEED);
+		right.crossVectors(worldDirection, new THREE.Vector3(0, 1, 0)).normalize().multiplyScalar(CONSTANTS.PLAYER.MOVEMENT_SPEED);
 
 		let backward = new THREE.Vector3();
-		backward.crossVectors(right, new THREE.Vector3(0, 1, 0)).normalize().multiplyScalar(CONSTANTS.MOVEMENT_SPEED);
+		backward.crossVectors(right, new THREE.Vector3(0, 1, 0)).normalize().multiplyScalar(CONSTANTS.PLAYER.MOVEMENT_SPEED);
 
 		let forward = backward.clone().negate();
 		let left = right.clone().negate();
@@ -100,7 +100,7 @@ Shooter.Entities.Player = class {
 
 			} else {
 
-				let addHeight = CONSTANTS.JUMP_STRENGTH * Math.sin(this.jumpingSaturation);
+				let addHeight = CONSTANTS.PLAYER.JUMP_STRENGTH * Math.sin(this.jumpingSaturation);
 				this.camera.position.y += addHeight;
 				this.jumpingSaturation -= Math.PI / CONSTANTS.GRAVITY;
 
@@ -113,16 +113,16 @@ Shooter.Entities.Player = class {
 			let ray = new THREE.Raycaster(originPoint, new THREE.Vector3(0, -1, 0));
 			let collisionResults = ray.intersectObjects(scene.children);
 
-			if(collisionResults.length > 0 && collisionResults[0].distance < 3) {
+			if(collisionResults.length > 0 && collisionResults[0].distance < CONSTANTS.PLAYER.HEIGHT) {
 
 				this.falling = false;
 				this.jumpingSaturation = Math.PI / 2;
 
-				this.camera.position.y = Math.max(this.camera.position.y, 3);
+				this.camera.position.y = Math.max(this.camera.position.y, CONSTANTS.PLAYER.HEIGHT);
 
 			} else {
 
-				let addHeight = CONSTANTS.JUMP_STRENGTH * Math.sin(this.jumpingSaturation);
+				let addHeight = CONSTANTS.PLAYER.JUMP_STRENGTH * Math.sin(this.jumpingSaturation);
 				this.camera.position.y -= addHeight;
 				this.jumpingSaturation += Math.PI / CONSTANTS.GRAVITY;
 
@@ -172,7 +172,7 @@ Shooter.Entities.Player = class {
 			let ray = new THREE.Raycaster(this.camera.position.clone(), new THREE.Vector3(0, -1, 0));
 			let collisionResults = ray.intersectObjects(scene.children);
 
-			if(!collisionResults.length || (collisionResults.length > 0 && (collisionResults[0].distance - 3) > 0.01)) {
+			if(!collisionResults.length || (collisionResults.length > 0 && (collisionResults[0].distance - CONSTANTS.PLAYER.HEIGHT) > 0.01)) {
 				this.falling = true;
 			}
 		}
