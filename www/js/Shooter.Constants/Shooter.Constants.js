@@ -2,18 +2,12 @@
 
 Shooter.Constants = {
 
-	/* CAMERA */
-
 	CAMERA: {
 		FRUSTUM: 45,
 		ASPECT_RATIO: window.innerWidth / window.innerHeight,
 		NEAR: 1,
 		FAR: 10000
 	},
-
-	/* ------ */
-
-	/* CONTROLS */
 
 	KEYS: {
 
@@ -30,11 +24,7 @@ Shooter.Constants = {
 		WHITESPACE: 32
 	},
 
-	CURSOR_SPEED: 0.002,
-
-	/* -------- */
-
-	/* PLAYER */
+	CURSOR_SPEED: 0.002,	
 
 	PLAYER: {
 		HEIGHT: 3,
@@ -42,13 +32,7 @@ Shooter.Constants = {
 		MOVEMENT_SPEED: 0.25
 	},
 
-	/* ------ */
-
-	/* PHYSIC */
-
-	GRAVITY: 50,
-
-	/* ------ */
+	GRAVITY: 50,	
 
 	FLOOR: {
 		WIDTH: 3000,
@@ -69,7 +53,17 @@ Shooter.Constants = {
 		HEIGHT: 4
 	},
 
-	/* RESPAWN */
+	LARGE_HOUSE: {
+		WIDTH: 54,
+		HEIGHT: 20,
+		DEPTH: 40
+	},
+
+	MEDIUM_HOUSE: {
+		WIDTH: 30,
+		HEIGHT: 20,
+		DEPTH: 30
+	},
 
 	GREEN_POINT: {
 		X: -40,
@@ -80,8 +74,6 @@ Shooter.Constants = {
 		X: 234,
 		Z: -120
 	}
-
-	/* ------- */
 };
 
 export default Shooter.Constants;

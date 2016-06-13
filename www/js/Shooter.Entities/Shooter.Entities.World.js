@@ -2,6 +2,8 @@
 
 Shooter.namespace("Shooter.Entities");
 
+import CONSTANTS from '../Shooter.Constants/Shooter.Constants.js';
+
 import Player from './Shooter.Entities.Player.js';
 import Floor from './Shooter.Entities.Floor.js';
 
@@ -24,14 +26,14 @@ Shooter.Entities.World = class {
 		this.largeHouseBuilder = new LargeHouseBuilder();
 		this.mediumHouseBuilder = new MediumHouseBuilder();
 
-		this.createLargeHouse(new THREE.Vector3(30, 10, -40));
-		this.createLargeHouse(new THREE.Vector3(180, 10, -100), new THREE.Vector3(0, Math.PI / 2, 0));
+		this.createHouse("Large", new THREE.Vector3(30, 10, -40));
+		this.createHouse("Large", new THREE.Vector3(180, 10, -100), new THREE.Vector3(0, Math.PI / 2, 0));
 
-		this.createMediumHouse(new THREE.Vector3(85, 10, -35));
-		this.createMediumHouse(new THREE.Vector3(135, 10, -35), new THREE.Vector3(0, Math.PI / 2, 0));
-		this.createMediumHouse(new THREE.Vector3(30, 10, 55), new THREE.Vector3(0, -Math.PI / 2, 0));
-		this.createMediumHouse(new THREE.Vector3(70, 10, 55));
-		this.createMediumHouse(new THREE.Vector3(110, 10, 55), new THREE.Vector3(0, Math.PI, 0));
+		this.createHouse("Medium", new THREE.Vector3(85, 10, -35));
+		this.createHouse("Medium", new THREE.Vector3(135, 10, -35), new THREE.Vector3(0, Math.PI / 2, 0));
+		this.createHouse("Medium", new THREE.Vector3(30, 10, 55), new THREE.Vector3(0, -Math.PI / 2, 0));
+		this.createHouse("Medium", new THREE.Vector3(70, 10, 55));
+		this.createHouse("Medium", new THREE.Vector3(110, 10, 55), new THREE.Vector3(0, Math.PI, 0));
 
 		let box = Box.create();
 		box.position.set(18, 1.5, 38.5);
@@ -133,34 +135,26 @@ Shooter.Entities.World = class {
 		console.log("> Shooter.Entities.World > constructor > ready");
 	}
 
-	createLargeHouse(position, rotation) {
+	createHouse(type, position, rotation) {
+
+		let building;
 
 		position = position || new THREE.Vector3(0, 0, 0);
 		rotation = rotation || new THREE.Vector3(0, 0, 0);
 
-		let building = this.largeHouseBuilder.build(position, rotation);
-		this.scene.add(building);
+		if("Large" === type) {
 
-		building = new THREE.BoxGeometry(54, 20, 40);
+			building = this.largeHouseBuilder.build(position, rotation);
+			this.scene.add(building);
+			building = new THREE.BoxGeometry(CONSTANTS.LARGE_HOUSE.WIDTH, CONSTANTS.LARGE_HOUSE.HEIGHT, CONSTANTS.LARGE_HOUSE.DEPTH);
 
-		let material = new THREE.MeshNormalMaterial({ transparent: true, opacity: 0.0 });
-		let mesh = new THREE.Mesh(building, material);
+		} else {
 
-		mesh.position.set(position.x, position.y, position.z);
-		mesh.rotation.set(rotation.x, rotation.y, rotation.z);
+			building = this.mediumHouseBuilder.build(position, rotation);
+			this.scene.add(building);
+			building = new THREE.BoxGeometry(CONSTANTS.MEDIUM_HOUSE.WIDTH, CONSTANTS.MEDIUM_HOUSE.HEIGHT, CONSTANTS.MEDIUM_HOUSE.DEPTH);
 
-		this.scene.add(mesh);
-	}
-
-	createMediumHouse(position, rotation) {
-
-		position = position || new THREE.Vector3(0, 0, 0);
-		rotation = rotation || new THREE.Vector3(0, 0, 0);
-
-		let building = this.mediumHouseBuilder.build(position, rotation);
-		this.scene.add(building);
-
-		building = new THREE.BoxGeometry(30, 20, 30);
+		}
 
 		let material = new THREE.MeshNormalMaterial({ transparent: true, opacity: 0.0 });
 		let mesh = new THREE.Mesh(building, material);
