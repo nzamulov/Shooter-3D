@@ -64,6 +64,11 @@ Shooter.Constants = {
 		SPEED: 4
 	},
 
+	WINDOW: {
+		WIDTH: 4,
+		HEIGHT: 4
+	},
+
 	/* RESPAWN */
 
 	GREEN_POINT: {
