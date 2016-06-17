@@ -2,6 +2,8 @@
 
 Shooter.namespace("Shooter.Graphics");
 
+import CONSOLE from '../Shooter.Utils/Shooter.Utils.Console.js';
+
 let images = { };
 
 Shooter.Graphics.Loader = class {
@@ -10,7 +12,7 @@ Shooter.Graphics.Loader = class {
 		return images[name];
 	}
 
-	static loadImages(console, callback) {
+	static loadImages(callback) {
 
 		let loader = new THREE.ImageLoader();
 
@@ -20,10 +22,7 @@ Shooter.Graphics.Loader = class {
 
 				loader.load(path, (image) => {
 
-					let note = document.createElement('div');
-					note.innerHTML = ">> " + path + " was loaded.";
-
-					console.appendChild(note);
+					CONSOLE.out(path + " was loaded.", 2);
 
 					images[path.substr(4, path.length - 8)] = image;
 

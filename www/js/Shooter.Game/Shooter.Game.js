@@ -2,6 +2,7 @@
 
 import namespace from '../namespace.js';
 
+import CONSOLE from '../Shooter.Utils/Shooter.Utils.Console.js';
 import requestAnimationFrame from '../Shooter.Utils/Shooter.Utils.requestAnimationFrame.js';
 import requestPointerLock from '../Shooter.Utils/Shooter.Utils.requestPointerLock.js';
 
@@ -54,6 +55,8 @@ Shooter.Game = class {
 
 window.onload = () => {
 
+	CONSOLE.out("Browser " + navigator.appName + " was detected.", 1);
+
 	let canvas = document.getElementById('aim');
 	let context = canvas.getContext('2d');
 
@@ -80,12 +83,9 @@ window.onload = () => {
 	context.stroke();
 
 
-
-
 	/* LOCK THE POINTER */
 	requestPointerLock();
 
-	let console = document.getElementById('console');
 	/*let pointLocker = document.getElementById('pointLocker');
 	let circle = document.getElementById('circle');
 
@@ -95,9 +95,13 @@ window.onload = () => {
 
 	});*/
 
-	Loader.loadImages(console, () => {
+	Loader.loadImages(() => {
 		
-		console.style.display = 'none';
+		CONSOLE.hide();
+
+		let gamePanel = document.getElementById('game-panel');
+
+		gamePanel.style.display = 'block';
 		//pointLocker.style.display = 'block';
 
 		/* START GAME */
