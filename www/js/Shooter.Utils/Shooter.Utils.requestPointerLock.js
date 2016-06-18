@@ -2,6 +2,8 @@
 
 Shooter.namespace("Shooter.Utils");
 
+import CONSOLE from './Shooter.Utils.Console.js';
+
 Shooter.Utils.requestPointerLock = () => {
 
 	let havePointerLock = 'pointerLockElement' in document || 
@@ -10,7 +12,7 @@ Shooter.Utils.requestPointerLock = () => {
 
 	if(havePointerLock) {
 
-		console.log("Shooter.Utils.requestPointerLock > Pointer Lock API was founded.");
+		CONSOLE.out("Pointer Lock API was founded.", 1);
 
 		let body = document.body;
 
@@ -27,9 +29,8 @@ Shooter.Utils.requestPointerLock = () => {
 		body.addEventListener('click', lockPointer, false);
 
 	} else {
-		console.log("Your browser doesn't support Pointer Lock API.");
+		CONSOLE.out("Your browser doesn't support Pointer Lock API.", 3);
 	}
-
 };
 
 export default Shooter.Utils.requestPointerLock;

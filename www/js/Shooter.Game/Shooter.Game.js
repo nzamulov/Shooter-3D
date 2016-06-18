@@ -50,7 +50,6 @@ Shooter.Game = class {
 		this.world.update();
 		this.renderer.render(this.world.getScene(), this.world.getCamera());
 	}
-
 };
 
 window.onload = () => {
