@@ -9,6 +9,12 @@ Shooter.Constants = {
 		FAR: 10000
 	},
 
+	MESSAGE: {
+		INFO: 1,
+		NOTICE: 2,
+		ERROR: 3
+	},
+
 	KEYS: {
 
 		W: 87,

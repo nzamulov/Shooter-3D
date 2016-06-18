@@ -2,7 +2,9 @@
 
 import namespace from '../namespace.js';
 
+import CONSTANTS from '../Shooter.Constants/Shooter.Constants.js';
 import CONSOLE from '../Shooter.Utils/Shooter.Utils.Console.js';
+
 import requestAnimationFrame from '../Shooter.Utils/Shooter.Utils.requestAnimationFrame.js';
 import requestPointerLock from '../Shooter.Utils/Shooter.Utils.requestPointerLock.js';
 
@@ -54,7 +56,7 @@ Shooter.Game = class {
 
 window.onload = () => {
 
-	CONSOLE.out("Browser " + navigator.appName + " was detected.", 1);
+	CONSOLE.out("Browser " + navigator.appName + " was detected.", CONSTANTS.MESSAGE.INFO);
 
 	let canvas = document.getElementById('aim');
 	let context = canvas.getContext('2d');

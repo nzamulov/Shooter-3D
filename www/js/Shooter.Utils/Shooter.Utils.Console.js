@@ -2,20 +2,22 @@
 
 Shooter.namespace("Shooter.Utils");
 
+import CONSTANTS from '../Shooter.Constants/Shooter.Constants.js';
+
 Shooter.Utils.Console = class {
 
 	static out(string, type) {
 
-		type = type || 1;
+		type = type || CONSTANTS.MESSAGE.INFO;
 
 		let console = document.getElementById('console');
 		let note = document.createElement('div');
 		
 		note.innerHTML = ">> " + string;
 
-		if(1 === type) {
+		if(CONSTANTS.MESSAGE.INFO === type) {
 			note.style.color = "hsl(45, 100%, 50%)";
-		} else if(2 === type) {
+		} else if(CONSTANTS.MESSAGE.NOTICE === type) {
 			note.style.color = "hsl(120, 100%, 50%)";
 		} else {
 			note.style.color = "hsl(0, 100%, 50%)";

@@ -2,6 +2,7 @@
 
 Shooter.namespace("Shooter.Graphics");
 
+import CONSTANTS from '../Shooter.Constants/Shooter.Constants.js';
 import CONSOLE from '../Shooter.Utils/Shooter.Utils.Console.js';
 
 let images = { };
@@ -22,7 +23,7 @@ Shooter.Graphics.Loader = class {
 
 				loader.load(path, (image) => {
 
-					CONSOLE.out(path + " was loaded.", 2);
+					CONSOLE.out(path + " was loaded.", CONSTANTS.MESSAGE.NOTICE);
 
 					images[path.substr(4, path.length - 8)] = image;
 
