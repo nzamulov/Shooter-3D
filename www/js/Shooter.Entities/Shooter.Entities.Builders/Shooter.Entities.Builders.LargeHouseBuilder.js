@@ -301,7 +301,7 @@ Shooter.Entities.Builders.LargeHouseBuilder = class extends AbstractBuilder {
 
 		let tree_texture = new THREE.Texture();
 
-		tree_texture.image = Loader.getImage('tree');
+		tree_texture.image = Loader.getImage('wood');
 		tree_texture.needsUpdate = true;
 
 		geometry = new THREE.CylinderGeometry(0.05, 0.05, 5);

@@ -34,16 +34,16 @@ Shooter.Graphics.Loader = class {
 
 		}
 
-		loadImage('img/blank.jpg')
-		.then(() => { return loadImage('img/box1.jpg'); })
-		.then(() => { return loadImage('img/box2.jpg'); })
-		.then(() => { return loadImage('img/door.jpg'); })
-		.then(() => { return loadImage('img/floor.jpg'); })
-		.then(() => { return loadImage('img/skysphere.jpg'); })
-		.then(() => { return loadImage('img/textile.jpg'); })
-		.then(() => { return loadImage('img/block.jpg'); })
-		.then(() => { return loadImage('img/tree.jpg'); })
-		.then(() => { return loadImage('img/window.jpg'); })
+		loadImage(CONSTANTS.IMAGES.BLANK)
+		.then(() => { return loadImage(CONSTANTS.IMAGES.BOX1); })
+		.then(() => { return loadImage(CONSTANTS.IMAGES.BOX2); })
+		.then(() => { return loadImage(CONSTANTS.IMAGES.DOOR); })
+		.then(() => { return loadImage(CONSTANTS.IMAGES.FLOOR); })
+		.then(() => { return loadImage(CONSTANTS.IMAGES.SKYSPHERE); })
+		.then(() => { return loadImage(CONSTANTS.IMAGES.TEXTILE); })
+		.then(() => { return loadImage(CONSTANTS.IMAGES.BLOCK); })
+		.then(() => { return loadImage(CONSTANTS.IMAGES.WOOD); })
+		.then(() => { return loadImage(CONSTANTS.IMAGES.WINDOW); })
 		.then(() => { callback(); });
 	}
 };

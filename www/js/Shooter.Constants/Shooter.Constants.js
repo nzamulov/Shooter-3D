@@ -15,6 +15,19 @@ Shooter.Constants = {
 		ERROR: 3
 	},
 
+	IMAGES: {
+		BLANK: 'img/blank.jpg',
+		BOX1: 'img/box1.jpg',
+		BOX2: 'img/box2.jpg',
+		DOOR: 'img/door.jpg',
+		FLOOR: 'img/floor.jpg',
+		SKYSPHERE: 'img/skysphere.jpg',
+		TEXTILE: 'img/textile.jpg',
+		BLOCK: 'img/block.jpg',
+		WOOD: 'img/wood.jpg',
+		WINDOW: 'img/window.jpg'
+	},
+
 	KEYS: {
 
 		W: 87,
