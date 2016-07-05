@@ -7,4 +7,154 @@ body {
 	margin: 0px;
 	overflow: hidden;
 	background-image: url(../img/background.png);
+	cursor: default;
+	color: white;
+}
+
+#console {
+	font-weight: bold;
+	color: skyblue;
+	display: none;
+}
+
+.btn {
+	height: 38px;
+	width: 50px;
+	border-radius: 5px;
+	text-align: center;
+	padding-top: 10px;
+	background: white;
+	color: black;
+	font-weight: bold;
+	font-family: Impact;
+	font-size: 25px;
+	box-shadow: 0px 0px 10px 5px #08E8DE;
+	position: absolute;
+	left: 50%;
+}
+
+.text {
+	font-size: 30px;
+	font-weight: bold;
+	font-family: Impact;
+}
+
+.title {
+	margin-left: 60px;
+	margin-top: 40px;
+}
+
+.start {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+}
+
+.start-wrapper {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	left: 50%;
+	margin-left: -670px;
+	top: 50%;
+	margin-top: -350px;
+}
+
+.subtitle {
+	text-align: center;
+	position: absolute;
+}
+
+.moving {
+	height: 240px;
+	width: 300px;
+	left: 100px;
+	top: 100px;
+}
+
+.jumping {
+	height: 240px;
+	width: 500px;
+	top: 100px;
+	left: 400px;
+}
+
+.attack {
+	height: 240px;
+	width: 300px;
+	top: 100px;
+	left: 900px;
+}
+
+.mouse {
+	height: 150px;
+	width: 100px;
+	border-radius: 100px / 90px;
+	margin-left: -50px;
+	top: 60px;
+}
+
+.left-mouse-button {
+	height: 75px;
+	width: 50px;
+	background: red;
+	border-top-left-radius: 100px;
+	margin-top: -10px;
+	border-bottom: 1px solid black;
+	border-right: 1px solid black;
+}
+
+.right-mouse-button {
+	height: 75px;
+	width: 50px;
+	margin-left: 50px;
+	margin-top: -76px;
+	border-bottom: 1px solid black;
+}
+
+.footer {
+	height: 150px;
+	width: 1450px;
+	position: absolute;
+	top: 400px;
+}
+
+.note {
+	position: absolute;
+	left: 50%;
+	margin-left: -175px;
+}
+
+.circle {
+	height: 100px;
+	width: 100px;
+	border-radius: 90px;
+	border: 2px dashed white;
+	position: absolute;
+	left: 50%;
+	margin-left: -110px;
+	margin-top: 35px;
+}
+
+
+
+/* GAME SECTION */
+
+#game-panel {
+	display: none;
+}
+
+#aim {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -10px;
+	margin-top: -10px;
+}
+
+#weapon {
+	position: absolute;
+	bottom: 0%;
+	right: 5%;
+	margin-bottom: -5px;
 }

@@ -83,30 +83,32 @@ window.onload = () => {
 	context.lineTo(10, 12);
 	context.stroke();
 
+	let title = document.querySelector('.title');
+	let start = document.querySelector('.start');
+	let circle = document.querySelector('.circle');
 
-	/* LOCK THE POINTER */
-	requestPointerLock();
-
-	/*let pointLocker = document.getElementById('pointLocker');
-	let circle = document.getElementById('circle');
+	let console = document.getElementById('console');
 
 	circle.addEventListener('click', () => {
 
-		pointLocker.style.display = 'none';
+		/* LOCK THE POINTER */
+		requestPointerLock();
 
-	});*/
+		title.style.display = 'none';
+		start.style.display = 'none';
+		console.style.display = 'block';
 
-	Loader.loadImages(() => {
-		
-		CONSOLE.hide();
+		Loader.loadImages(() => {
+			
+			CONSOLE.hide();
 
-		let gamePanel = document.getElementById('game-panel');
+			let gamePanel = document.getElementById('game-panel');
 
-		gamePanel.style.display = 'block';
-		//pointLocker.style.display = 'block';
+			gamePanel.style.display = 'block';
 
-		/* START GAME */
-		const __instance = new Shooter.Game();
+			/* START GAME */
+			const __instance = new Shooter.Game();
 
+		});
 	});
 }
