@@ -17,7 +17,7 @@ body {
 	display: none;
 }
 
-.btn {
+.button {
 	height: 38px;
 	width: 50px;
 	border-radius: 5px;
@@ -33,6 +33,32 @@ body {
 	left: 50%;
 }
 
+.button-a {
+	margin-left: -81px;
+	top: 120px;
+}
+
+.button-d {
+	margin-left: 31px;
+	top: 120px;
+}
+
+.button-w {
+	margin-left: -25px;
+	top: 66px;
+}
+
+.button-s {
+	margin-left: -25px;
+	top: 120px;
+}
+
+.button-space {
+	margin-left: -150px;
+	top: 120px;
+	width: 300px;
+}
+
 .text {
 	font-size: 30px;
 	font-weight: bold;
@@ -42,6 +68,12 @@ body {
 .title {
 	margin-left: 60px;
 	margin-top: 40px;
+}
+
+.title-text {
+	font-style: italic;
+	font-size: 50px;
+	color: #BD8A42;
 }
 
 .start {
@@ -119,10 +151,14 @@ body {
 	top: 400px;
 }
 
-.note {
+.hint {
 	position: absolute;
 	left: 50%;
 	margin-left: -175px;
+}
+
+.hint-text {
+	font-style: italic;
 }
 
 .circle {
