@@ -19,7 +19,7 @@ Keyboard **'Space'** - jumping.
 By moving the mouse you can rotate player camera in needed direction and create a shoot
 by pressing left button of the mouse.
 
-<h3>Technologies: Three.js + JQuery + Webpack</h3>
+<h3>Technologies: Three.js + Webpack</h3>
 
 <p>Enjoy the game !</p>
 
