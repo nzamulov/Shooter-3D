@@ -11,12 +11,6 @@ body {
 	color: white;
 }
 
-#console {
-	font-weight: bold;
-	color: skyblue;
-	display: none;
-}
-
 .button {
 	height: 38px;
 	width: 50px;
@@ -169,7 +163,7 @@ body {
 	height: 100px;
 	width: 100px;
 	border-radius: 90px;
-	border: 2px dashed white;
+	border: 2px solid white;
 	position: absolute;
 	left: 50%;
 	margin-left: -110px;
@@ -189,11 +183,17 @@ body {
 
 /* GAME SECTION */
 
-#game-panel {
+.console {
+	font-weight: bold;
+	color: skyblue;
 	display: none;
 }
 
-#aim {
+.game-panel {
+	display: none;
+}
+
+.aim {
 	position: absolute;
 	left: 50%;
 	top: 50%;
@@ -201,7 +201,7 @@ body {
 	margin-top: -10px;
 }
 
-#weapon {
+.weapon {
 	position: absolute;
 	bottom: 0%;
 	right: 5%;

@@ -58,7 +58,7 @@ window.onload = () => {
 
 	CONSOLE.out("Browser " + navigator.appName + " was detected.", CONSTANTS.MESSAGE.INFO);
 
-	let canvas = document.getElementById('aim');
+	let canvas = document.querySelector('.aim');
 	let context = canvas.getContext('2d');
 
 	canvas.width = 20;
@@ -87,7 +87,7 @@ window.onload = () => {
 	let start = document.querySelector('.start');
 	let circle = document.querySelector('.circle');
 
-	let console = document.getElementById('console');
+	let console = document.querySelector('.console');
 
 	circle.addEventListener('click', () => {
 
@@ -102,7 +102,7 @@ window.onload = () => {
 			
 			CONSOLE.hide();
 
-			let gamePanel = document.getElementById('game-panel');
+			let gamePanel = document.querySelector('.game-panel');
 
 			gamePanel.style.display = 'block';
 

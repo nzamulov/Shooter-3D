@@ -10,7 +10,7 @@ Shooter.Utils.Console = class {
 
 		type = type || CONSTANTS.MESSAGE.INFO;
 
-		let console = document.getElementById('console');
+		let console = document.querySelector('.console');
 		let note = document.createElement('div');
 		
 		note.innerHTML = ">> " + string;
@@ -28,7 +28,7 @@ Shooter.Utils.Console = class {
 
 	static hide() {
 
-		let console = document.getElementById('console');
+		let console = document.querySelector('.console');
 
 		console.style.display = 'none';
 	}
