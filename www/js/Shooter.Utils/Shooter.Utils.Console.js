@@ -32,6 +32,13 @@ Shooter.Utils.Console = class {
 
 		console.style.display = 'none';
 	}
+
+	static show() {
+
+		let console = document.querySelector('.console');
+
+		console.style.display = 'block';
+	}
 };
 
 export default Shooter.Utils.Console;

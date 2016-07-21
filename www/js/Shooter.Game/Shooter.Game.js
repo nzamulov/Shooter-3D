@@ -87,8 +87,6 @@ window.onload = () => {
 	let start = document.querySelector('.start');
 	let circle = document.querySelector('.circle');
 
-	let console = document.querySelector('.console');
-
 	circle.addEventListener('click', () => {
 
 		/* LOCK THE POINTER */
@@ -96,7 +94,8 @@ window.onload = () => {
 
 		title.style.display = 'none';
 		start.style.display = 'none';
-		console.style.display = 'block';
+
+		CONSOLE.show();
 
 		Loader.loadImages(() => {
 			
