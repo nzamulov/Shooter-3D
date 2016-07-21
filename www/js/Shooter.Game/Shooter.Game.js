@@ -56,17 +56,6 @@ Shooter.Game = class {
 
 window.onload = () => {
 
-	$(".start").show();
-	$(".start").css("margin-left", -(($(window).width() / 2) + 1200));
-
-	$(".title").animate({
-		marginTop: "20px"
-	}, 500, () => {
-		$(".start").animate({
-			marginLeft: "-600px"
-		}, 700);
-	});
-
 	CONSOLE.out("Browser " + navigator.appName + " was detected.", CONSTANTS.MESSAGE.INFO);
 
 	let canvas = document.getElementById('aim');

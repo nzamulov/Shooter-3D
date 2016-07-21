@@ -67,7 +67,7 @@ body {
 
 .title {
 	margin-left: 60px;
-	margin-top: -60px;
+	margin-top: 20px;
 }
 
 .title-text {
@@ -83,7 +83,7 @@ body {
 	left: 50%;
 	top: 50%;
 	margin-top: -250px;
-	display: none;
+	margin-left: -600px;
 }
 
 .start-wrapper {
