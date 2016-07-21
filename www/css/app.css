@@ -170,6 +170,20 @@ body {
 	margin-top: 35px;
 }
 
+.tech {
+	height: 50px;
+	width: 60px;
+	position: absolute;
+	bottom: 30px;
+	left: 60px;
+	opacity: 1;
+}
+
+.tech a:hover {
+	cursor: default;
+	opacity: 0.7;
+}
+
 .nonselect {
 	cursor: default;
 	-webkit-touch-callout: none;
