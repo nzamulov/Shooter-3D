@@ -27,7 +27,7 @@ Shooter.Entities.Player = class {
 		this.jumpingSaturation = Math.PI / 2;
 
 		this.camera = new THREE.PerspectiveCamera(CONSTANTS.CAMERA.FRUSTUM, CONSTANTS.CAMERA.ASPECT_RATIO, CONSTANTS.CAMERA.NEAR, CONSTANTS.CAMERA.FAR);
-		this.camera.position.set(CONSTANTS.RED_POINT.X, CONSTANTS.PLAYER.HEIGHT, CONSTANTS.RED_POINT.Z);
+		this.camera.position.set(CONSTANTS.GREEN_POINT.X, CONSTANTS.PLAYER.HEIGHT, CONSTANTS.GREEN_POINT.Z);
 		this.camera.lookAt(0, 0, -1);
 
 		this.keyboardController = KeyboardController.create(this);

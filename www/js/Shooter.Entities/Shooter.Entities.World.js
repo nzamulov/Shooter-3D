@@ -43,6 +43,47 @@ Shooter.Entities.World = class {
 		box.position.set(21, 1.5, 38.5);
 		this.scene.add(box);
 
+		box = Box.create();
+		box.position.set(61, 1.5, -40);
+		box.rotation.set(0, Math.PI / 4, 0);
+		this.scene.add(box);
+
+		box = Box.create();
+		box.position.set(65, 1.5, -40);
+		this.scene.add(box);
+
+		box = Box.create();
+		box.position.set(65, 1.5, -43);
+		this.scene.add(box);
+
+		box = Box.create();
+		box.position.set(65, 4.5, -40);
+		this.scene.add(box);
+
+		box = Box.create();
+		box.position.set(68, 1.5, -40);
+		this.scene.add(box);
+
+		box = Box.create();
+		box.position.set(68, 4.5, -40);
+		this.scene.add(box);
+
+		box = Box.create();
+		box.position.set(68, 7.5, -40);
+		this.scene.add(box);
+
+		box = Box.create();
+		box.position.set(68, 1.5, -37);
+		this.scene.add(box);
+
+		/*let barrel_texture = new THREE.Texture();
+		barrel_texture.image = Loader.getImage('barrel');
+		barrel_texture.needsUpdate = true;
+		let _geometry = new THREE.CylinderGeometry(2, 2, 5, 64);
+		let _material = new THREE.MeshBasicMaterial({ map: barrel_texture, overdraw: true, side: THREE.DoubleSide });
+		let barrel = new THREE.Mesh(_geometry, _material);
+		barrel.position.set(66, 2.5, -20);
+		this.scene.add(barrel);*/
 
 		/* GREEN POINT RESPAWN */
 
@@ -103,9 +144,13 @@ Shooter.Entities.World = class {
 
 		/* ----------------- */
 
+		/* FLOOR */
+
 		let floor = Floor.create();
 		floor.rotation.set(Math.PI / 2, 0, 0);
 		this.scene.add(floor);
+
+		/* ----------------- */
 
 		/* SKY SPHERE */
 
