@@ -6,6 +6,7 @@ import CONSTANTS from '../Shooter.Constants/Shooter.Constants.js';
 
 import Player from './Shooter.Entities.Player.js';
 import Floor from './Shooter.Entities.Floor.js';
+import Wheel from './Shooter.Entities.Wheel.js';
 
 import LargeHouseBuilder from './Shooter.Entities.Builders/Shooter.Entities.Builders.LargeHouseBuilder.js';
 import MediumHouseBuilder from './Shooter.Entities.Builders/Shooter.Entities.Builders.MediumHouseBuilder.js';
@@ -75,15 +76,11 @@ Shooter.Entities.World = class {
 		box = Box.create();
 		box.position.set(68, 1.5, -37);
 		this.scene.add(box);
-
-		/*let barrel_texture = new THREE.Texture();
-		barrel_texture.image = Loader.getImage('barrel');
-		barrel_texture.needsUpdate = true;
-		let _geometry = new THREE.CylinderGeometry(2, 2, 5, 64);
-		let _material = new THREE.MeshBasicMaterial({ map: barrel_texture, overdraw: true, side: THREE.DoubleSide });
-		let barrel = new THREE.Mesh(_geometry, _material);
-		barrel.position.set(66, 2.5, -20);
-		this.scene.add(barrel);*/
+		
+		let wheel = Wheel.create();
+		wheel.position.set(20, 2.5, 70.7);
+		wheel.rotation.set(-Math.PI / 18, 0, 0);
+		this.scene.add(wheel);
 
 		/* GREEN POINT RESPAWN */
 

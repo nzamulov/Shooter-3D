@@ -25,7 +25,8 @@ Shooter.Constants = {
 		TEXTILE: 'img/textile.jpg',
 		BLOCK: 'img/block.jpg',
 		WOOD: 'img/wood.jpg',
-		WINDOW: 'img/window.jpg'
+		WINDOW: 'img/window.jpg',
+		WHEEL: 'img/wheel.jpg'
 	},
 
 	KEYS: {

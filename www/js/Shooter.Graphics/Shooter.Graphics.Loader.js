@@ -44,6 +44,7 @@ Shooter.Graphics.Loader = class {
 		.then(() => { return loadImage(CONSTANTS.IMAGES.BLOCK); })
 		.then(() => { return loadImage(CONSTANTS.IMAGES.WOOD); })
 		.then(() => { return loadImage(CONSTANTS.IMAGES.WINDOW); })
+		.then(() => { return loadImage(CONSTANTS.IMAGES.WHEEL); })
 		.then(() => { callback(); });
 	}
 };
