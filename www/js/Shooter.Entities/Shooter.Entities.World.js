@@ -95,6 +95,14 @@ Shooter.Entities.World = class {
 		box.position.set(145, 4.5, -52);
 		this.scene.add(box);
 
+		box = Box.create();
+		box.position.set(118.5, 1.5, -42);
+		this.scene.add(box);
+
+		box = Box.create();
+		box.position.set(101.5, 1.5, -22);
+		this.scene.add(box);
+
 		/* GREEN POINT RESPAWN */
 
 		box = Box.create();
