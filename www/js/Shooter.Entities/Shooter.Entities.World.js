@@ -7,6 +7,7 @@ import CONSTANTS from '../Shooter.Constants/Shooter.Constants.js';
 import Player from './Shooter.Entities.Player.js';
 import Floor from './Shooter.Entities.Floor.js';
 import Wheel from './Shooter.Entities.Wheel.js';
+import Cart from './Shooter.Entities.Cart.js';
 
 import LargeHouseBuilder from './Shooter.Entities.Builders/Shooter.Entities.Builders.LargeHouseBuilder.js';
 import MediumHouseBuilder from './Shooter.Entities.Builders/Shooter.Entities.Builders.MediumHouseBuilder.js';
@@ -81,6 +82,18 @@ Shooter.Entities.World = class {
 		wheel.position.set(20, 2.5, 70.7);
 		wheel.rotation.set(-Math.PI / 18, 0, 0);
 		this.scene.add(wheel);
+
+		let cart = Cart.create();
+		cart.position.set(135, 2.5, -56);
+		this.scene.add(cart);
+
+		box = Box.create();
+		box.position.set(145, 1.5, -52);
+		this.scene.add(box);
+
+		box = Box.create();
+		box.position.set(145, 4.5, -52);
+		this.scene.add(box);
 
 		/* GREEN POINT RESPAWN */
 
