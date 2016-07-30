@@ -86,7 +86,6 @@ window.onload = () => {
 	let title = document.querySelector('.title');
 	let start = document.querySelector('.start');
 	let circle = document.querySelector('.circle');
-	let tech = document.querySelector('.tech');
 
 	circle.addEventListener('click', () => {
 
@@ -95,7 +94,6 @@ window.onload = () => {
 
 		title.style.display = 'none';
 		start.style.display = 'none';
-		tech.style.display = 'none';
 
 		CONSOLE.show();
 
