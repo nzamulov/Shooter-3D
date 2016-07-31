@@ -201,6 +201,38 @@ body {
 	margin-top: -10px;
 }
 
+.menu-item {
+	position: absolute;
+	bottom: 0%;
+	margin-bottom: 30px;
+}
+
+.menu-item img {
+	height: 30px;
+	width: 30px;
+	display: inline-block;
+}
+
+.menu-item span {
+	font-size: 43px;
+	padding-left: 7px;
+}
+
+.health {
+	left: 50px;
+	color: rgb(227, 30, 36);
+}
+
+.shield {
+	left: 300px;
+	color: rgb(21, 161, 21);
+}
+
+.timer {
+	left: 550px;
+	color: rgb(251, 226, 81);
+}
+
 .weapon {
 	position: absolute;
 	bottom: 0%;

@@ -28,7 +28,7 @@ Shooter.Game = class {
 		this.FPS.setMode(0);
 
 		this.FPS.domElement.style.position = 'absolute';
-		this.FPS.domElement.style.left = '0px';
+		this.FPS.domElement.style.right = '0px';
 		this.FPS.domElement.style.top = '0px';
 
 		document.body.appendChild(this.FPS.domElement);
