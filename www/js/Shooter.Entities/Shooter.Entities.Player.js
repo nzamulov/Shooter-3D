@@ -26,6 +26,8 @@ Shooter.Entities.Player = class {
 		this.falling = false;
 		this.jumpingSaturation = Math.PI / 2;
 
+		this.startFallingPoint = null;
+
 		this.camera = new THREE.PerspectiveCamera(CONSTANTS.CAMERA.FRUSTUM, CONSTANTS.CAMERA.ASPECT_RATIO, CONSTANTS.CAMERA.NEAR, CONSTANTS.CAMERA.FAR);
 		this.camera.position.set(CONSTANTS.RED_POINT.X, CONSTANTS.PLAYER.HEIGHT, CONSTANTS.RED_POINT.Z);
 		this.camera.lookAt(0, 0, -1);
@@ -108,10 +110,14 @@ Shooter.Entities.Player = class {
 		}
 
 		if(this.falling) {
-			
+
 			let originPoint = this.camera.position.clone();
 			let ray = new THREE.Raycaster(originPoint, new THREE.Vector3(0, -1, 0));
 			let collisionResults = ray.intersectObjects(scene.children);
+
+			if(null == this.startFallingPoint) {
+				this.startFallingPoint = originPoint;
+			}
 
 			if(collisionResults.length > 0 && collisionResults[0].distance < CONSTANTS.PLAYER.HEIGHT) {
 
@@ -119,6 +125,12 @@ Shooter.Entities.Player = class {
 				this.jumpingSaturation = Math.PI / 2;
 
 				this.camera.position.y = Math.max(this.camera.position.y, CONSTANTS.PLAYER.HEIGHT);
+
+				if(this.startFallingPoint.y - this.camera.position.y > 16) {
+					this.receiveDamage();
+				}
+
+				this.startFallingPoint = null;
 
 			} else {
 
@@ -183,6 +195,20 @@ Shooter.Entities.Player = class {
 		let bullet = new Bullet(this.camera.position.clone(), this.camera.rotation.clone(), this.camera.getWorldDirection());
 		this.bullets.push(bullet);
 		this.scene.add(bullet.getInstance());
+	}
+
+	receiveDamage() {
+		let health = document.querySelector(".health span");
+		let canvas = document.querySelector(".damage");
+		health.innerHTML = Math.max(parseInt(health.innerHTML) - 1, 0);
+		let saturation = 0.85;
+		let intervalId = setInterval(() => {
+			saturation = Math.max(saturation - 0.05, 0.0);
+			canvas.style.backgroundColor = 'rgba(255, 0, 0, ' + saturation + ')';
+			if(0.0 == saturation) {
+				clearInterval(intervalId);
+			}
+		}, 50);
 	}
 
 	getCamera() {
