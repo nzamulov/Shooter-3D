@@ -186,6 +186,8 @@ Shooter.Entities.Player = class {
 
 			if(!collisionResults.length || (collisionResults.length > 0 && (collisionResults[0].distance - CONSTANTS.PLAYER.HEIGHT) > 0.01)) {
 				this.falling = true;
+			} else if(collisionResults.length > 0 && (CONSTANTS.PLAYER.HEIGHT - collisionResults[0].distance) > 0.5) {
+				this.camera.position.y += CONSTANTS.PLAYER.HEIGHT - collisionResults[0].distance;
 			}
 		}
 	}
