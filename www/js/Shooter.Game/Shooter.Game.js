@@ -102,8 +102,21 @@ window.onload = () => {
 			CONSOLE.hide();
 
 			let gamePanel = document.querySelector('.game-panel');
+			let body = document.getElementsByTagName("body")[0];
 
 			gamePanel.style.display = 'block';
+			body.style.opacity = 0.0;
+
+			let intervalId = setInterval(function() {
+				let value = parseFloat(body.style.opacity);
+				let current = Math.min(value + 0.05, 1.0);
+				if(Math.abs(current) > 1.0) {
+					body.style.opacity = 1.0;
+					clearInterval(intervalId);
+				} else {
+					body.style.opacity = current;
+				}
+			}, 50);
 
 			/* START GAME */
 			const __instance = new Shooter.Game();
