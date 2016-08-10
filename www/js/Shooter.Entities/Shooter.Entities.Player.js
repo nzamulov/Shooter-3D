@@ -87,9 +87,6 @@ Shooter.Entities.Player = class {
 		if(this.jumping) {
 
 			let originPoint = this.camera.position.clone();
-
-			originPoint.y += 1; // prevent intersection with the ground and grid.
-
 			let ray = new THREE.Raycaster(originPoint, new THREE.Vector3(0, 1, 0));
 			let collisionResults = ray.intersectObjects(scene.children);
 
@@ -119,7 +116,7 @@ Shooter.Entities.Player = class {
 				this.startFallingPoint = originPoint;
 			}
 
-			if(collisionResults.length > 0 && collisionResults[0].distance < CONSTANTS.PLAYER.HEIGHT) {
+			if(collisionResults.length > 0 && Math.abs(collisionResults[0].distance - CONSTANTS.PLAYER.HEIGHT) < 1e-6) {
 
 				this.falling = false;
 				this.jumpingSaturation = Math.PI / 2;
@@ -135,9 +132,11 @@ Shooter.Entities.Player = class {
 			} else {
 
 				let addHeight = CONSTANTS.PLAYER.JUMP_STRENGTH * Math.sin(this.jumpingSaturation);
+				
 				this.camera.position.y -= addHeight;
-				this.jumpingSaturation += Math.PI / CONSTANTS.GRAVITY;
+				this.camera.position.y = Math.max(this.camera.position.y, CONSTANTS.PLAYER.HEIGHT);
 
+				this.jumpingSaturation += Math.PI / CONSTANTS.GRAVITY;
 				this.jumpingSaturation = Math.min(this.jumpingSaturation, Math.PI / 2);
 
 			}
@@ -183,10 +182,10 @@ Shooter.Entities.Player = class {
 
 			let ray = new THREE.Raycaster(this.camera.position.clone(), new THREE.Vector3(0, -1, 0));
 			let collisionResults = ray.intersectObjects(scene.children);
-
-			if(!collisionResults.length || (collisionResults.length > 0 && (collisionResults[0].distance - CONSTANTS.PLAYER.HEIGHT) > 0.01)) {
+			
+			if(collisionResults.length > 0 && (collisionResults[0].distance - CONSTANTS.PLAYER.HEIGHT) > 0.01) {
 				this.falling = true;
-			} else if(collisionResults.length > 0 && (CONSTANTS.PLAYER.HEIGHT - collisionResults[0].distance) > 0.5) {
+			} else if(collisionResults.length > 0 && CONSTANTS.PLAYER.HEIGHT > collisionResults[0].distance) {
 				this.camera.position.y += CONSTANTS.PLAYER.HEIGHT - collisionResults[0].distance;
 			}
 		}
@@ -195,6 +194,7 @@ Shooter.Entities.Player = class {
 	createBuller() {
 
 		let bullet = new Bullet(this.camera.position.clone(), this.camera.rotation.clone(), this.camera.getWorldDirection());
+
 		this.bullets.push(bullet);
 		this.scene.add(bullet.getInstance());
 	}
