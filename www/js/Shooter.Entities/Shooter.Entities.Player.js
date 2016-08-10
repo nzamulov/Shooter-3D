@@ -183,7 +183,7 @@ Shooter.Entities.Player = class {
 			let ray = new THREE.Raycaster(this.camera.position.clone(), new THREE.Vector3(0, -1, 0));
 			let collisionResults = ray.intersectObjects(scene.children);
 			
-			if(collisionResults.length > 0 && (collisionResults[0].distance - CONSTANTS.PLAYER.HEIGHT) > 0.01) {
+			if(collisionResults.length > 0 && collisionResults[0].distance > CONSTANTS.PLAYER.HEIGHT) {
 				this.falling = true;
 			} else if(collisionResults.length > 0 && CONSTANTS.PLAYER.HEIGHT > collisionResults[0].distance) {
 				this.camera.position.y += CONSTANTS.PLAYER.HEIGHT - collisionResults[0].distance;
