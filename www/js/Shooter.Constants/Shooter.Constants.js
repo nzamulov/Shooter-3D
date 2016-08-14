@@ -29,6 +29,14 @@ Shooter.Constants = {
 		WHEEL: 'img/wheel.jpg'
 	},
 
+	SOUNDS: {
+		FALLING: 'sounds/falling.mp3',
+		JUMPING: 'sounds/jumping.mp3',
+		MOVING: 'sounds/moving.mp3',
+		WIND: 'sounds/wind.mp3',
+		PAIN: 'sounds/pain.mp3'
+	},
+
 	KEYS: {
 
 		W: 87,

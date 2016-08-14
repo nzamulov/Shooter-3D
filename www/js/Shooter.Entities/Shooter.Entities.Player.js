@@ -9,6 +9,8 @@ import MouseController from '../Shooter.Controllers/Shooter.Controllers.MouseCon
 
 import Bullet from './Shooter.Entities.Bullet.js';
 
+import SoundsLoader from '../Shooter.Sounds/Shooter.Sounds.Loader.js';
+
 Shooter.Entities.Player = class {
 
 	constructor(scene) {
@@ -44,6 +46,12 @@ Shooter.Entities.Player = class {
 			this.bullets[i].update();
 		}
 
+		let sound = SoundsLoader.getSound('wind');
+
+		if(!sound.isPlaying) {
+			sound.play();
+		}
+
 		let worldDirection = this.camera.getWorldDirection().normalize().multiplyScalar(CONSTANTS.PLAYER.MOVEMENT_SPEED);
 		
 		let right = new THREE.Vector3();
@@ -77,9 +85,32 @@ Shooter.Entities.Player = class {
 
 		}
 
+		sound = SoundsLoader.getSound('moving');
+
 		if(this.movingCollision(scene, this.movingVector.clone())) {
+
 			this.camera.position.x += this.movingVector.x;
 			this.camera.position.z += this.movingVector.z;
+
+			if((this.moveForward ||
+			   this.moveRight    ||
+			   this.moveBackward ||
+			   this.moveLeft)    &&
+			   !this.jumping     &&
+			   !this.falling) {
+
+				if(!sound.isPlaying) {
+					sound.play();
+				}
+			} else {
+				if(sound.isPlaying) {
+					sound.stop();
+				}
+			}
+		} else {
+			if(sound.isPlaying) {
+				sound.stop();
+			}
 		}
 
 		this.gravitation(scene);
@@ -89,6 +120,7 @@ Shooter.Entities.Player = class {
 			let originPoint = this.camera.position.clone();
 			let ray = new THREE.Raycaster(originPoint, new THREE.Vector3(0, 1, 0));
 			let collisionResults = ray.intersectObjects(scene.children);
+			let sound = SoundsLoader.getSound('jumping');
 
 			if(this.jumpingSaturation <= 0 || 
 				(collisionResults.length > 0 && collisionResults[0].distance < 1.25)) {
@@ -97,12 +129,18 @@ Shooter.Entities.Player = class {
 				this.falling = true;
 				this.jumpingSaturation = 0;
 
+				sound.started = false;
+
 			} else {
 
 				let addHeight = CONSTANTS.PLAYER.JUMP_STRENGTH * Math.sin(this.jumpingSaturation);
 				this.camera.position.y += addHeight;
 				this.jumpingSaturation -= Math.PI / CONSTANTS.GRAVITY;
-
+				
+				if(!sound.started) {
+					sound.play();
+					sound.started = true;
+				}
 			}
 		}
 
@@ -123,11 +161,24 @@ Shooter.Entities.Player = class {
 
 				this.camera.position.y = Math.max(this.camera.position.y, CONSTANTS.PLAYER.HEIGHT);
 
+				let sound = SoundsLoader.getSound('pain');
+
 				if(this.startFallingPoint.y - this.camera.position.y > 16) {
+
 					this.receiveDamage();
+					
+					if(!sound.isPlaying) {
+						sound.play();
+					}
 				}
 
 				this.startFallingPoint = null;
+
+				sound = SoundsLoader.getSound('falling');
+				
+				if(!sound.isPlaying) {
+					sound.play();
+				}
 
 			} else {
 
@@ -183,7 +234,7 @@ Shooter.Entities.Player = class {
 			let ray = new THREE.Raycaster(this.camera.position.clone(), new THREE.Vector3(0, -1, 0));
 			let collisionResults = ray.intersectObjects(scene.children);
 			
-			if(collisionResults.length > 0 && collisionResults[0].distance > CONSTANTS.PLAYER.HEIGHT) {
+			if(collisionResults.length > 0 && collisionResults[0].distance - CONSTANTS.PLAYER.HEIGHT > 1e-6) {
 				this.falling = true;
 			} else if(collisionResults.length > 0 && CONSTANTS.PLAYER.HEIGHT > collisionResults[0].distance) {
 				this.camera.position.y += CONSTANTS.PLAYER.HEIGHT - collisionResults[0].distance;

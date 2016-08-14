@@ -13,7 +13,8 @@ import WindowController from '../Shooter.Controllers/Shooter.Controllers.WindowC
 import Renderer from '../Shooter.Graphics/Shooter.Graphics.Renderer.js';
 import World from '../Shooter.Entities/Shooter.Entities.World.js';
 
-import Loader from '../Shooter.Graphics/Shooter.Graphics.Loader.js';
+import GraphicsLoader from '../Shooter.Graphics/Shooter.Graphics.Loader.js';
+import SoundsLoader from '../Shooter.Sounds/Shooter.Sounds.Loader.js';
 
 Shooter.Game = class {
 
@@ -97,30 +98,33 @@ window.onload = () => {
 
 		CONSOLE.show();
 
-		Loader.loadImages(() => {
+		GraphicsLoader.loadImages(() => {
 			
-			CONSOLE.hide();
+			SoundsLoader.loadSounds(() => {
 
-			let gamePanel = document.querySelector('.game-panel');
-			let body = document.getElementsByTagName("body")[0];
+				CONSOLE.hide();
 
-			gamePanel.style.display = 'block';
-			body.style.opacity = 0.0;
+				let gamePanel = document.querySelector('.game-panel');
+				let body = document.getElementsByTagName("body")[0];
 
-			let intervalId = setInterval(function() {
-				let value = parseFloat(body.style.opacity);
-				let current = Math.min(value + 0.05, 1.0);
-				if(Math.abs(current) > 1.0) {
-					body.style.opacity = 1.0;
-					clearInterval(intervalId);
-				} else {
-					body.style.opacity = current;
-				}
-			}, 50);
+				gamePanel.style.display = 'block';
+				body.style.opacity = 0.0;
 
-			/* START GAME */
-			const __instance = new Shooter.Game();
+				let intervalId = setInterval(function() {
+					let value = parseFloat(body.style.opacity);
+					let current = Math.min(value + 0.05, 1.0);
+					if(Math.abs(current) > 1.0) {
+						body.style.opacity = 1.0;
+						clearInterval(intervalId);
+					} else {
+						body.style.opacity = current;
+					}
+				}, 50);
 
+				/* START GAME */
+				const __instance = new Shooter.Game();
+
+			});
 		});
 	});
 }
